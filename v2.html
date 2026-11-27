@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yadom Homepage Wireframe v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Low-fi wireframe: paper and ink only. Mood "themes" are shown as tone + texture; real colours come in hi-fi. */
+  --paper: #F4F4F1;
+  --ink: #151515;
+  --rule: #C4C3BD;
+  --fill: #E4E3DE;
+  --note: #55554F;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --bar: 52px;
+  --mood-bg: var(--paper);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* ---------- wireframe chrome ---------- */
+.wf-bar { position: sticky; top: 0; z-index: 60; height: var(--bar); display: flex; align-items: center; gap: 18px; padding: 0 20px; background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: 13px; }
+.wf-bar nav { display: flex; gap: 16px; margin-left: auto; }
+.wf-bar nav a { text-decoration: none; opacity: .8; white-space: nowrap; }
+.wf-bar nav a:hover { opacity: 1; text-decoration: underline; }
+.wf-toggle { white-space: nowrap; color: var(--ink); background: var(--paper); border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer; font-family: var(--font-mono); font-size: 13px; }
+.notes-off .note { display: none !important; }
+.note { font-family: var(--font-mono); font-size: 13px; line-height: 1.55; color: var(--note); border: 1.5px dashed var(--note); border-radius: 6px; padding: 12px 14px; background: rgba(255,255,255,.6); max-width: 68ch; }
+.note b { color: var(--ink); font-weight: 500; letter-spacing: .04em; }
+.sec-label { display: inline-block; background: var(--ink); color: var(--paper); padding: 3px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 14px; }
+.act { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); background: var(--fill); padding: 18px 20px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; font-family: var(--font-mono); font-size: 13px; color: var(--note); }
+.act span { font-family: var(--font-display); font-weight: 800; font-size: 34px; color: var(--ink); text-transform: uppercase; }
+
+/* ---------- primitives ---------- */
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+.sec { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+.display { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: .92; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--note); margin-bottom: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; background: var(--ink); color: var(--paper); border: 2px solid var(--ink); border-radius: 999px; padding: 10px 22px; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--ink); }
+.ph { position: relative; background: var(--fill); border: 1px solid var(--rule); display: grid; place-items: center; text-align: center; overflow: hidden; }
+.ph::before, .ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top right, transparent calc(50% - .6px), var(--rule) 50%, transparent calc(50% + .6px)); }
+.ph::after { background: linear-gradient(to top left, transparent calc(50% - .6px), var(--rule) 50%, transparent calc(50% + .6px)); }
+.ph > * { position: relative; z-index: 1; }
+.ph-label { font-family: var(--font-mono); font-size: 12px; color: var(--note); background: var(--paper); border: 1px solid var(--rule); padding: 4px 8px; border-radius: 4px; max-width: 86%; }
+.chip { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--ink); border-radius: 999px; padding: 2px 9px; background: var(--paper); }
+.chip.solid { background: var(--ink); color: var(--paper); }
+.chip.dash { border-style: dashed; color: var(--note); border-color: var(--note); }
+.marquee { overflow: hidden; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); background: var(--ink); color: var(--paper); padding: 10px 0; }
+.marquee-track { display: flex; width: max-content; animation: run 26s linear infinite; }
+.marquee-track span { font-family: var(--font-display); font-weight: 800; font-size: 26px; text-transform: uppercase; letter-spacing: .03em; white-space: nowrap; padding-right: 28px; }
+@keyframes run { to { transform: translateX(-50%); } }
+
+/* ---------- sun (shared drawing) ---------- */
+.sun { display: block; overflow: visible; }
+.sun .rays path { fill: var(--paper); stroke: var(--ink); stroke-width: 2.2; stroke-linejoin: round; }
+.sun .disc { fill: var(--paper); stroke: var(--ink); stroke-width: 2.6; }
+.sun .ln { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.sun .solid { fill: var(--ink); }
+.sun .lid { transform-box: fill-box; transform-origin: center; animation: blink 4.2s infinite; }
+@keyframes blink { 0%, 44%, 52%, 100% { transform: scaleY(0); } 47%, 49% { transform: scaleY(1); } }
+.sun.asleep .lid { animation: none; transform: scaleY(1); }
+
+/* ---------- nav ---------- */
+.site-nav { display: flex; align-items: center; gap: 24px; padding: 14px 20px; border-bottom: 1px solid var(--rule); flex-wrap: wrap; background: var(--paper); }
+.logo { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 900; font-size: 30px; text-decoration: none; }
+.site-nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; font-weight: 500; flex-wrap: wrap; }
+.site-nav ul a { text-decoration: none; }
+.site-nav .cart { margin-left: auto; display: flex; gap: 10px; }
+
+/* ---------- 01 hero ---------- */
+.hero-video { height: calc(100vh - var(--bar) - 64px); min-height: 380px; border-radius: 0; border-left: 0; border-right: 0; }
+.hero-overlay { position: absolute; inset: auto 0 28px 0; display: grid; justify-items: center; gap: 6px; z-index: 2; }
+.scroll-cue { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); text-transform: uppercase; background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; padding: 2px 22px; }
+
+/* ---------- 02 brand story ---------- */
+.story { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+.story h2 { font-size: clamp(40px, 6vw, 84px); }
+.story h2 .second { display: block; color: transparent; -webkit-text-stroke: 2px var(--ink); }
+.story .body { font-size: 18px; max-width: 54ch; margin-top: 20px; display: grid; gap: 14px; }
+.stamp { display: inline-block; font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: .05em; text-transform: uppercase; border: 3px double var(--ink); padding: 6px 14px; transform: rotate(-2deg); margin-top: 22px; }
+.sun-stage { position: relative; aspect-ratio: 1; perspective: 900px; display: grid; place-items: center; cursor: grab; touch-action: none; user-select: none; border: 1px dashed var(--rule); border-radius: 12px; background: radial-gradient(circle at 50% 50%, #fff 0, var(--paper) 62%); }
+.sun-stage:active { cursor: grabbing; }
+.sun-3d { width: 72%; transform-style: preserve-3d; transition: transform .08s linear; }
+.sun-3d .sun { width: 100%; height: auto; }
+.drag-hint { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 12px; color: var(--note); background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+
+/* ---------- 03 pick your mood ---------- */
+.pick-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 26px; }
+.pick-head h2 { font-size: clamp(44px, 7vw, 96px); }
+.moods { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.mood-card { width: 100%; text-align: left; background: var(--paper); border: 2px solid var(--ink); border-radius: 14px; padding: 18px 18px 20px; cursor: pointer; display: grid; gap: 10px; transition: transform .2s ease, background .3s ease; position: relative; }
+.mood-card:hover { transform: translateY(-4px); }
+.mood-card .sun { width: 64%; margin: 4px auto 6px; }
+.mood-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 40px; text-transform: uppercase; line-height: .9; }
+.mood-card .switch { font-weight: 600; }
+.mood-card .go { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--note); }
+.mood-card.later { border-style: dashed; }
+.mood-card .chip { position: absolute; top: 12px; right: 12px; }
+
+/* mood textures (stand-in for colour themes) */
+.t-relax { background: linear-gradient(180deg, #ECECE8 0%, #F7F7F4 100%); }
+.t-reset { background: repeating-linear-gradient(-28deg, #FFFFFF 0 22px, #F1F1EE 22px 24px); }
+.t-relief { background: repeating-radial-gradient(circle at 85% 30%, #F2F1EC 0 18px, #E8E6E0 18px 20px); }
+.t-rejuv { background-color: #F7F7F2; background-image: linear-gradient(100deg, transparent 0 46%, rgba(21,21,21,.08) 46% 47%, transparent 47%); background-size: 26px 34px; }
+
+/* ---------- Act II: horizontal mood track ---------- */
+.h-sec { position: relative; border-bottom: 1px solid var(--rule); }
+.h-sticky { position: sticky; top: var(--bar); height: calc(100vh - var(--bar)); overflow: hidden; }
+.h-track { display: flex; height: 100%; width: calc(var(--n) * 100vw); will-change: transform; }
+.slide { width: 100vw; height: 100%; flex: 0 0 100vw; position: relative; display: grid; grid-template-rows: auto 1fr; padding: 22px 32px 26px; border-right: 2px solid var(--ink); transition: background .4s ease; overflow: hidden; }
+.slide-top { display: flex; justify-content: space-between; align-items: start; gap: 16px; position: relative; z-index: 2; }
+.slide-top .name { font-size: clamp(64px, 11vw, 168px); }
+.slide-top .switchline { font-family: var(--font-display); font-weight: 800; font-size: clamp(22px, 2.6vw, 34px); text-transform: uppercase; margin-top: 4px; }
+.slide-top .tag { font-size: 17px; margin-top: 4px; }
+.slide .float-sun { position: absolute; right: 3%; top: 4%; width: clamp(150px, 22vw, 300px); z-index: 1; animation: floaty 6s ease-in-out infinite; }
+@keyframes floaty { 50% { transform: translateY(-14px) rotate(3deg); } }
+.slide.mood-reset .float-sun { animation: jitter 2.4s steps(2) infinite; }
+@keyframes jitter { 50% { transform: translate(3px, -6px) rotate(-2deg); } }
+.slide-body { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: center; min-height: 0; position: relative; z-index: 2; }
+.prod-stage { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; min-height: 0; height: 100%; max-height: 52vh; }
+.prod-stage .ph { height: 100%; min-height: 220px; border-radius: 16px; background: rgba(228,227,222,.8); }
+.arrow { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); font-family: var(--font-display); font-weight: 800; font-size: 22px; cursor: pointer; display: grid; place-items: center; }
+.arrow:disabled { opacity: .3; cursor: default; }
+.prod-info { display: grid; gap: 12px; align-content: center; background: rgba(244,244,241,.85); border: 2px solid var(--ink); border-radius: 16px; padding: 22px 24px; }
+.prod-info h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(32px, 3.6vw, 48px); text-transform: uppercase; line-height: .95; }
+.prod-info .line { font-weight: 600; font-size: 19px; }
+.prod-info .desc { color: #333; }
+.prod-info .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.dots { display: flex; gap: 6px; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--ink); display: block; }
+.dots i.on { background: var(--ink); }
+.slide-top .note { max-width: 38ch; font-size: 12px; padding: 10px 12px; margin-right: calc(clamp(150px, 22vw, 300px) + 3%); align-self: start; }
+@media (max-width: 1200px) { .slide-top .note { display: none; } }
+.slide.later { }
+.later-flag { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; background: var(--ink); color: var(--paper); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-top: 10px; }
+
+/* mood rail (sticky indicator) */
+.rail { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; gap: 8px; z-index: 5; background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; padding: 5px; }
+.rail button { border: 0; background: transparent; border-radius: 999px; padding: 5px 12px; font-family: var(--font-display); font-weight: 800; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+.rail button .sun { width: 20px; height: 20px; }
+.rail button[aria-current="true"] { background: var(--ink); color: var(--paper); }
+.rail button[aria-current="true"] .sun .disc, .rail button[aria-current="true"] .sun .rays path { fill: var(--ink); stroke: var(--paper); }
+.rail button[aria-current="true"] .sun .ln { stroke: var(--paper); }
+.rail button[aria-current="true"] .sun .solid { fill: var(--paper); }
+
+/* ---------- moments ---------- */
+.mom-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+.mom-head h2 { font-size: clamp(44px, 7vw, 96px); }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.filters button { border: 2px solid var(--ink); background: var(--paper); border-radius: 999px; padding: 5px 14px; font-family: var(--font-display); font-weight: 800; text-transform: uppercase; cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.moments { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.moment { border: 2px solid var(--ink); border-radius: 14px; overflow: hidden; background: var(--paper); display: grid; grid-template-rows: 190px auto; }
+.moment .ph { border: 0; border-bottom: 2px solid var(--ink); }
+.moment .txt { padding: 12px 14px 16px; display: grid; gap: 6px; justify-items: start; }
+.moment h3 { font-family: var(--font-display); font-weight: 800; font-size: 24px; text-transform: uppercase; line-height: 1; }
+.moment[hidden] { display: none; }
+
+/* ---------- reviews / social / footer ---------- */
+.reviews { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.review { border: 2px solid var(--ink); border-radius: 12px; padding: 12px 14px; background: var(--paper); display: grid; gap: 6px; font-size: 14px; }
+.review .who { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.ig { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+.ig .ph { aspect-ratio: 9/16; border-radius: 12px; }
+footer.site-foot { background: var(--ink); color: var(--paper); padding: 56px 0 30px; }
+.foot-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 28px; }
+.foot-top h4 { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; margin: 0 0 10px; font-weight: 500; }
+.foot-top ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.foot-top .bye { font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 4.4vw, 56px); text-transform: uppercase; line-height: .95; }
+.foot-top .sun .disc, .foot-top .sun .rays path { fill: var(--ink); stroke: var(--paper); }
+.foot-top .sun .ln { stroke: var(--paper); }
+.foot-top .sun .solid { fill: var(--paper); }
+.shop-pill { position: fixed; right: 20px; bottom: 20px; z-index: 55; box-shadow: 4px 4px 0 var(--ink); background: var(--paper); color: var(--ink); transition: opacity .3s ease; }
+.in-track .shop-pill { opacity: 0; pointer-events: none; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .wf-bar nav { display: none; }
+  .story { grid-template-columns: 1fr; }
+  .moods { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .mood-card { padding: 12px; }
+  .mood-card h3 { font-size: 30px; }
+  .slide { padding: 16px 18px 70px; grid-template-rows: auto 1fr; }
+  .slide-body { grid-template-columns: 1fr; gap: 12px; align-content: start; }
+  .prod-stage { max-height: 30vh; }
+  .prod-stage .ph { min-height: 150px; }
+  .prod-info { padding: 14px 16px; gap: 8px; }
+  .prod-info .desc { font-size: 14px; }
+  .mood-card .chip { position: static; justify-self: start; }
+  .mood-card .sun { width: 52%; }
+  .slide .float-sun { width: 110px; top: 10px; right: 10px; }
+  .slide .note { display: none; }
+  .rail button span.lbl { display: none; }
+  .moments { grid-template-columns: repeat(2, 1fr); }
+  .reviews { grid-template-columns: repeat(2, 1fr); }
+  .ig { grid-template-columns: repeat(2, 1fr); }
+  .foot-top { grid-template-columns: 1fr 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .h-sticky { position: static; height: auto; }
+  .h-track { flex-direction: column; width: 100%; transform: none !important; }
+  .slide { width: 100%; height: auto; min-height: 90vh; border-right: 0; border-bottom: 2px solid var(--ink); }
+}
+</style>
+</head>
+<body>
+
+<div class="wf-bar">
+  <strong>yadom.life / Homepage wireframe v2</strong>
+  <nav aria-label="Wireframe sections">
+    <a href="#act-1">Act I: Arrival</a>
+    <a href="#act-2">Act II: The four moods</a>
+    <a href="#act-3">Act III: Proof</a>
+  </nav>
+  <button class="wf-toggle" id="notes-toggle" aria-pressed="true" type="button">Notes: on</button>
+</div>
+
+<a class="btn shop-pill" href="#act-2">Shop</a>
+
+<!-- ======================= ACT I ======================= -->
+<div class="act" id="act-1"><span>Act I: Arrival</span> The world, then the brand, then the choice.</div>
+
+<header class="site-nav">
+  <a class="logo" href="#act-1"><svg class="sun" data-face="peek" width="34" height="34" viewBox="0 0 200 200" aria-hidden="true"></svg>YADOM</a>
+  <ul>
+    <li><a href="#" data-jump="0">Relax</a></li>
+    <li><a href="#" data-jump="1">Reset</a></li>
+    <li><a href="#story">Our story</a></li>
+  </ul>
+  <div class="cart"><a class="btn ghost" href="#act-2">Shop</a><a class="btn" href="#">Cart (0)</a></div>
+</header>
+
+<section aria-label="Hero">
+  <div class="ph hero-video">
+    <span class="ph-label">01 / Hero: the current Sun video, full screen (hero-desktop.mp4 / hero-mobile.mp4). Unchanged.</span>
+    <div class="hero-overlay"><span class="scroll-cue">↓ Scroll down ↓</span></div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track">
+  <span>One sun ✦ Four moods ✦ Herbal &amp; loud ✦ Made in India ✦ Not plain. Not clinical. Not boring. ✦</span>
+  <span>One sun ✦ Four moods ✦ Herbal &amp; loud ✦ Made in India ✦ Not plain. Not clinical. Not boring. ✦</span>
+</div></div>
+
+<section class="sec" id="story">
+  <div class="wrap">
+    <div class="sec-label">02 / The Yadom story</div>
+    <div class="story">
+      <div>
+        <p class="eyebrow">Meet Yadom</p>
+        <h2 class="display">India doesn't come with a volume knob.<span class="second">So we made a switch.</span></h2>
+        <div class="body">
+          <p>Every Indian home has that one cupboard. Camphor, mint, tulsi, and whatever your grandmother swore by.</p>
+          <p>Yadom takes those rituals out of the cupboard and makes them small enough to carry, loud enough to notice, and simple enough to use without a lecture.</p>
+          <p>Our sun has four moods. So do you. Pick one, flip the switch, carry on.</p>
+        </div>
+        <div class="stamp">Not plain. Not clinical. Not boring.</div>
+      </div>
+      <div>
+        <div class="sun-stage" id="sun-stage" aria-label="Yadom Sun. Drag to rotate.">
+          <div class="sun-3d" id="sun-3d"><svg class="sun" data-face="hero" viewBox="0 0 200 200" aria-hidden="true"></svg></div>
+          <span class="drag-hint">Drag to turn the Sun</span>
+        </div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:22px"><b>BUILD</b> Text left, Sun right (stacks on mobile: text first). The Sun floats and blinks: eyes close, open, close, open. People can drag to rotate it in 3D; it eases back when let go. This screen is about Yadom the brand, not the inhaler. No product here. Wireframe Sun is a flat drawing; final is the 3D Sun file you're supplying.</div>
+  </div>
+</section>
+
+<section class="sec" id="pick">
+  <div class="wrap">
+    <div class="sec-label">03 / Pick your mood</div>
+    <div class="pick-head">
+      <div>
+        <p class="eyebrow">One sun. Four moods.</p>
+        <h2 class="display">Pick your mood.</h2>
+      </div>
+      <p style="max-width:36ch">Tap a mood and the whole site switches with it.</p>
+    </div>
+    <div class="moods" id="moods"></div>
+    <div class="note" style="margin-top:20px"><b>BEHAVIOUR</b> Tap a mood: the page theme switches to that mood and slides straight to its section in Act II. Hover (desktop): the card's Sun does its mood (closes eyes, snaps open, exhales, blooms).<br><b>4 DEC BUILD</b> Only Relax and Reset are built. Relief and Rejuvenate are shown here for the storytelling only and are left out of the live site until they launch.</div>
+  </div>
+</section>
+
+<!-- ======================= ACT II ======================= -->
+<div class="act" id="act-2"><span>Act II: The four moods</span> Scroll down and the moods slide in from the right, one after another. Each has its own Sun and its own world.</div>
+
+<section class="h-sec" id="track-sec">
+  <div class="h-sticky">
+    <div class="h-track" id="track"></div>
+    <nav class="rail" id="rail" aria-label="Moods"></nav>
+  </div>
+</section>
+
+<section class="sec" id="moments">
+  <div class="wrap">
+    <div class="sec-label">05 / Moments of Yadom</div>
+    <div class="mom-head">
+      <div>
+        <p class="eyebrow">Real people. Every mood.</p>
+        <h2 class="display">Moments of Yadom.</h2>
+      </div>
+      <div class="filters" id="filters"></div>
+    </div>
+    <div class="moments" id="moment-grid"></div>
+    <div class="note" style="margin-top:20px"><b>CONTENT</b> Back to normal up-and-down scrolling from here. One section for every product, after all the moods: real people using Yadom, each card tagged with its mood. Photos or short looping clips. Filter chips show only live moods.</div>
+  </div>
+</section>
+
+<!-- ======================= ACT III ======================= -->
+<div class="act" id="act-3"><span>Act III: Proof</span> Same as the current site, now covering every mood.</div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">06 / Loved by the loud</div>
+    <p class="eyebrow">The reviews</p>
+    <h2 class="display" style="font-size:clamp(44px,7vw,96px);margin-bottom:22px">Loved by the loud.</h2>
+    <div class="reviews" id="reviews"></div>
+    <div class="note" style="margin-top:18px"><b>CONTENT</b> Existing reviews, each tagged with its mood. All are Reset for now; Relax reviews join after the lotion launches.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">07 / Join the ritual</div>
+    <p class="eyebrow">@yadom.life</p>
+    <h2 class="display" style="font-size:clamp(44px,7vw,96px)">Join the ritual.</h2>
+    <div class="ig">
+      <div class="ph"><span class="ph-label">IG reel</span></div>
+      <div class="ph"><span class="ph-label">IG reel</span></div>
+      <div class="ph"><span class="ph-label">IG reel</span></div>
+      <div class="ph"><span class="ph-label">IG reel</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <svg class="sun" data-face="wink" width="90" height="90" viewBox="0 0 200 200" aria-hidden="true"></svg>
+        <p class="bye" style="margin-top:12px">Come back when you need a minute.</p>
+      </div>
+      <div><h4>Moods</h4><ul><li>Relax</li><li>Reset</li></ul></div>
+      <div><h4>Quick links</h4><ul><li>Blogs</li><li>Contact us</li><li>Shipping policy</li><li>Returns, refunds &amp; cancellation</li><li>Privacy policy</li><li>Terms &amp; conditions</li></ul></div>
+      <div><h4>Reach us</h4><ul><li>Yadom Life</li><li>Vamayra Global Private Limited</li><li>care@yadom.life</li><li>© 2026 Yadom Life. Made in India.</li></ul></div>
+    </div>
+    <p class="note" style="margin-top:28px;background:transparent;color:#bbb;border-color:#777"><b style="color:#fff">FOOTER</b> The Sun winks goodbye. Moods column lists only live moods.</p>
+  </div>
+</footer>
+
+<script>
+/* ---------- data ---------- */
+var SHOP = "https://yadom-life.myshopify.com/products/";
+var MOODS = [
+  { key: "relax", name: "Relax", face: "relax", tex: "t-relax", live: true,
+    sw: "Wired to calm.", tag: "For when the city won't log off.",
+    sun: "Eyes closed, content. Soft haze settles, everything drifts slowly. Dinos nod off (tap to tuck them in).",
+    products: [
+      { n: "Magnesium Body Lotion", s: "Live 4 Dec", l: "Rub it in. Slow it down.", d: "A magnesium body lotion for the days that don't switch off on their own. Smooth it on, take a breath, let the noise settle." },
+      { n: "Epsom Body & Bath Salt", s: "January", l: "Run a bath. Let the noise sink.", d: "Epsom salt for your bath or your bucket. Tip some in, sit back, and let the day dissolve with it." },
+      { n: "Epsom Foot Soak", s: "January", l: "Your feet did the whole day.", d: "Give them ten minutes. A warm-water soak for feet that carried you through everything." },
+      { n: "Epsom Body Wash", s: "January", l: "Rinse off the rush.", d: "A slow-down shower in a bottle. Lather, rinse, and leave the rush on the bathroom floor." }
+    ] },
+  { key: "reset", name: "Reset", face: "reset", tex: "t-reset", live: true,
+    sw: "Foggy to sharp.", tag: "For when your brain starts buffering.",
+    sun: "Eyes snap wide open. A cool gust blows through, lines go crisp, everything moves quick and snappy.",
+    products: [
+      { n: "Herbal Inhaler", s: "Live now", l: "Open. Inhale. Reset.", d: "A pocket-sized herbal aroma ritual for quick, cooling resets and tiny moments of calm on the move. Camphor, mint, tulsi and friends." },
+      { n: "Ice Mint Inhaler", s: "Late January", l: "Same pocket. Colder snap.", d: "The inhaler you know, turned a few degrees cooler. For when regular minty just isn't loud enough." },
+      { n: "Coffee Body Wash", s: "Late January", l: "Your first coffee, but in the shower.", d: "A coffee-scented body wash that smells like the start of something. Lather up, wake up the room." }
+    ] },
+  { key: "relief", name: "Relief", face: "relief", tex: "t-relief", live: false, when: "2027",
+    sw: "Tense to easy.", tag: "For when your shoulders moved up to your ears.",
+    sun: "A long exhale. Cheeks puff, shoulders drop. Knotted shapes in the world slowly come undone.",
+    products: [
+      { n: "Relief Patch", s: "2027", l: "Stick it on. Carry on.", d: "Placeholder. Product details and copy to be confirmed. Copy stays on how it feels, never what it treats." },
+      { n: "Relief Spray", s: "2027", l: "Spritz. Breathe out.", d: "Placeholder. Product details and copy to be confirmed." }
+    ] },
+  { key: "rejuv", name: "Rejuvenate", face: "rejuv", tex: "t-rejuv", live: false, when: "End 2027",
+    sw: "Drained to alive.", tag: "Like the first rain, minus the traffic.",
+    sun: "Bright eyes, big smile, rays bloom into petals. First rain falls, a rainbow arcs across, colour floods back in.",
+    products: [
+      { n: "Something's growing here", s: "End 2027", l: "Personal care range, to be revealed.", d: "Placeholder until the Rejuvenate range is confirmed." }
+    ] }
+];
+var MOMENTS = [
+  { m: "relax", t: "Plans got cancelled", d: "Best news all week. Lie down about it." },
+  { m: "relax", t: "After the fourth meeting", d: "Your calendar won. Your shoulders don't have to." },
+  { m: "relax", t: "Long-haul flight", d: "Seat 34B, but make it a spa." },
+  { m: "relax", t: "The scroll that won't stop", d: "Put the phone down. Pick this up." },
+  { m: "reset", t: "Work mode", d: "Long tabs, longer calls. One twist, back in." },
+  { m: "reset", t: "Commute mode", d: "Crowded ride. One pocket ritual that travels better than your playlist." },
+  { m: "reset", t: "Gym mode", d: "A quick inhale before the next set." },
+  { m: "reset", t: "Study mode", d: "Keep it next to your notes. Back to it." }
+];
+var REVIEWS = [
+  ["Three seconds and my head's clear. Genuinely obsessed.", "Aanya"],
+  ["Lives in my tote next to my lip balm. The jar is too cute.", "Riya"],
+  ["My 3pm slump's worst enemy. One twist and I'm back.", "Meera"],
+  ["Smells like my grandma's cupboard but make it fashion.", "Dev"],
+  ["Desk, bag, pocket. I own three now. No regrets.", "Karan"]
+];
+
+/* ---------- sun drawing ---------- */
+function rays(petal) {
+  var out = "";
+  for (var i = 0; i < 16; i++) {
+    var a = i * 22.5, long = i % 2 === 0;
+    var r1 = 60, r2 = long ? 96 : 82, w = long ? 9 : 7;
+    var d = petal
+      ? "M100 " + (100 - r1) + " C " + (100 - w * 1.8) + " " + (100 - (r1 + r2) / 2) + ", " + (100 - w) + " " + (100 - r2 + 4) + ", 100 " + (100 - r2) + " C " + (100 + w) + " " + (100 - r2 + 4) + ", " + (100 + w * 1.8) + " " + (100 - (r1 + r2) / 2) + ", 100 " + (100 - r1) + " Z"
+      : "M" + (100 - w) + " " + (100 - r1 + 2) + " L100 " + (100 - r2) + " L" + (100 + w) + " " + (100 - r1 + 2) + " Z";
+    out += '<path d="' + d + '" transform="rotate(' + a + ' 100 100)"/>';
+  }
+  return '<g class="rays">' + out + "</g>";
+}
+function face(kind) {
+  var open = '<ellipse class="solid" cx="82" cy="94" rx="5" ry="6"/><ellipse class="solid" cx="118" cy="94" rx="5" ry="6"/>' +
+             '<path class="ln" d="M72 90 Q82 84 92 90 M108 90 Q118 84 128 90"/>';
+  var blink = '<g class="lid"><path class="disc" style="stroke:none" d="M70 86 h24 v14 h-24z M106 86 h24 v14 h-24z"/><path class="ln" d="M72 94 Q82 99 92 94 M108 94 Q118 99 128 94"/></g>';
+  var closed = '<path class="ln" d="M72 94 Q82 101 92 94 M108 94 Q118 101 128 94"/>';
+  var brows = '<path class="ln" d="M70 80 Q82 74 94 80 M106 80 Q118 74 130 80"/>';
+  var nose = '<path class="ln" d="M100 96 Q96 108 102 110"/>';
+  switch (kind) {
+    case "relax": return closed + nose + '<path class="ln" d="M88 122 Q100 128 112 122"/>';
+    case "reset": return '<circle class="disc" cx="82" cy="93" r="10"/><circle class="disc" cx="118" cy="93" r="10"/><circle class="solid" cx="82" cy="93" r="4"/><circle class="solid" cx="118" cy="93" r="4"/>' +
+                         '<path class="ln" d="M68 76 Q82 66 96 76 M104 76 Q118 66 132 76"/>' + nose + '<ellipse class="ln" cx="100" cy="124" rx="6" ry="5"/>';
+    case "relief": return closed + brows.replace(/74/g, "78") + nose + '<path class="ln" d="M94 122 Q100 118 106 122 Q100 128 94 122 Z"/><path class="ln" d="M112 120 q8 -2 12 2 M114 126 q8 0 12 4"/>';
+    case "rejuv": return open + nose + '<path class="ln" d="M84 118 Q100 134 116 118"/><circle class="ln" cx="70" cy="112" r="5"/><circle class="ln" cx="130" cy="112" r="5"/>';
+    case "wink": return '<ellipse class="solid" cx="82" cy="94" rx="5" ry="6"/><path class="ln" d="M108 94 Q118 100 128 94"/>' + nose + '<path class="ln" d="M86 120 Q100 130 114 120"/>';
+    case "peek": return '<ellipse class="solid" cx="82" cy="94" rx="6" ry="7"/><ellipse class="solid" cx="118" cy="94" rx="6" ry="7"/>';
+    default: return open + blink + nose + '<path class="ln" d="M90 122 Q100 126 110 122"/>';
+  }
+}
+function drawSun(el, kind) {
+  el.innerHTML = rays(kind === "rejuv") + '<circle class="disc" cx="100" cy="100" r="58"/>' + face(kind);
+}
+function sunSVG(kind, cls) {
+  return '<svg class="sun ' + (cls || "") + '" viewBox="0 0 200 200" aria-hidden="true">' + rays(kind === "rejuv") + '<circle class="disc" cx="100" cy="100" r="58"/>' + face(kind) + "</svg>";
+}
+document.querySelectorAll("svg.sun[data-face]").forEach(function (el) { drawSun(el, el.getAttribute("data-face")); });
+
+/* ---------- pick your mood ---------- */
+var movesEl = document.getElementById("moods");
+MOODS.forEach(function (m, i) {
+  var b = document.createElement("button");
+  b.type = "button";
+  b.className = "mood-card " + m.tex + (m.live ? "" : " later");
+  b.innerHTML = (m.live ? "" : '<span class="chip dash">Not in 4 Dec build</span>') + sunSVG(m.face, m.live ? "" : "asleep") +
+    "<h3>" + m.name + '</h3><span class="switch">' + m.sw + '</span><span class="go">Take me there →</span>';
+  b.addEventListener("click", function () { jumpTo(i); });
+  movesEl.appendChild(b);
+});
+
+/* ---------- mood track ---------- */
+var track = document.getElementById("track"), sec = document.getElementById("track-sec"), rail = document.getElementById("rail");
+track.style.setProperty("--n", MOODS.length);
+sec.style.height = (MOODS.length * 100 + 0) + "vh";
+MOODS.forEach(function (m, i) {
+  var s = document.createElement("article");
+  s.className = "slide mood-" + m.key + " " + m.tex + (m.live ? "" : " later");
+  s.id = "mood-" + m.key;
+  s.innerHTML =
+    '<div class="slide-top"><div>' +
+      '<span class="sec-label" style="margin-bottom:6px">04.' + (i + 1) + " / " + m.name + "</span>" +
+      '<h2 class="display name">' + m.name + "</h2>" +
+      '<p class="switchline">' + m.sw + '</p><p class="tag">' + m.tag + "</p>" +
+      (m.live ? "" : '<span class="later-flag">Storytelling only. Launches ' + m.when + ". Not in the 4 Dec build.</span>") +
+    "</div>" +
+    '<p class="note"><b>' + m.name.toUpperCase() + " WORLD</b> " + m.sun + " The whole slide takes this mood's colours and texture. Product: image for now, 3D file later; ← → switches product with a turn-and-slide.</p>" +
+    "</div>" +
+    sunSVG(m.face, "float-sun") +
+    '<div class="slide-body">' +
+      '<div class="prod-stage">' +
+        '<button class="arrow prev" type="button" aria-label="Previous product">←</button>' +
+        '<div class="ph"><span class="ph-label prod-img"></span></div>' +
+        '<button class="arrow next" type="button" aria-label="Next product">→</button>' +
+      "</div>" +
+      '<div class="prod-info">' +
+        '<div class="row"><span class="chip solid prod-status"></span><div class="dots"></div></div>' +
+        '<h3 class="prod-name"></h3><p class="line prod-line"></p><p class="desc prod-desc"></p>' +
+        '<div class="row">' + (m.live ? '<a class="btn shop" href="#" target="_blank" rel="noopener">Shop now →</a>' : '<span class="btn ghost" aria-disabled="true">Coming ' + m.when + '</span>') + '<span class="chip prod-count"></span></div>' +
+      "</div>" +
+    "</div>";
+  track.appendChild(s);
+
+  var idx = 0, dots = s.querySelector(".dots");
+  m.products.forEach(function () { dots.appendChild(document.createElement("i")); });
+  function show(k) {
+    idx = k;
+    var p = m.products[k];
+    s.querySelector(".prod-img").textContent = "Product image / 3D: " + p.n;
+    s.querySelector(".prod-name").textContent = p.n;
+    s.querySelector(".prod-line").textContent = p.l;
+    s.querySelector(".prod-desc").textContent = p.d;
+    s.querySelector(".prod-status").textContent = p.s;
+    s.querySelector(".prod-count").textContent = (k + 1) + " of " + m.products.length;
+    if (m.live) s.querySelector(".shop").href = SHOP + p.n.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
+    s.querySelector(".prev").disabled = k === 0;
+    s.querySelector(".next").disabled = k === m.products.length - 1;
+    Array.prototype.forEach.call(dots.children, function (d, j) { d.className = j === k ? "on" : ""; });
+  }
+  s.querySelector(".prev").addEventListener("click", function () { if (idx > 0) show(idx - 1); });
+  s.querySelector(".next").addEventListener("click", function () { if (idx < m.products.length - 1) show(idx + 1); });
+  show(0);
+
+  var rb = document.createElement("button");
+  rb.type = "button";
+  rb.innerHTML = sunSVG(m.face) + '<span class="lbl">' + m.name + "</span>";
+  rb.setAttribute("aria-label", m.name);
+  rb.addEventListener("click", function () { jumpTo(i); });
+  rail.appendChild(rb);
+});
+
+var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function trackRange() { return sec.offsetHeight - (window.innerHeight - 52); }
+function jumpTo(i) {
+  if (reduce) { document.getElementById("mood-" + MOODS[i].key).scrollIntoView(); return; }
+  var y = sec.getBoundingClientRect().top + window.scrollY - 52 + trackRange() * (i / (MOODS.length - 1));
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
+document.querySelectorAll("[data-jump]").forEach(function (a) {
+  a.addEventListener("click", function (e) { e.preventDefault(); jumpTo(+a.getAttribute("data-jump")); });
+});
+function onScroll() {
+  if (reduce) return;
+  var r = sec.getBoundingClientRect();
+  var p = Math.min(1, Math.max(0, (52 - r.top) / trackRange()));
+  track.style.transform = "translateX(" + (-p * (MOODS.length - 1) * window.innerWidth) + "px)";
+  var active = Math.round(p * (MOODS.length - 1));
+  Array.prototype.forEach.call(rail.children, function (b, j) { b.setAttribute("aria-current", String(j === active)); });
+  document.body.classList.toggle("in-track", r.top < 60 && r.bottom > window.innerHeight * .5);
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", onScroll);
+onScroll();
+
+/* ---------- draggable sun ---------- */
+(function () {
+  var stage = document.getElementById("sun-stage"), sun = document.getElementById("sun-3d");
+  var rx = 0, ry = 0, dragging = false, sx = 0, sy = 0, bx = 0, by = 0, t0 = performance.now();
+  stage.addEventListener("pointerdown", function (e) { dragging = true; sx = e.clientX; sy = e.clientY; bx = ry; by = rx; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener("pointermove", function (e) { if (!dragging) return; ry = bx + (e.clientX - sx) * .6; rx = Math.max(-40, Math.min(40, by - (e.clientY - sy) * .4)); });
+  function end() { dragging = false; }
+  stage.addEventListener("pointerup", end); stage.addEventListener("pointercancel", end);
+  function tick(t) {
+    if (!dragging) { ry *= .94; rx *= .94; }
+    var bob = reduce ? 0 : Math.sin((t - t0) / 900) * 8;
+    sun.style.transform = "translateY(" + bob + "px) rotateX(" + rx + "deg) rotateY(" + ry + "deg)";
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
+/* ---------- moments + filters ---------- */
+var grid = document.getElementById("moment-grid"), filt = document.getElementById("filters");
+MOMENTS.forEach(function (x) {
+  var c = document.createElement("div");
+  c.className = "moment"; c.dataset.mood = x.m;
+  c.innerHTML = '<div class="ph"><span class="ph-label">Photo / short clip</span></div><div class="txt"><span class="chip">' + (x.m === "relax" ? "Relax" : "Reset") + "</span><h3>" + x.t + "</h3><p>" + x.d + "</p></div>";
+  grid.appendChild(c);
+});
+["All", "Relax", "Reset"].forEach(function (f, i) {
+  var b = document.createElement("button");
+  b.type = "button"; b.textContent = f; b.setAttribute("aria-pressed", String(i === 0));
+  b.addEventListener("click", function () {
+    Array.prototype.forEach.call(filt.children, function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+    Array.prototype.forEach.call(grid.children, function (c) { c.hidden = f !== "All" && c.dataset.mood !== f.toLowerCase(); });
+  });
+  filt.appendChild(b);
+});
+
+/* ---------- reviews ---------- */
+var rv = document.getElementById("reviews");
+REVIEWS.forEach(function (r) {
+  var d = document.createElement("div"); d.className = "review";
+  d.innerHTML = "<span>★★★★★</span><p>“" + r[0] + "”</p><span class='who'>" + r[1] + " · Reset</span>";
+  rv.appendChild(d);
+});
+
+/* ---------- notes toggle ---------- */
+document.getElementById("notes-toggle").addEventListener("click", function () {
+  var off = document.body.classList.toggle("notes-off");
+  this.setAttribute("aria-pressed", String(!off));
+  this.textContent = off ? "Notes: off" : "Notes: on";
+});
+</script>
+</body>
+</html>

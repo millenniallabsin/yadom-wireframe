@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yadom Homepage Wireframe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Low-fi wireframe: paper and ink only. Layout = one long scrolling homepage in three acts, notes in dashed callouts. */
+  --paper: #F4F4F1;
+  --ink: #151515;
+  --rule: #C4C3BD;
+  --fill: #E4E3DE;
+  --fill-2: #D3D2CC;
+  --note: #55554F;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --bar: 52px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
+img, svg { max-width: 100%; }
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* ---------- wireframe chrome ---------- */
+.wf-bar { position: sticky; top: 0; z-index: 50; height: var(--bar); display: flex; align-items: center; gap: 20px; padding: 0 20px; background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: 13px; }
+.wf-bar strong { font-weight: 500; letter-spacing: .02em; }
+.wf-bar nav { display: flex; gap: 16px; margin-left: auto; }
+.wf-bar nav + .wf-toggle { margin-left: 0; }
+.wf-bar nav a { text-decoration: none; opacity: .8; }
+.wf-bar nav a:hover { opacity: 1; text-decoration: underline; }
+.wf-toggle { white-space: nowrap; margin-left: auto; font: inherit; color: var(--ink); background: var(--paper); border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.notes-off .note { display: none !important; }
+
+.note { font-family: var(--font-mono); font-size: 13px; line-height: 1.55; color: var(--note); border: 1.5px dashed var(--note); border-radius: 6px; padding: 12px 14px; background: rgba(255,255,255,.5); max-width: 68ch; }
+.note b { color: var(--ink); font-weight: 500; letter-spacing: .04em; }
+.note ul { margin: 6px 0 0; padding-left: 18px; }
+.sec-label { display: inline-block; border-style: solid; border-width: 1px; background: var(--ink); color: var(--paper); padding: 3px 10px; border-radius: 4px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 18px; max-width: none; }
+.act { margin: 0; max-width: none; border: 0; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); border-radius: 0; background: var(--fill); padding: 18px 20px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; }
+.act span { font-family: var(--font-display); font-weight: 800; font-size: 34px; color: var(--ink); text-transform: uppercase; letter-spacing: .01em; }
+
+/* ---------- site primitives ---------- */
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+.sec { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+.display { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: .92; letter-spacing: .005em; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--note); margin-bottom: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; background: var(--ink); color: var(--paper); border: 2px solid var(--ink); border-radius: 999px; padding: 10px 22px; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--ink); }
+.ph { position: relative; background: var(--fill); border: 1px solid var(--rule); display: grid; place-items: center; text-align: center; overflow: hidden; }
+.ph::before, .ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top right, transparent calc(50% - .6px), var(--rule) 50%, transparent calc(50% + .6px)); }
+.ph::after { background: linear-gradient(to top left, transparent calc(50% - .6px), var(--rule) 50%, transparent calc(50% + .6px)); }
+.ph > * { position: relative; z-index: 1; }
+.ph-label { font-family: var(--font-mono); font-size: 12px; color: var(--note); background: var(--paper); border: 1px solid var(--rule); padding: 4px 8px; border-radius: 4px; max-width: 80%; }
+.chip { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--ink); border-radius: 999px; padding: 2px 9px; }
+.chip.solid { background: var(--ink); color: var(--paper); }
+.stack { display: grid; gap: 16px; }
+
+/* marquee */
+.marquee { overflow: hidden; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); background: var(--ink); color: var(--paper); padding: 10px 0; }
+.marquee.light { background: var(--paper); color: var(--ink); }
+.marquee-track { display: flex; width: max-content; animation: run 26s linear infinite; }
+.marquee-track span { font-family: var(--font-display); font-weight: 800; font-size: 26px; text-transform: uppercase; letter-spacing: .03em; white-space: nowrap; padding-right: 28px; }
+@keyframes run { to { transform: translateX(-50%); } }
+
+/* ---------- 01 nav + hero ---------- */
+.site-nav { display: flex; align-items: center; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+.logo { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 900; font-size: 30px; text-decoration: none; }
+.logo svg { width: 34px; height: 34px; }
+.site-nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; font-weight: 500; flex-wrap: wrap; }
+.site-nav ul a { text-decoration: none; }
+.site-nav .cart { margin-left: auto; display: flex; gap: 10px; }
+.hero { padding: 28px 0 56px; }
+.hero-art { height: clamp(300px, 46vw, 520px); border-radius: 10px; }
+.hero-art .peek { position: absolute; left: 50%; top: 18%; width: clamp(120px, 18vw, 210px); transform: translateX(-50%); z-index: 1; background: var(--paper); border-radius: 50%; }
+.hero-copy { display: grid; gap: 10px; justify-items: center; text-align: center; margin-top: -86px; position: relative; z-index: 2; }
+.hero-copy h1 { font-size: clamp(56px, 9vw, 120px); background: var(--paper); padding: 6px 22px 0; border: 2px solid var(--ink); border-radius: 8px; }
+.hero-copy .sub { font-size: clamp(18px, 2.2vw, 24px); }
+.scroll-cue { font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+
+/* ---------- 03 premise ---------- */
+.premise { display: grid; gap: 28px; }
+.premise h2 { font-size: clamp(44px, 7.4vw, 104px); }
+.premise h2 .second { display: block; color: transparent; -webkit-text-stroke: 2px var(--ink); }
+.premise .body { font-size: 19px; max-width: 58ch; }
+.stamp { display: inline-block; font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: .05em; text-transform: uppercase; border: 3px double var(--ink); padding: 6px 14px; transform: rotate(-2deg); justify-self: start; }
+
+/* ---------- 04 the switch ---------- */
+.switch-track { height: 300vh; position: relative; }
+.switch-sticky { position: sticky; top: var(--bar); height: calc(100vh - var(--bar)); display: grid; grid-template-rows: auto 1fr auto; gap: 12px; padding: 16px 20px 18px; }
+.switch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.switch-head h2 { font-size: clamp(30px, 4vw, 48px); }
+.scene-box { position: relative; min-height: 0; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 10px; background: var(--paper); overflow: hidden; }
+.scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.scene * { transition: opacity .5s ease, transform .6s ease, stroke-width .4s ease, fill .4s ease; }
+.scene .s { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.scene .f { fill: var(--paper); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
+.scene .lbl { font-family: var(--font-mono); font-size: 13px; fill: var(--note); }
+.scene .dino-body, .scene .cow { transform-box: view-box; }
+.only-relax, .only-reset, .only-rejuv { opacity: 0; }
+[data-state="relax"] .only-relax, [data-state="reset"] .only-reset, [data-state="rejuv"] .only-rejuv { opacity: 1; }
+[data-state="relax"] .not-relax, [data-state="reset"] .not-reset, [data-state="rejuv"] .not-rejuv { opacity: 0; }
+[data-state="relax"] .dino-body { transform: translateY(14px); }
+[data-state="relax"] .cow { transform: translateY(12px); }
+[data-state="reset"] .mtn { stroke-width: 3.6; }
+[data-state="reset"] .birds { transform: translateX(46px); }
+[data-state="relax"] .world { opacity: .72; }
+.ground { fill: var(--paper); }
+[data-state="rejuv"] .ground { fill: url(#hatch); }
+.wind path { stroke-dasharray: 14 12; animation: gust 1.2s linear infinite; }
+@keyframes gust { to { stroke-dashoffset: -52; } }
+.rain-sheet { animation: fall .9s linear infinite; }
+@keyframes fall { from { transform: translateY(-40px); } to { transform: translateY(0); } }
+
+.switch-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 28px; align-items: end; }
+.state-copy { display: none; }
+[data-state="relax"] .state-copy[data-for="relax"], [data-state="reset"] .state-copy[data-for="reset"], [data-state="rejuv"] .state-copy[data-for="rejuv"] { display: grid; gap: 4px; }
+.state-copy h3 { font-size: clamp(48px, 6.4vw, 84px); }
+.state-copy .line { font-size: clamp(18px, 2vw, 22px); font-weight: 600; }
+.state-copy .sub { font-size: 17px; }
+.state-copy .note { margin-top: 8px; padding: 8px 12px; }
+.toggles { display: flex; gap: 10px; }
+.matchbox { font: inherit; cursor: pointer; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: 4px; padding: 5px; width: 112px; text-align: center; }
+.matchbox .inner { display: grid; gap: 4px; justify-items: center; border: 1px solid var(--ink); padding: 8px 4px 6px; }
+.matchbox svg { width: 34px; height: 34px; }
+.matchbox span { font-family: var(--font-display); font-weight: 800; font-size: 17px; text-transform: uppercase; letter-spacing: .04em; }
+.matchbox[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.matchbox[aria-pressed="true"] .inner { border-color: var(--paper); }
+.matchbox[aria-pressed="true"] svg { --sun-ink: var(--paper); --sun-fill: var(--ink); }
+.progress { display: flex; gap: 6px; margin-top: 8px; justify-content: center; }
+.progress i { width: 26px; height: 4px; background: var(--fill-2); border-radius: 2px; }
+.progress i.on { background: var(--ink); }
+
+/* sun symbols use these */
+svg { --sun-ink: var(--ink); --sun-fill: var(--paper); }
+
+/* ---------- 05 family ---------- */
+.family-head { display: grid; gap: 10px; justify-items: center; text-align: center; margin-bottom: 36px; }
+.family-head h2 { font-size: clamp(44px, 6.4vw, 88px); }
+.family-head p { font-size: 19px; }
+.labels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.label-card { border: 2px solid var(--ink); border-radius: 6px; padding: 8px; background: var(--paper); }
+.label-card .inner { position: relative; border: 1px solid var(--ink); padding: 26px 20px 22px; display: grid; gap: 10px; justify-items: center; text-align: center; height: 100%; }
+.label-card .inner::before, .label-card .inner::after { content: "\2726"; position: absolute; top: 6px; font-size: 13px; }
+.label-card .inner::before { left: 8px; } .label-card .inner::after { right: 8px; }
+.label-card svg { width: 96px; height: 96px; }
+.label-card h3 { font-family: var(--font-display); font-weight: 900; font-size: 46px; text-transform: uppercase; line-height: 1; }
+.label-card .line { font-weight: 600; }
+.label-card .prod { font-size: 15px; color: var(--note); }
+
+/* ---------- act II moods ---------- */
+.mood-open { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; align-items: center; }
+.mood-vignette { aspect-ratio: 16 / 10; border-radius: 10px; }
+.mood-title { display: grid; gap: 8px; }
+.mood-title h2 { font-size: clamp(72px, 11vw, 150px); }
+.mood-title .switchline { font-size: 24px; font-weight: 600; }
+.mood-title .lede { font-family: var(--font-display); font-weight: 800; font-size: 28px; text-transform: uppercase; letter-spacing: .03em; }
+.mood .marquee { margin: 40px 0; }
+.product { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+.product-3d { aspect-ratio: 1 / 1; border-radius: 50%; max-width: 420px; width: 100%; justify-self: center; }
+.product-info { display: grid; gap: 12px; align-content: start; }
+.product-info h3 { font-family: var(--font-display); font-weight: 800; font-size: 44px; text-transform: uppercase; line-height: 1; }
+.product-info .desc { font-size: 18px; max-width: 46ch; }
+.price { font-family: var(--font-display); font-weight: 800; font-size: 34px; font-variant-numeric: tabular-nums; }
+.price s { font-size: 22px; color: var(--note); margin-left: 8px; }
+.packs { display: flex; gap: 8px; flex-wrap: wrap; }
+.packs button { font: inherit; font-weight: 500; background: var(--paper); border: 1.5px solid var(--ink); border-radius: 6px; padding: 6px 14px; cursor: pointer; }
+.packs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.placeholder-name { border-bottom: 2px dashed var(--note); }
+.waitlist { display: flex; gap: 8px; flex-wrap: wrap; max-width: 460px; }
+.waitlist label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.waitlist input { flex: 1 1 220px; font: inherit; padding: 10px 14px; border: 2px solid var(--ink); border-radius: 999px; background: var(--paper); }
+.waitlist-done { font-family: var(--font-mono); font-size: 13px; }
+.subhead { font-family: var(--font-display); font-weight: 800; font-size: 40px; text-transform: uppercase; margin: 56px 0 20px; }
+.ingredients { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.ing { border: 2px solid var(--ink); border-radius: 10px; padding: 16px 18px; display: grid; gap: 4px; background: var(--paper); }
+.ing .no { font-family: var(--font-mono); font-size: 13px; }
+.ing h4 { font-family: var(--font-display); font-weight: 800; font-size: 26px; text-transform: uppercase; }
+.ing p { font-size: 15px; }
+.more { margin-top: 14px; font-family: var(--font-mono); font-size: 13px; }
+.moments { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 260px); gap: 16px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; }
+.moment { scroll-snap-align: start; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--paper); display: grid; grid-template-rows: auto 1fr; }
+.moment .ph { aspect-ratio: 4 / 3; border: 0; border-bottom: 2px solid var(--ink); }
+.moment div.txt { padding: 12px 14px 14px; display: grid; gap: 4px; }
+.moment h4 { font-family: var(--font-display); font-weight: 800; font-size: 22px; text-transform: uppercase; }
+.moment p { font-size: 14px; }
+.mood-cta { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+/* ---------- act III ---------- */
+.pack { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+.pack h2 { font-size: clamp(40px, 5.6vw, 76px); }
+.pack-art { aspect-ratio: 5 / 4; border-radius: 10px; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.filters button { font: inherit; font-size: 14px; background: var(--paper); border: 1.5px solid var(--ink); border-radius: 999px; padding: 4px 14px; cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.review { border: 2px solid var(--ink); border-radius: 10px; padding: 18px; display: grid; gap: 10px; align-content: start; background: var(--paper); }
+.review .stars { letter-spacing: 3px; }
+.review q { font-size: 17px; quotes: none; }
+.review .who { display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+.ig { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.ig .ph { aspect-ratio: 1; border-radius: 6px; }
+.site-foot { padding: 56px 0 120px; display: grid; grid-template-columns: auto 1fr; gap: 28px 40px; align-items: start; }
+.site-foot .wink { width: 120px; height: 120px; }
+.site-foot h2 { font-size: clamp(36px, 5vw, 64px); }
+.foot-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; grid-column: 1 / -1; font-size: 15px; }
+.foot-cols h4 { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; font-weight: 500; }
+.foot-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.shop-pill { position: fixed; right: 18px; bottom: 18px; z-index: 40; transition: opacity .3s ease; }
+.in-switch .shop-pill { opacity: 0; pointer-events: none; }
+
+/* appendix */
+.appendix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.appendix .note { max-width: none; }
+
+@media (max-width: 860px) {
+  .wf-bar nav { display: none; }
+  .mood-open, .product, .pack, .appendix { grid-template-columns: 1fr; }
+  .labels, .reviews { grid-template-columns: 1fr; }
+  .ingredients { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ig { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .switch-foot { grid-template-columns: 1fr; }
+  .toggles { justify-content: center; }
+  .matchbox { width: 100px; }
+  .matchbox span { font-size: 15px; }
+  .wf-bar .long { display: none; }
+  .switch-sticky { grid-template-rows: auto auto auto; align-content: center; }
+  .scene-box { aspect-ratio: 1000 / 500; }
+  .state-copy .note { display: none !important; }
+  .hero-copy { margin-top: -40px; }
+  .site-foot { grid-template-columns: 1fr; }
+  .foot-cols { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 420px) {
+  .ingredients { grid-template-columns: 1fr; }
+  .act span { font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track, .wind path, .rain-sheet { animation: none; }
+  .scene * { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Sun face symbols. Faces: peek, relax, reset, rejuv, wink -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="rays" viewBox="0 0 100 100"><path d="M84 50L97 50M79.4 67L90.7 73.5M67 79.4L73.5 90.7M50 84L50 97M33 79.4L26.5 90.7M20.6 67L9.3 73.5M16 50L3 50M20.6 33L9.3 26.5M33 20.6L26.5 9.3M50 16L50 3M67 20.6L73.5 9.3M79.4 33L90.7 26.5" fill="none" stroke="var(--sun-ink)" stroke-width="3" stroke-linecap="round"/></symbol>
+    <symbol id="sun-peek" viewBox="0 0 100 100"><use href="#rays"/><circle cx="50" cy="50" r="30" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="3"/><path d="M33 50 Q40 42 47 50 Q40 55 33 50Z M53 50 Q60 42 67 50 Q60 55 53 50Z" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="2.4"/><circle cx="40" cy="48.5" r="2.6" fill="var(--sun-ink)"/><circle cx="60" cy="48.5" r="2.6" fill="var(--sun-ink)"/><path d="M33 44 Q40 39 47 44 M53 44 Q60 39 67 44" fill="none" stroke="var(--sun-ink)" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="sun-relax" viewBox="0 0 100 100"><use href="#rays"/><circle cx="50" cy="50" r="30" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="3"/><path d="M34 47 Q40 53 46 47 M54 47 Q60 53 66 47 M43 61 Q50 65 57 61" fill="none" stroke="var(--sun-ink)" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="sun-reset" viewBox="0 0 100 100"><use href="#rays"/><circle cx="50" cy="50" r="30" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="3"/><circle cx="40" cy="47" r="7" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="2.4"/><circle cx="60" cy="47" r="7" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="2.4"/><circle cx="40" cy="47" r="3" fill="var(--sun-ink)"/><circle cx="60" cy="47" r="3" fill="var(--sun-ink)"/><path d="M45 61 L55 61" stroke="var(--sun-ink)" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="sun-rejuv" viewBox="0 0 100 100"><g fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="2.4"><ellipse cx="50" cy="10" rx="6" ry="10"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(30 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(60 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(90 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(120 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(150 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(180 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(210 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(240 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(270 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(300 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(330 50 50)"/></g><circle cx="50" cy="50" r="30" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="3"/><circle cx="40" cy="47" r="4" fill="var(--sun-ink)"/><circle cx="60" cy="47" r="4" fill="var(--sun-ink)"/><path d="M42 58 Q50 66 58 58" fill="none" stroke="var(--sun-ink)" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="sun-wink" viewBox="0 0 100 100"><use href="#rays"/><circle cx="50" cy="50" r="30" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="3"/><path d="M34 48 Q40 44 46 48" fill="none" stroke="var(--sun-ink)" stroke-width="2.6" stroke-linecap="round"/><circle cx="60" cy="47" r="4" fill="var(--sun-ink)"/><path d="M42 58 Q50 65 58 58" fill="none" stroke="var(--sun-ink)" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#F4F4F1"/><path d="M0 0V10" stroke="#151515" stroke-width="1.4"/></pattern>
+    <pattern id="rain" width="44" height="40" patternUnits="userSpaceOnUse"><path d="M14 2 l-5 13 M36 22 l-5 13" stroke="#151515" stroke-width="1.8" stroke-linecap="round"/></pattern>
+  </defs>
+</svg>
+
+<div class="wf-bar" role="banner">
+  <strong>yadom.life<span class="long"> / Homepage wireframe v1</span></strong>
+  <nav aria-label="Jump to act">
+    <a href="#act-1">Act I: Arrival</a>
+    <a href="#act-2">Act II: The three moods</a>
+    <a href="#act-3">Act III: Proof and belonging</a>
+    <a href="#appendix">Build notes</a>
+  </nav>
+  <button class="wf-toggle" id="notes-toggle" aria-pressed="true" type="button">Notes: on</button>
+</div>
+
+<main>
+
+<!-- ================= ACT I ================= -->
+<div class="note act" id="act-1"><span>Act I: Arrival</span> Welcome them into the world, give them the premise, then let them flip the switch themselves.</div>
+
+<div class="wrap">
+  <header class="site-nav">
+    <a class="logo" href="#hero" aria-label="Yadom home"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-peek"/></svg>YADOM</a>
+    <ul>
+      <li><a href="#relax">Relax</a></li>
+      <li><a href="#reset">Reset</a></li>
+      <li><a href="#rejuv">Rejuvenate</a></li>
+      <li><a href="#story">Our story</a></li>
+    </ul>
+    <div class="cart"><a class="btn ghost" href="#family">Shop</a><a class="btn" href="#reset">Cart (0)</a></div>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="note sec-label">01 / Hero: the world</div>
+    <div class="ph hero-art">
+      <svg class="peek" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-peek"/></svg>
+      <span class="ph-label" style="margin-top:22%">Current hero illustration stays: the Sun peeking over the mountains, dinosaurs with the cows, the village well</span>
+    </div>
+    <div class="hero-copy">
+      <h1 class="display">You look like you need a minute.</h1>
+      <p class="sub">Pull up a mountain.</p>
+      <p class="scroll-cue">&darr; Scroll down &darr;</p>
+    </div>
+    <div class="note" style="margin-top:24px"><b>ANIMATION</b> On load, the Sun's half-closed eyes open and look straight at you. The headline is the Sun's first line, and the footer is its last: "Come back when you need a minute." On scroll the mountains, animals and village move at different speeds. The Sun leans in a little closer. It never rises or sets anywhere on this page.</div>
+  </section>
+</div>
+
+<div class="marquee" aria-label="Same sun. Different mood. Herbal and loud. Made in India.">
+  <div class="marquee-track" aria-hidden="true">
+    <span>Same sun &#10022; Different mood &#10022; Herbal &amp; loud &#10022; Made in India &#10022; Not plain. Not clinical. Not boring. &#10022;</span>
+    <span>Same sun &#10022; Different mood &#10022; Herbal &amp; loud &#10022; Made in India &#10022; Not plain. Not clinical. Not boring. &#10022;</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="sec premise" id="story">
+    <div class="note sec-label">02 / The premise</div>
+    <p class="eyebrow">Our story</p>
+    <h2 class="display">India doesn't come with a volume knob. <span class="second">So we made a switch.</span></h2>
+    <p class="body">Every Indian home has that one cupboard. Camphor, mint, tulsi, and whatever your grandmother swore by. We took those rituals out of the cupboard and made them small enough to carry, loud enough to notice, and simple enough to use without a lecture.</p>
+    <p class="stamp">Not plain. Not clinical. Not boring.</p>
+    <div class="note"><b>ANIMATION</b> Each line stamps in like a rubber stamp hitting paper. No product on this screen; the 3D jar waits for its own section. This is where the current "classic Indian ritual" story moves up from the inhaler to the whole brand.</div>
+  </section>
+</div>
+
+<section class="switch" id="switch" data-state="relax" aria-label="Pick your mood">
+  <div class="switch-track">
+    <div class="switch-sticky wrap">
+      <div class="switch-head">
+        <div>
+          <div class="note sec-label" style="margin-bottom:8px">03 / The switch (pinned for three screens)</div>
+          <h2 class="display">Pick your mood.</h2>
+        </div>
+        <p class="eyebrow" style="margin:0">Same world. Same sun. Three states.</p>
+      </div>
+
+      <div class="scene-box">
+        <svg class="scene" viewBox="0 0 1000 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Yadom's world changing state: Relax, Reset or Rejuvenate">
+          <g class="world">
+            <!-- sun: rays or petals -->
+            <g class="not-rejuv">
+              <path class="s" style="stroke-width:3" d="M590 250L625 250M577.9 295L608.3 312.5M422.1 295L391.7 312.5M410 250L375 250M422.1 205L391.7 187.5M455 172.1L437.5 141.7M500 160L500 125M545 172.1L562.5 141.7M577.9 205L608.3 187.5"/>
+            </g>
+            <g class="only-rejuv">
+              <g class="f"><ellipse cx="500" cy="142" rx="11" ry="21"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(30 500 250)"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(60 500 250)"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(90 500 250)"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(-30 500 250)"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(-60 500 250)"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(-90 500 250)"/></g>
+            </g>
+            <circle class="f" style="stroke-width:3" cx="500" cy="250" r="78"/>
+            <!-- eyes per state -->
+            <g class="only-relax"><path class="s" style="stroke-width:3.2" d="M452 236 Q470 252 488 236 M512 236 Q530 252 548 236"/></g>
+            <g class="only-reset"><circle class="f" cx="470" cy="236" r="16"/><circle class="f" cx="530" cy="236" r="16"/><circle cx="470" cy="236" r="7" fill="#151515"/><circle cx="530" cy="236" r="7" fill="#151515"/><path class="s" d="M450 210 L486 216 M550 210 L514 216"/></g>
+            <g class="only-rejuv"><circle cx="470" cy="236" r="8" fill="#151515"/><circle cx="530" cy="236" r="8" fill="#151515"/><circle cx="473" cy="233" r="2.4" fill="#F4F4F1"/><circle cx="533" cy="233" r="2.4" fill="#F4F4F1"/></g>
+
+            <!-- birds -->
+            <g class="birds"><path class="s" d="M160 110 l12 9 l12 -9 M210 140 l10 7 l10 -7 M780 96 l12 9 l12 -9 M840 128 l10 7 l10 -7"/></g>
+
+            <!-- mountains (hide the lower sun) -->
+            <path fill="#F4F4F1" d="M-700 300 L-520 220 L-380 290 L-200 180 L-60 300 L0 330 L110 200 L200 265 L300 140 L410 262 L470 282 L530 282 L590 262 L700 140 L800 265 L890 200 L1000 330 L1080 290 L1220 190 L1380 280 L1520 210 L1700 300 L1700 600 L-700 600 Z"/>
+            <path class="s mtn" d="M-700 300 L-520 220 L-380 290 L-200 180 L-60 300 L0 330 L110 200 L200 265 L300 140 L410 262 L470 282 L530 282 L590 262 L700 140 L800 265 L890 200 L1000 330 L1080 290 L1220 190 L1380 280 L1520 210 L1700 300"/>
+            <path class="s" d="M300 140 L282 170 L300 162 L318 172 Z M700 140 L682 170 L700 162 L718 172 Z" style="stroke-width:1.6"/>
+
+            <!-- ground -->
+            <rect class="ground" x="-700" y="345" width="2400" height="260"/>
+            <path class="s" d="M-700 345 L1700 345"/>
+
+            <!-- river -->
+            <path class="s only-relax" d="M560 345 C 610 380, 560 405, 630 440"/>
+            <path class="s not-relax" d="M560 345 q 18 8 6 18 t 10 22 t -4 22 t 22 18 t 12 16"/>
+
+            <!-- village house -->
+            <path class="f" d="M70 368 h70 v44 h-70 Z M60 368 L105 336 L150 368 Z M96 390 h16 v22 h-16 Z"/>
+            <!-- well -->
+            <path class="f" d="M880 384 h44 v30 h-44 Z"/><path class="s" d="M876 360 h52 M884 360 v24 M920 360 v24"/>
+
+            <!-- dino -->
+            <g class="dino-body">
+              <g class="not-relax"><path class="s" d="M272 404 v24 M290 408 v22 M316 408 v22 M332 404 v24"/></g>
+              <ellipse class="f" cx="302" cy="396" rx="48" ry="20"/>
+              <path class="s" d="M256 394 Q 220 402 196 420"/>
+              <g class="not-relax"><path class="s" style="stroke-width:7" d="M340 388 Q 372 342 374 300"/><ellipse class="f" cx="384" cy="296" rx="13" ry="8"/></g>
+              <g class="only-relax"><path class="s" style="stroke-width:7" d="M342 392 Q 372 402 394 404"/><ellipse class="f" cx="404" cy="404" rx="13" ry="8"/><path class="s" style="stroke-width:1.5" d="M420 386 h8 l-8 8 h8 M432 372 h6 l-6 6 h6"/></g>
+            </g>
+
+            <!-- cows -->
+            <g class="cow">
+              <g class="not-relax"><path class="s" d="M708 408 v16 M736 408 v16 M778 412 v16 M806 412 v16"/></g>
+              <rect class="f" x="700" y="388" width="44" height="22" rx="5"/><rect class="f" x="740" y="380" width="15" height="13" rx="3"/>
+              <rect class="f" x="770" y="392" width="44" height="22" rx="5"/><rect class="f" x="810" y="384" width="15" height="13" rx="3"/>
+            </g>
+
+            <!-- flowers (rejuvenate) -->
+            <g class="only-rejuv f" style="stroke-width:2">
+              <circle cx="180" cy="424" r="6"/><circle cx="232" cy="432" r="5"/><circle cx="440" cy="420" r="6"/><circle cx="486" cy="432" r="5"/><circle cx="676" cy="430" r="6"/><circle cx="862" cy="430" r="5"/><circle cx="950" cy="420" r="6"/>
+            </g>
+          </g>
+
+          <!-- relax haze -->
+          <g class="only-relax">
+            <rect x="-700" y="176" width="2400" height="26" fill="#F4F4F1" opacity=".75"/>
+            <rect x="-700" y="292" width="2400" height="18" fill="#F4F4F1" opacity=".7"/>
+          </g>
+          <!-- reset wind -->
+          <g class="only-reset wind"><path class="s" d="M70 170 h150 M640 118 h190 M290 206 h120 M690 226 h160 M110 300 h110 M820 300 h120"/></g>
+          <!-- rejuv rain -->
+          <g class="only-rejuv"><g class="rain-sheet"><rect x="-700" y="-300" width="2400" height="900" fill="url(#rain)"/></g></g>
+
+          <!-- labels (notes) -->
+          <g class="note-svg">
+            <text class="lbl" x="500" y="104" text-anchor="middle">SUN: stays put, only the face changes</text>
+            <text class="lbl" x="105" y="328" text-anchor="middle">VILLAGE</text>
+            <text class="lbl" x="240" y="372" text-anchor="middle">DINO</text>
+            <text class="lbl" x="762" y="372" text-anchor="middle">COWS</text>
+            <text class="lbl" x="902" y="352" text-anchor="middle">WELL</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="switch-foot">
+        <div>
+          <div class="state-copy" data-for="relax">
+            <p class="eyebrow" style="margin:0">Mood 01</p>
+            <h3 class="display">Relax</h3>
+            <p class="line">Wired to calm.</p>
+            <p class="sub">For when the city won't log off.</p>
+            <p class="note"><b>STATE</b> The river goes still, birds hang in mid-air, cows lie down, the dinosaur naps. A soft haze settles. Eyes close, content.</p>
+          </div>
+          <div class="state-copy" data-for="reset">
+            <p class="eyebrow" style="margin:0">Mood 02</p>
+            <h3 class="display">Reset</h3>
+            <p class="line">Foggy to sharp.</p>
+            <p class="sub">For when your brain starts buffering.</p>
+            <p class="note"><b>STATE</b> A cool gust blows through. The haze clears, outlines sharpen, birds get blown off course. Eyes snap wide open.</p>
+          </div>
+          <div class="state-copy" data-for="rejuv">
+            <p class="eyebrow" style="margin:0">Mood 03</p>
+            <h3 class="display">Rejuvenate</h3>
+            <p class="line">Drained to alive.</p>
+            <p class="sub">Like the first rain, minus the traffic.</p>
+            <p class="note"><b>STATE</b> The first rain. Fields turn green, flowers open, the Sun's rays turn into petals.</p>
+          </div>
+        </div>
+        <div>
+          <div class="toggles" role="group" aria-label="Choose a mood">
+            <button class="matchbox" type="button" data-go="0" aria-pressed="true"><span class="inner"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-relax"/></svg><span>Relax</span></span></button>
+            <button class="matchbox" type="button" data-go="1" aria-pressed="false"><span class="inner"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-reset"/></svg><span>Reset</span></span></button>
+            <button class="matchbox" type="button" data-go="2" aria-pressed="false"><span class="inner"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-rejuv"/></svg><span>Rejuvenate</span></span></button>
+          </div>
+          <div class="progress" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap"><div class="note" style="margin:0 0 40px"><b>HOW IT WORKS</b> The section stays pinned for three screens of scrolling, and the same landscape changes state at each third. The matchbox toggles let people flip back and forth themselves, so the idea is something they do, not just read. States change through weather and texture only, never light, so nothing reads as morning or night. Try it: scroll through, or tap a matchbox.</div></div>
+</section>
+
+<div class="wrap">
+  <section class="sec" id="family">
+    <div class="note sec-label">04 / The family portrait</div>
+    <div class="family-head">
+      <p class="eyebrow">The Yadom family</p>
+      <h2 class="display">Same sun. Different mood.</h2>
+      <p>Navarasa has nine. We kept the three you need daily.</p>
+    </div>
+    <div class="labels">
+      <article class="label-card"><div class="inner">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-relax"/></svg>
+        <span class="chip">Coming soon</span>
+        <h3>Relax</h3>
+        <p class="line">Wired to calm.</p>
+        <p class="prod">Body lotion and more</p>
+        <a class="btn ghost" href="#relax">Step into Relax</a>
+      </div></article>
+      <article class="label-card"><div class="inner">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-reset"/></svg>
+        <span class="chip solid">Live now</span>
+        <h3>Reset</h3>
+        <p class="line">Foggy to sharp.</p>
+        <p class="prod">Herbal inhaler</p>
+        <a class="btn" href="#reset">Step into Reset</a>
+      </div></article>
+      <article class="label-card"><div class="inner">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-rejuv"/></svg>
+        <span class="chip">Coming soon</span>
+        <h3>Rejuvenate</h3>
+        <p class="line">Drained to alive.</p>
+        <p class="prod">Body wash and more</p>
+        <a class="btn ghost" href="#rejuv">Step into Rejuvenate</a>
+      </div></article>
+    </div>
+    <div class="note" style="margin-top:24px"><b>ANIMATION</b> A matchbox tray slides open and the three labels fan out of it. Each label jumps to its section below. This is where the group name gets said out loud (Rasas, Moods or Suns: still to decide). Product lines and live status are placeholders until the client confirms.</div>
+  </section>
+</div>
+
+<!-- ================= ACT II ================= -->
+<div class="note act" id="act-2"><span>Act II: The three moods</span> One template, used three times. Each mood is its own small world with its own sun face and its own weather.</div>
+
+<!-- RELAX -->
+<div class="wrap">
+  <section class="sec mood" id="relax">
+    <div class="note sec-label">05 / Relax (coming-soon version of the template)</div>
+    <div class="mood-open">
+      <div class="ph mood-vignette"><span class="ph-label">Relax vignette: the slowed-down, hazy version of the world</span></div>
+      <div class="mood-title">
+        <svg viewBox="0 0 100 100" width="72" height="72" aria-hidden="true"><use href="#sun-relax"/></svg>
+        <h2 class="display">Relax</h2>
+        <p class="switchline">Wired to calm.</p>
+        <p class="lede">Carry the calm.</p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="marquee light" aria-hidden="true"><div class="marquee-track"><span>Relax &#10022; Wired to calm &#10022; Carry the calm &#10022; Relax &#10022; Wired to calm &#10022; Carry the calm &#10022;</span><span>Relax &#10022; Wired to calm &#10022; Carry the calm &#10022; Relax &#10022; Wired to calm &#10022; Carry the calm &#10022;</span></div></div>
+<div class="wrap">
+  <section class="sec mood" style="padding-top:48px">
+    <div class="product">
+      <div class="ph product-3d"><span class="ph-label">3D product. Its open moment: the pump presses down</span></div>
+      <div class="product-info">
+        <span class="chip" style="justify-self:start">Coming soon</span>
+        <h3><span class="placeholder-name">Magnesium Body Lotion</span></h3>
+        <p class="desc">Rub it in. Slow it down.</p>
+        <form class="waitlist" data-waitlist>
+          <label for="wl-relax">Email address</label>
+          <input id="wl-relax" type="email" placeholder="you@email.com" required>
+          <button class="btn" type="submit">Tell me first</button>
+        </form>
+        <p class="waitlist-done" hidden>You're on the list. We'll tell you the minute it's out.</p>
+        <p class="note"><b>NOTE</b> Product name is a placeholder until the client confirms what sits in Relax. Copy stays on how it feels, never what it treats: no sleep claims.</p>
+      </div>
+    </div>
+    <h3 class="subhead">Moments for Relax</h3>
+    <div class="moments" tabindex="0" aria-label="Relax moments">
+      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>Plans got cancelled</h4><p>Best news all week. Lie down about it.</p></div></article>
+      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>After the fourth meeting</h4><p>Your calendar won. Your shoulders don't have to.</p></div></article>
+      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>Long-haul flight</h4><p>Seat 34B, but make it a spa.</p></div></article>
+      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>The scroll that won't stop</h4><p>Put the phone down. Pick this up.</p></div></article>
+    </div>
+    <div class="mood-cta"><a class="btn ghost" href="#relax">Join the Relax waitlist</a></div>
+  </section>
+</div>
+
+<!-- RESET -->
+<div class="wrap">
+  <section class="sec mood" id="reset">
+    <div class="note sec-label">06 / Reset (live version of the template)</div>
+    <div class="mood-open">
+      <div class="ph mood-vignette"><span class="ph-label">Reset vignette: the windswept, sharp version of the world</span></div>
+      <div class="mood-title">
+        <svg viewBox="0 0 100 100" width="72" height="72" aria-hidden="true"><use href="#sun-reset"/></svg>
+        <h2 class="display">Reset</h2>
+        <p class="switchline">Foggy to sharp.</p>
+        <p class="lede">Open. Inhale. Reset.</p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Reset &#10022; Open. Inhale. Reset. &#10022; Pocket reset &#10022; Gen-Z approved &#10022; Live now &#10022;</span><span>Reset &#10022; Open. Inhale. Reset. &#10022; Pocket reset &#10022; Gen-Z approved &#10022; Live now &#10022;</span></div></div>
+<div class="wrap">
+  <section class="sec mood" style="padding-top:48px">
+    <div class="product">
+      <div class="ph product-3d"><span class="ph-label">Current 3D jar, current scroll path. Its open moment: the cap pops off</span></div>
+      <div class="product-info">
+        <span class="chip solid" style="justify-self:start">Live now</span>
+        <h3>Yadom Herbal Inhaler</h3>
+        <p class="desc">A pocket-sized herbal aroma ritual for quick, cooling resets and tiny moments of calm in motion.</p>
+        <p class="price">&#8377;378 <s>&#8377;498</s></p>
+        <div class="packs" role="group" aria-label="Pack size">
+          <button type="button" aria-pressed="true">Pack of 2</button>
+          <button type="button" aria-pressed="false">Pack of 4</button>
+          <button type="button" aria-pressed="false">Pack of 8</button>
+        </div>
+        <a class="btn" href="#reset" style="justify-self:start">Add to cart</a>
+      </div>
+    </div>
+    <h3 class="subhead">What's inside</h3>
+    <div class="ingredients">
+      <div class="ing"><span class="no">01</span><h4>Camphor</h4><p>A classic cooling aromatic.</p></div>
+      <div class="ing"><span class="no">02</span><h4>Ginger</h4><p>A warm, grounding note.</p></div>
+      <div class="ing"><span class="no">03</span><h4>Eucalyptus</h4><p>Sharp and leafy.</p></div>
+      <div class="ing"><span class="no">04</span><h4>Peppermint leaf</h4><p>A crisp herbal lift.</p></div>
+      <div class="ing"><span class="no">05</span><h4>Holy basil</h4><p>A traditional Indian botanical.</p></div>
+      <div class="ing"><span class="no">06</span><h4>Lemongrass</h4><p>Bright and citrusy.</p></div>
+    </div>
+    <p class="more">+9 more botanicals</p>
+    <div class="note" style="margin-top:16px"><b>ANIMATION</b> Keep what's on the site now: the cap lifts off and the ingredient cards fly out around the jar. Every product gets one "open moment" like this, so the three moods feel like one family.</div>
+    <h3 class="subhead">Find your moments</h3>
+    <div class="moments" tabindex="0" aria-label="Reset moments">
+      <article class="moment"><div class="ph"><span class="ph-label">Existing photo: knight at laptop</span></div><div class="txt"><h4>Work mode</h4><p>Long tabs, calls, and mental reboots.</p></div></article>
+      <article class="moment"><div class="ph"><span class="ph-label">Existing photo</span></div><div class="txt"><h4>Study mode</h4><p>A breath-focus break beside your notes.</p></div></article>
+      <article class="moment"><div class="ph"><span class="ph-label">Existing photo</span></div><div class="txt"><h4>Commute mode</h4><p>A pocket ritual for crowded rides.</p></div></article>
+      <article class="moment"><div class="ph"><span class="ph-label">Existing photo</span></div><div class="txt"><h4>Gym mode</h4><p>A quick inhale between sets.</p></div></article>
+      <article class="moment"><div class="ph"><span class="ph-label">Existing photo</span></div><div class="txt"><h4>Travel mode</h4><p>Airports, road trips, and train platforms.</p></div></article>
+      <article class="moment"><div class="ph"><span class="ph-label">Existing photo</span></div><div class="txt"><h4>Social mode</h4><p>Stays in your bag before, during, and after plans.</p></div></article>
+    </div>
+    <div class="note" style="margin-top:16px"><b>NOTE</b> The seven current modes move here, because they all describe the inhaler. Moments can be any time of day; only the moods stay timeless.</div>
+    <div class="mood-cta"><a class="btn" href="#reset">Shop Reset</a></div>
+  </section>
+</div>
+
+<!-- REJUVENATE -->
+<div class="wrap">
+  <section class="sec mood" id="rejuv">
+    <div class="note sec-label">07 / Rejuvenate (coming-soon version of the template)</div>
+    <div class="mood-open">
+      <div class="ph mood-vignette"><span class="ph-label">Rejuvenate vignette: the first-rain, blooming version of the world</span></div>
+      <div class="mood-title">
+        <svg viewBox="0 0 100 100" width="72" height="72" aria-hidden="true"><use href="#sun-rejuv"/></svg>
+        <h2 class="display">Rejuvenate</h2>
+        <p class="switchline">Drained to alive.</p>
+        <p class="lede">Like the first rain, minus the traffic.</p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="marquee light" aria-hidden="true"><div class="marquee-track"><span>Rejuvenate &#10022; Drained to alive &#10022; First rain energy &#10022; Rejuvenate &#10022; Drained to alive &#10022; First rain energy &#10022;</span><span>Rejuvenate &#10022; Drained to alive &#10022; First rain energy &#10022; Rejuvenate &#10022; Drained to alive &#10022; First rain energy &#10022;</span></div></div>
+<div class="wrap">
+  <section class="sec mood" style="padding-top:48px">
+    <div class="product">
+      <div class="ph product-3d"><span class="ph-label">3D product. Its open moment: the flip cap clicks open</span></div>
+      <div class="product-info">
+        <span class="chip" style="justify-self:start">Coming soon</span>
+        <h3><span class="placeholder-name">Herbal Body Wash</span></h3>
+        <p class="desc">Rinse the heavy off.</p>
+        <form class="waitlist" data-waitlist>
+          <label for="wl-rejuv">Email address</label>
+          <input id="wl-rejuv" type="email" placeholder="you@email.com" required>
+          <button class="btn" type="submit">Tell me first</button>
+        </form>
+        <p class="waitlist-done" hidden>You're on the list. We'll tell you the minute it's out.</p>
+        <p class="note"><b>NOTE</b> Placeholder product. Avoid anti-ageing or skin-repair claims; "alive" describes a feeling.</p>
+      </div>
+    </div>
+    <h3 class="subhead">Moments for Rejuvenate</h3>
+    <div class="moments" tabindex="0" aria-label="Rejuvenate moments">
+      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>Off a nine-hour train</h4><p>You smell like the journey. Fix that.</p></div></article>
+      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>After the gym</h4><p>Leg day happened. Act like it didn't.</p></div></article>
+      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>Before you head out</h4><p>Five minutes to go from done to dressed.</p></div></article>
+      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>Back from the long weekend</h4><p>Reboot the human before the laptop.</p></div></article>
+    </div>
+    <div class="mood-cta"><a class="btn ghost" href="#rejuv">Join the Rejuvenate waitlist</a></div>
+  </section>
+</div>
+
+<!-- ================= ACT III ================= -->
+<div class="note act" id="act-3"><span>Act III: Proof and belonging</span> Show that real people use it, give them a reason to buy more than one, and send them off with a wink.</div>
+
+<div class="wrap">
+  <section class="sec" id="pack">
+    <div class="note sec-label">08 / The family pack (optional)</div>
+    <div class="pack">
+      <div class="ph pack-art"><span class="ph-label">Box that looks like a stack of three matchboxes</span></div>
+      <div class="stack">
+        <p class="eyebrow">One of each</p>
+        <h2 class="display">For people with more than one mood. So, everyone.</h2>
+        <p style="font-size:18px">Relax, Reset and Rejuvenate in one box. Gift it, split it, or keep all three and switch as you like.</p>
+        <a class="btn" href="#pack" style="justify-self:start">Notify me</a>
+        <p class="note"><b>NOTE</b> Only once all three moods have a live product. Until then the button collects interest. Raises order value.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="reviews">
+    <div class="note sec-label">09 / Loved by the loud</div>
+    <h2 class="display" style="font-size:clamp(44px,6vw,80px);margin-bottom:20px">Loved by the loud</h2>
+    <div class="filters" role="group" aria-label="Filter reviews by mood">
+      <button type="button" aria-pressed="true" data-filter="all">All</button>
+      <button type="button" aria-pressed="false" data-filter="relax">Relax</button>
+      <button type="button" aria-pressed="false" data-filter="reset">Reset</button>
+      <button type="button" aria-pressed="false" data-filter="rejuv">Rejuvenate</button>
+    </div>
+    <div class="reviews">
+      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>Three seconds and my head's clear. Genuinely obsessed.</q><div class="who">Aanya <span class="chip">Reset</span></div></article>
+      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>My 3pm slump's worst enemy. One twist and I'm back.</q><div class="who">Meera <span class="chip">Reset</span></div></article>
+      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>Smells like my grandma's cupboard but make it fashion.</q><div class="who">Dev <span class="chip">Reset</span></div></article>
+      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>Desk, bag, pocket. I own three now. No regrets.</q><div class="who">Karan <span class="chip">Reset</span></div></article>
+      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>Gifted one to my mom, she stole my whole stash.</q><div class="who">Tara <span class="chip">Reset</span></div></article>
+      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>The minty hit is unmatched. Truly a pocket reset.</q><div class="who">Ishaan <span class="chip">Reset</span></div></article>
+    </div>
+    <p class="note" style="margin-top:20px"><b>NOTE</b> Current reviews, now tagged by mood. All are Reset today because only the inhaler is live. The filter chips earn their place once Relax and Rejuvenate have reviews.</p>
+    <p class="waitlist-done" id="no-reviews" hidden style="margin-top:12px">No reviews for this mood yet. It isn't out yet.</p>
+  </section>
+
+  <section class="sec" id="community">
+    <div class="note sec-label">10 / Join the ritual</div>
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:20px">
+      <h2 class="display" style="font-size:clamp(40px,5.4vw,72px)">Join the ritual</h2>
+      <a class="btn ghost" href="https://www.instagram.com/yadom.life/">@yadom.life</a>
+    </div>
+    <div class="ig">
+      <div class="ph"><span class="ph-label">IG</span></div><div class="ph"><span class="ph-label">IG</span></div><div class="ph"><span class="ph-label">IG</span></div>
+      <div class="ph"><span class="ph-label">IG</span></div><div class="ph"><span class="ph-label">IG</span></div><div class="ph"><span class="ph-label">IG</span></div>
+    </div>
+  </section>
+
+  <footer class="site-foot">
+    <div class="note sec-label" style="grid-column:1/-1;justify-self:start;margin:0">11 / Footer</div>
+    <svg class="wink" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-wink"/></svg>
+    <div class="stack">
+      <h2 class="display">Come back when you need a minute.</h2>
+      <p class="note"><b>ANIMATION</b> The bookend: the Sun opened its eyes when you arrived, and it winks when you reach the bottom.</p>
+    </div>
+    <div class="foot-cols">
+      <div><h4>Moods</h4><ul><li>Relax</li><li>Reset</li><li>Rejuvenate</li><li>Family pack</li></ul></div>
+      <div><h4>Quick links</h4><ul><li>Blogs</li><li>Contact us</li><li>Shipping policy</li><li>Returns, refunds and cancellation</li><li>Privacy policy</li><li>Terms and conditions</li></ul></div>
+      <div><h4>Reach us</h4><ul><li>Yadom Life</li><li>Vamayra Global Private Limited</li><li>care@yadom.life</li><li>&copy; 2026 Yadom Life. Made in India.</li></ul></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ================= APPENDIX ================= -->
+<div class="note act" id="appendix"><span>Build notes</span> For the team. Not part of the page.</div>
+<div class="wrap note-block" style="padding:32px 20px 120px">
+  <div class="appendix">
+    <div class="note"><b>WHAT THE ILLUSTRATOR MAKES</b>
+      <ul>
+        <li>One base landscape: the current hero, extended so it can hold the switch</li>
+        <li>Three state layers on that same composition: Relax (haze, stillness), Reset (wind, crisp lines), Rejuvenate (rain, bloom)</li>
+        <li>Five Sun faces: peek, Relax, Reset, Rejuvenate, wink</li>
+        <li>Three matchbox labels and one matchbox tray</li>
+        <li>Three mood vignettes for the Act II openers (crops of the state layers work)</li>
+      </ul>
+    </div>
+    <div class="note"><b>WHAT THE 3D TEAM MAKES</b>
+      <ul>
+        <li>Inhaler jar: exists, keep its scroll path and cap-pop</li>
+        <li>Lotion and body wash (or whatever the client confirms), each with one open moment: pump press, flip cap</li>
+        <li>On low-end phones, swap the full 3D for a lighter turntable spin</li>
+      </ul>
+    </div>
+    <div class="note"><b>HOW IT'S BUILT</b>
+      <ul>
+        <li>Same Next.js front and Shopify back as today</li>
+        <li>The switch: one pinned section, the three state layers crossfade on scroll, Sun faces swap as layers. Same scroll engine the current jar uses</li>
+        <li>The floating Shop pill stays. It steps aside while the switch is pinned, and its colour follows the mood section you're in</li>
+        <li>Mobile: the switch pins the same way; the matchboxes sit as a bottom bar</li>
+      </ul>
+    </div>
+    <div class="note"><b>RULES THAT HOLD THE IDEA TOGETHER</b>
+      <ul>
+        <li>No sunrise, sunset or night light anywhere in Act I. Moods change weather, never time</li>
+        <li>Moods are feelings; moments can be any time of day</li>
+        <li>No medical claims. "How it feels", never "what it treats"</li>
+      </ul>
+    </div>
+    <div class="note" style="grid-column:1/-1"><b>OPEN DECISIONS</b>
+      <ul>
+        <li>Which products sit in which mood, and which are live at launch</li>
+        <li>The name for the three: Rasas, Moods or Suns</li>
+        <li>Act II order: keep Relax, Reset, Rejuvenate, or put Reset first while it's the only mood that sells today</li>
+        <li>Family pack: yes or no</li>
+        <li>Brand line above the three: "Same sun. Different mood."</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<a class="btn shop-pill" href="#family">Shop</a>
+
+<script>
+(function () {
+  var body = document.body;
+  var toggle = document.getElementById('notes-toggle');
+  toggle.addEventListener('click', function () {
+    var off = body.classList.toggle('notes-off');
+    toggle.setAttribute('aria-pressed', String(!off));
+    toggle.textContent = off ? 'Notes: off' : 'Notes: on';
+    document.querySelectorAll('.note-svg').forEach(function (g) { g.style.display = off ? 'none' : ''; });
+  });
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sw = document.getElementById('switch');
+  var track = sw.querySelector('.switch-track');
+  var states = ['relax', 'reset', 'rejuv'];
+  var boxes = sw.querySelectorAll('.matchbox');
+  var ticks = sw.querySelectorAll('.progress i');
+  var current = -1;
+
+  function set(i) {
+    if (i === current) return;
+    current = i;
+    sw.setAttribute('data-state', states[i]);
+    boxes.forEach(function (b, n) { b.setAttribute('aria-pressed', String(n === i)); });
+    ticks.forEach(function (t, n) { t.classList.toggle('on', n === i); });
+  }
+  function update() {
+    var r = track.getBoundingClientRect();
+    var total = r.height - window.innerHeight;
+    if (total <= 0) return;
+    var bar = document.querySelector('.wf-bar').offsetHeight;
+    document.body.classList.toggle('in-switch', r.top <= bar + 1 && r.bottom >= window.innerHeight - 1);
+    var p = Math.min(1, Math.max(0, -r.top / total));
+    set(p < 1 / 3 ? 0 : p < 2 / 3 ? 1 : 2);
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  boxes.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var i = Number(b.getAttribute('data-go'));
+      var r = track.getBoundingClientRect();
+      var top = window.scrollY + r.top;
+      var total = r.height - window.innerHeight;
+      set(i);
+      window.scrollTo({ top: top + total * (i / 3 + 1 / 6), behavior: reduce ? 'auto' : 'smooth' });
+    });
+  });
+  update();
+
+  document.querySelectorAll('.packs').forEach(function (g) {
+    g.addEventListener('click', function (e) {
+      var btn = e.target.closest('button'); if (!btn) return;
+      g.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+    });
+  });
+
+  document.querySelectorAll('[data-waitlist]').forEach(function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      f.hidden = true;
+      f.nextElementSibling.hidden = false;
+    });
+  });
+
+  var filterBtns = document.querySelectorAll('.filters button');
+  var reviews = document.querySelectorAll('.review');
+  var empty = document.getElementById('no-reviews');
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.getAttribute('data-filter');
+      filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      var shown = 0;
+      reviews.forEach(function (r) { var ok = f === 'all' || r.getAttribute('data-mood') === f; r.hidden = !ok; if (ok) shown++; });
+      empty.hidden = shown > 0;
+    });
+  });
+})();
+</script>
+</body>
+</html>

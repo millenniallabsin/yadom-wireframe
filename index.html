@@ -4,55 +4,50 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yadom Homepage Wireframe</title>
+<title>Yadom Homepage Wireframe v3</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Low-fi wireframe: paper and ink only. Layout = one long scrolling homepage in three acts, notes in dashed callouts. */
+  /* Low-fi wireframe: paper and ink only. Mood "themes" are shown as tone + texture; real colours come in hi-fi. */
   --paper: #F4F4F1;
   --ink: #151515;
   --rule: #C4C3BD;
   --fill: #E4E3DE;
-  --fill-2: #D3D2CC;
   --note: #55554F;
   --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
   --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   --bar: 52px;
-  color-scheme: light;
+  --mood-bg: var(--paper);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
-img, svg { max-width: 100%; }
-h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
 p { margin: 0; }
 a { color: inherit; }
+button { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 /* ---------- wireframe chrome ---------- */
-.wf-bar { position: sticky; top: 0; z-index: 50; height: var(--bar); display: flex; align-items: center; gap: 20px; padding: 0 20px; background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: 13px; }
-.wf-bar strong { font-weight: 500; letter-spacing: .02em; }
+.wf-bar { position: sticky; top: 0; z-index: 60; height: var(--bar); display: flex; align-items: center; gap: 18px; padding: 0 20px; background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: 13px; }
 .wf-bar nav { display: flex; gap: 16px; margin-left: auto; }
-.wf-bar nav + .wf-toggle { margin-left: 0; }
-.wf-bar nav a { text-decoration: none; opacity: .8; }
+.wf-bar nav a { text-decoration: none; opacity: .8; white-space: nowrap; }
 .wf-bar nav a:hover { opacity: 1; text-decoration: underline; }
-.wf-toggle { white-space: nowrap; margin-left: auto; font: inherit; color: var(--ink); background: var(--paper); border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.wf-toggle { white-space: nowrap; color: var(--ink); background: var(--paper); border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer; font-family: var(--font-mono); font-size: 13px; }
 .notes-off .note { display: none !important; }
-
-.note { font-family: var(--font-mono); font-size: 13px; line-height: 1.55; color: var(--note); border: 1.5px dashed var(--note); border-radius: 6px; padding: 12px 14px; background: rgba(255,255,255,.5); max-width: 68ch; }
+.note { font-family: var(--font-mono); font-size: 13px; line-height: 1.55; color: var(--note); border: 1.5px dashed var(--note); border-radius: 6px; padding: 12px 14px; background: rgba(255,255,255,.6); max-width: 68ch; }
 .note b { color: var(--ink); font-weight: 500; letter-spacing: .04em; }
-.note ul { margin: 6px 0 0; padding-left: 18px; }
-.sec-label { display: inline-block; border-style: solid; border-width: 1px; background: var(--ink); color: var(--paper); padding: 3px 10px; border-radius: 4px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 18px; max-width: none; }
-.act { margin: 0; max-width: none; border: 0; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); border-radius: 0; background: var(--fill); padding: 18px 20px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; }
-.act span { font-family: var(--font-display); font-weight: 800; font-size: 34px; color: var(--ink); text-transform: uppercase; letter-spacing: .01em; }
+.sec-label { display: inline-block; background: var(--ink); color: var(--paper); padding: 3px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 14px; }
+.act { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); background: var(--fill); padding: 18px 20px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; font-family: var(--font-mono); font-size: 13px; color: var(--note); }
+.act span { font-family: var(--font-display); font-weight: 800; font-size: 34px; color: var(--ink); text-transform: uppercase; }
 
-/* ---------- site primitives ---------- */
+/* ---------- primitives ---------- */
 .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
 .sec { padding: 64px 0; border-bottom: 1px solid var(--rule); }
-.display { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: .92; letter-spacing: .005em; }
+.display { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: .92; }
 .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--note); margin-bottom: 10px; }
 .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; background: var(--ink); color: var(--paper); border: 2px solid var(--ink); border-radius: 999px; padding: 10px 22px; cursor: pointer; }
 .btn.ghost { background: transparent; color: var(--ink); }
@@ -60,784 +55,790 @@ a { color: inherit; }
 .ph::before, .ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top right, transparent calc(50% - .6px), var(--rule) 50%, transparent calc(50% + .6px)); }
 .ph::after { background: linear-gradient(to top left, transparent calc(50% - .6px), var(--rule) 50%, transparent calc(50% + .6px)); }
 .ph > * { position: relative; z-index: 1; }
-.ph-label { font-family: var(--font-mono); font-size: 12px; color: var(--note); background: var(--paper); border: 1px solid var(--rule); padding: 4px 8px; border-radius: 4px; max-width: 80%; }
-.chip { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--ink); border-radius: 999px; padding: 2px 9px; }
+.ph-label { font-family: var(--font-mono); font-size: 12px; color: var(--note); background: var(--paper); border: 1px solid var(--rule); padding: 4px 8px; border-radius: 4px; max-width: 86%; }
+.chip { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--ink); border-radius: 999px; padding: 2px 9px; background: var(--paper); }
 .chip.solid { background: var(--ink); color: var(--paper); }
-.stack { display: grid; gap: 16px; }
-
-/* marquee */
+.chip.dash { border-style: dashed; color: var(--note); border-color: var(--note); }
 .marquee { overflow: hidden; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); background: var(--ink); color: var(--paper); padding: 10px 0; }
-.marquee.light { background: var(--paper); color: var(--ink); }
 .marquee-track { display: flex; width: max-content; animation: run 26s linear infinite; }
 .marquee-track span { font-family: var(--font-display); font-weight: 800; font-size: 26px; text-transform: uppercase; letter-spacing: .03em; white-space: nowrap; padding-right: 28px; }
 @keyframes run { to { transform: translateX(-50%); } }
 
-/* ---------- 01 nav + hero ---------- */
-.site-nav { display: flex; align-items: center; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+/* ---------- sun (shared drawing) ---------- */
+.sun { display: block; overflow: visible; }
+.sun .rays path { fill: var(--paper); stroke: var(--ink); stroke-width: 2.2; stroke-linejoin: round; }
+.sun .disc { fill: var(--paper); stroke: var(--ink); stroke-width: 2.6; }
+.sun .ln { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.sun .solid { fill: var(--ink); }
+.sun .lid { transform-box: fill-box; transform-origin: center; animation: blink 4.2s infinite; }
+@keyframes blink { 0%, 44%, 52%, 100% { transform: scaleY(0); } 47%, 49% { transform: scaleY(1); } }
+.sun.asleep .lid { animation: none; transform: scaleY(1); }
+
+/* ---------- nav ---------- */
+.site-nav { display: flex; align-items: center; gap: 24px; padding: 14px 20px; border-bottom: 1px solid var(--rule); flex-wrap: wrap; background: var(--paper); }
 .logo { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 900; font-size: 30px; text-decoration: none; }
-.logo svg { width: 34px; height: 34px; }
 .site-nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; font-weight: 500; flex-wrap: wrap; }
 .site-nav ul a { text-decoration: none; }
 .site-nav .cart { margin-left: auto; display: flex; gap: 10px; }
-.hero { padding: 28px 0 56px; }
-.hero-art { height: clamp(300px, 46vw, 520px); border-radius: 10px; }
-.hero-art .peek { position: absolute; left: 50%; top: 18%; width: clamp(120px, 18vw, 210px); transform: translateX(-50%); z-index: 1; background: var(--paper); border-radius: 50%; }
-.hero-copy { display: grid; gap: 10px; justify-items: center; text-align: center; margin-top: -86px; position: relative; z-index: 2; }
-.hero-copy h1 { font-size: clamp(56px, 9vw, 120px); background: var(--paper); padding: 6px 22px 0; border: 2px solid var(--ink); border-radius: 8px; }
-.hero-copy .sub { font-size: clamp(18px, 2.2vw, 24px); }
-.scroll-cue { font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
 
-/* ---------- 03 premise ---------- */
-.premise { display: grid; gap: 28px; }
-.premise h2 { font-size: clamp(44px, 7.4vw, 104px); }
-.premise h2 .second { display: block; color: transparent; -webkit-text-stroke: 2px var(--ink); }
-.premise .body { font-size: 19px; max-width: 58ch; }
-.stamp { display: inline-block; font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: .05em; text-transform: uppercase; border: 3px double var(--ink); padding: 6px 14px; transform: rotate(-2deg); justify-self: start; }
+/* ---------- 01 hero ---------- */
+.hero-video { height: calc(100vh - var(--bar) - 64px); min-height: 380px; border-radius: 0; border-left: 0; border-right: 0; }
+.hero-overlay { position: absolute; inset: auto 0 28px 0; display: grid; justify-items: center; gap: 6px; z-index: 2; }
+.scroll-cue { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); text-transform: uppercase; background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; padding: 2px 22px; }
 
-/* ---------- 04 the switch ---------- */
-.switch-track { height: 300vh; position: relative; }
-.switch-sticky { position: sticky; top: var(--bar); height: calc(100vh - var(--bar)); display: grid; grid-template-rows: auto 1fr auto; gap: 12px; padding: 16px 20px 18px; }
-.switch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.switch-head h2 { font-size: clamp(30px, 4vw, 48px); }
-.scene-box { position: relative; min-height: 0; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 10px; background: var(--paper); overflow: hidden; }
-.scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
-.scene * { transition: opacity .5s ease, transform .6s ease, stroke-width .4s ease, fill .4s ease; }
-.scene .s { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.scene .f { fill: var(--paper); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
-.scene .lbl { font-family: var(--font-mono); font-size: 13px; fill: var(--note); }
-.scene .dino-body, .scene .cow { transform-box: view-box; }
-.only-relax, .only-reset, .only-rejuv { opacity: 0; }
-[data-state="relax"] .only-relax, [data-state="reset"] .only-reset, [data-state="rejuv"] .only-rejuv { opacity: 1; }
-[data-state="relax"] .not-relax, [data-state="reset"] .not-reset, [data-state="rejuv"] .not-rejuv { opacity: 0; }
-[data-state="relax"] .dino-body { transform: translateY(14px); }
-[data-state="relax"] .cow { transform: translateY(12px); }
-[data-state="reset"] .mtn { stroke-width: 3.6; }
-[data-state="reset"] .birds { transform: translateX(46px); }
-[data-state="relax"] .world { opacity: .72; }
-.ground { fill: var(--paper); }
-[data-state="rejuv"] .ground { fill: url(#hatch); }
-.wind path { stroke-dasharray: 14 12; animation: gust 1.2s linear infinite; }
-@keyframes gust { to { stroke-dashoffset: -52; } }
-.rain-sheet { animation: fall .9s linear infinite; }
-@keyframes fall { from { transform: translateY(-40px); } to { transform: translateY(0); } }
+/* ---------- 02 brand story ---------- */
+.story { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+.story h2 { font-size: clamp(40px, 6vw, 84px); }
+.story h2 .second { display: block; color: transparent; -webkit-text-stroke: 2px var(--ink); }
+.story .body { font-size: 18px; max-width: 54ch; margin-top: 20px; display: grid; gap: 14px; }
+.stamp { display: inline-block; font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: .05em; text-transform: uppercase; border: 3px double var(--ink); padding: 6px 14px; transform: rotate(-2deg); margin-top: 22px; }
+.sun-stage { position: relative; aspect-ratio: 1; perspective: 900px; display: grid; place-items: center; cursor: grab; touch-action: none; user-select: none; border: 1px dashed var(--rule); border-radius: 12px; background: radial-gradient(circle at 50% 50%, #fff 0, var(--paper) 62%); }
+.sun-stage:active { cursor: grabbing; }
+.sun-3d { width: 72%; transform-style: preserve-3d; transition: transform .08s linear; }
+.sun-3d .sun { width: 100%; height: auto; }
+.drag-hint { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 12px; color: var(--note); background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
 
-.switch-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 28px; align-items: end; }
-.state-copy { display: none; }
-[data-state="relax"] .state-copy[data-for="relax"], [data-state="reset"] .state-copy[data-for="reset"], [data-state="rejuv"] .state-copy[data-for="rejuv"] { display: grid; gap: 4px; }
-.state-copy h3 { font-size: clamp(48px, 6.4vw, 84px); }
-.state-copy .line { font-size: clamp(18px, 2vw, 22px); font-weight: 600; }
-.state-copy .sub { font-size: 17px; }
-.state-copy .note { margin-top: 8px; padding: 8px 12px; }
-.toggles { display: flex; gap: 10px; }
-.matchbox { font: inherit; cursor: pointer; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: 4px; padding: 5px; width: 112px; text-align: center; }
-.matchbox .inner { display: grid; gap: 4px; justify-items: center; border: 1px solid var(--ink); padding: 8px 4px 6px; }
-.matchbox svg { width: 34px; height: 34px; }
-.matchbox span { font-family: var(--font-display); font-weight: 800; font-size: 17px; text-transform: uppercase; letter-spacing: .04em; }
-.matchbox[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.matchbox[aria-pressed="true"] .inner { border-color: var(--paper); }
-.matchbox[aria-pressed="true"] svg { --sun-ink: var(--paper); --sun-fill: var(--ink); }
-.progress { display: flex; gap: 6px; margin-top: 8px; justify-content: center; }
-.progress i { width: 26px; height: 4px; background: var(--fill-2); border-radius: 2px; }
-.progress i.on { background: var(--ink); }
+/* ---------- 03 pick your mood ---------- */
+.pick-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 26px; }
+.pick-head h2 { font-size: clamp(44px, 7vw, 96px); }
+.moods { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.mood-card { width: 100%; text-align: left; background: var(--paper); border: 2px solid var(--ink); border-radius: 14px; padding: 18px 18px 20px; cursor: pointer; display: grid; gap: 10px; transition: transform .2s ease, background .3s ease; position: relative; }
+.mood-card:hover { transform: translateY(-4px); }
+.mood-card .sun { width: 64%; margin: 4px auto 6px; }
+.mood-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 40px; text-transform: uppercase; line-height: .9; }
+.mood-card .switch { font-weight: 600; }
+.mood-card .go { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--note); }
+.mood-card.later { border-style: dashed; }
+.mood-card .chip { position: absolute; top: 12px; right: 12px; }
 
-/* sun symbols use these */
-svg { --sun-ink: var(--ink); --sun-fill: var(--paper); }
+/* mood textures (stand-in for colour themes) */
+.t-relax { background: linear-gradient(180deg, #ECECE8 0%, #F7F7F4 100%); }
+.t-reset { background: repeating-linear-gradient(-28deg, #FFFFFF 0 22px, #F1F1EE 22px 24px); }
+.t-relief { background: repeating-radial-gradient(circle at 85% 30%, #F2F1EC 0 18px, #E8E6E0 18px 20px); }
+.t-rejuv { background-color: #F7F7F2; background-image: linear-gradient(100deg, transparent 0 46%, rgba(21,21,21,.08) 46% 47%, transparent 47%); background-size: 26px 34px; }
 
-/* ---------- 05 family ---------- */
-.family-head { display: grid; gap: 10px; justify-items: center; text-align: center; margin-bottom: 36px; }
-.family-head h2 { font-size: clamp(44px, 6.4vw, 88px); }
-.family-head p { font-size: 19px; }
-.labels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.label-card { border: 2px solid var(--ink); border-radius: 6px; padding: 8px; background: var(--paper); }
-.label-card .inner { position: relative; border: 1px solid var(--ink); padding: 26px 20px 22px; display: grid; gap: 10px; justify-items: center; text-align: center; height: 100%; }
-.label-card .inner::before, .label-card .inner::after { content: "\2726"; position: absolute; top: 6px; font-size: 13px; }
-.label-card .inner::before { left: 8px; } .label-card .inner::after { right: 8px; }
-.label-card svg { width: 96px; height: 96px; }
-.label-card h3 { font-family: var(--font-display); font-weight: 900; font-size: 46px; text-transform: uppercase; line-height: 1; }
-.label-card .line { font-weight: 600; }
-.label-card .prod { font-size: 15px; color: var(--note); }
+/* ---------- Act II: horizontal mood track ---------- */
+.h-sec { position: relative; border-bottom: 1px solid var(--rule); }
+.h-sticky { position: sticky; top: var(--bar); height: calc(100vh - var(--bar)); overflow: hidden; }
+.h-track { display: flex; height: 100%; width: calc(var(--n) * 100vw); will-change: transform; }
+.slide { width: 100vw; height: 100%; flex: 0 0 100vw; position: relative; display: grid; grid-template-rows: auto 1fr; padding: 22px 32px 26px; border-right: 2px solid var(--ink); transition: background .4s ease; overflow: hidden; }
+.slide-top { display: flex; justify-content: space-between; align-items: start; gap: 16px; position: relative; z-index: 2; }
+.slide-top .name { font-size: clamp(64px, 11vw, 168px); }
+.slide-top .switchline { font-family: var(--font-display); font-weight: 800; font-size: clamp(22px, 2.6vw, 34px); text-transform: uppercase; margin-top: 4px; }
+.slide-top .tag { font-size: 17px; margin-top: 4px; }
+.slide .float-sun { position: absolute; right: 3%; top: 4%; width: clamp(150px, 22vw, 300px); z-index: 1; animation: floaty 6s ease-in-out infinite; }
+@keyframes floaty { 50% { transform: translateY(-14px) rotate(3deg); } }
+.slide.mood-reset .float-sun { animation: jitter 2.4s steps(2) infinite; }
+@keyframes jitter { 50% { transform: translate(3px, -6px) rotate(-2deg); } }
+.slide-body { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: center; min-height: 0; position: relative; z-index: 2; }
+.prod-stage { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; min-height: 0; height: 100%; max-height: 52vh; }
+.prod-stage .ph { height: 100%; min-height: 220px; border-radius: 16px; background: rgba(228,227,222,.8); }
+.arrow { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); font-family: var(--font-display); font-weight: 800; font-size: 22px; cursor: pointer; display: grid; place-items: center; }
+.arrow:disabled { opacity: .3; cursor: default; }
+.prod-info { display: grid; gap: 12px; align-content: center; background: rgba(244,244,241,.85); border: 2px solid var(--ink); border-radius: 16px; padding: 22px 24px; }
+.prod-info h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(32px, 3.6vw, 48px); text-transform: uppercase; line-height: .95; }
+.prod-info .line { font-weight: 600; font-size: 19px; }
+.prod-info .desc { color: #333; }
+.prod-info .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.dots { display: flex; gap: 6px; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--ink); display: block; }
+.dots i.on { background: var(--ink); }
+.slide-top .note { max-width: 38ch; font-size: 12px; padding: 10px 12px; margin-right: calc(clamp(150px, 22vw, 300px) + 3%); align-self: start; }
+@media (max-width: 1200px) { .slide-top .note { display: none; } }
+.slide.later { }
+.later-flag { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; background: var(--ink); color: var(--paper); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-top: 10px; }
 
-/* ---------- act II moods ---------- */
-.mood-open { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; align-items: center; }
-.mood-vignette { aspect-ratio: 16 / 10; border-radius: 10px; }
-.mood-title { display: grid; gap: 8px; }
-.mood-title h2 { font-size: clamp(72px, 11vw, 150px); }
-.mood-title .switchline { font-size: 24px; font-weight: 600; }
-.mood-title .lede { font-family: var(--font-display); font-weight: 800; font-size: 28px; text-transform: uppercase; letter-spacing: .03em; }
-.mood .marquee { margin: 40px 0; }
-.product { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
-.product-3d { aspect-ratio: 1 / 1; border-radius: 50%; max-width: 420px; width: 100%; justify-self: center; }
-.product-info { display: grid; gap: 12px; align-content: start; }
-.product-info h3 { font-family: var(--font-display); font-weight: 800; font-size: 44px; text-transform: uppercase; line-height: 1; }
-.product-info .desc { font-size: 18px; max-width: 46ch; }
-.price { font-family: var(--font-display); font-weight: 800; font-size: 34px; font-variant-numeric: tabular-nums; }
-.price s { font-size: 22px; color: var(--note); margin-left: 8px; }
-.packs { display: flex; gap: 8px; flex-wrap: wrap; }
-.packs button { font: inherit; font-weight: 500; background: var(--paper); border: 1.5px solid var(--ink); border-radius: 6px; padding: 6px 14px; cursor: pointer; }
-.packs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.placeholder-name { border-bottom: 2px dashed var(--note); }
-.waitlist { display: flex; gap: 8px; flex-wrap: wrap; max-width: 460px; }
-.waitlist label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-.waitlist input { flex: 1 1 220px; font: inherit; padding: 10px 14px; border: 2px solid var(--ink); border-radius: 999px; background: var(--paper); }
-.waitlist-done { font-family: var(--font-mono); font-size: 13px; }
-.subhead { font-family: var(--font-display); font-weight: 800; font-size: 40px; text-transform: uppercase; margin: 56px 0 20px; }
-.ingredients { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.ing { border: 2px solid var(--ink); border-radius: 10px; padding: 16px 18px; display: grid; gap: 4px; background: var(--paper); }
-.ing .no { font-family: var(--font-mono); font-size: 13px; }
-.ing h4 { font-family: var(--font-display); font-weight: 800; font-size: 26px; text-transform: uppercase; }
-.ing p { font-size: 15px; }
-.more { margin-top: 14px; font-family: var(--font-mono); font-size: 13px; }
-.moments { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 260px); gap: 16px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; }
-.moment { scroll-snap-align: start; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--paper); display: grid; grid-template-rows: auto 1fr; }
-.moment .ph { aspect-ratio: 4 / 3; border: 0; border-bottom: 2px solid var(--ink); }
-.moment div.txt { padding: 12px 14px 14px; display: grid; gap: 4px; }
-.moment h4 { font-family: var(--font-display); font-weight: 800; font-size: 22px; text-transform: uppercase; }
-.moment p { font-size: 14px; }
-.mood-cta { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+/* mood rail (sticky indicator) */
+.rail { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; gap: 8px; z-index: 5; background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; padding: 5px; }
+.rail button { border: 0; background: transparent; border-radius: 999px; padding: 5px 12px; font-family: var(--font-display); font-weight: 800; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+.rail button .sun { width: 20px; height: 20px; }
+.rail button[aria-current="true"] { background: var(--ink); color: var(--paper); }
+.rail button[aria-current="true"] .sun .disc, .rail button[aria-current="true"] .sun .rays path { fill: var(--ink); stroke: var(--paper); }
+.rail button[aria-current="true"] .sun .ln { stroke: var(--paper); }
+.rail button[aria-current="true"] .sun .solid { fill: var(--paper); }
 
-/* ---------- act III ---------- */
-.pack { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
-.pack h2 { font-size: clamp(40px, 5.6vw, 76px); }
-.pack-art { aspect-ratio: 5 / 4; border-radius: 10px; }
-.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-.filters button { font: inherit; font-size: 14px; background: var(--paper); border: 1.5px solid var(--ink); border-radius: 999px; padding: 4px 14px; cursor: pointer; }
+/* ---------- moments ---------- */
+.mom-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+.mom-head h2 { font-size: clamp(44px, 7vw, 96px); }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.filters button { border: 2px solid var(--ink); background: var(--paper); border-radius: 999px; padding: 5px 14px; font-family: var(--font-display); font-weight: 800; text-transform: uppercase; cursor: pointer; }
 .filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.review { border: 2px solid var(--ink); border-radius: 10px; padding: 18px; display: grid; gap: 10px; align-content: start; background: var(--paper); }
-.review .stars { letter-spacing: 3px; }
-.review q { font-size: 17px; quotes: none; }
-.review .who { display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
-.ig { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
-.ig .ph { aspect-ratio: 1; border-radius: 6px; }
-.site-foot { padding: 56px 0 120px; display: grid; grid-template-columns: auto 1fr; gap: 28px 40px; align-items: start; }
-.site-foot .wink { width: 120px; height: 120px; }
-.site-foot h2 { font-size: clamp(36px, 5vw, 64px); }
-.foot-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; grid-column: 1 / -1; font-size: 15px; }
-.foot-cols h4 { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; font-weight: 500; }
-.foot-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-.shop-pill { position: fixed; right: 18px; bottom: 18px; z-index: 40; transition: opacity .3s ease; }
-.in-switch .shop-pill { opacity: 0; pointer-events: none; }
+.moments { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.moment { border: 2px solid var(--ink); border-radius: 14px; overflow: hidden; background: var(--paper); display: grid; grid-template-rows: 190px auto; }
+.moment .ph { border: 0; border-bottom: 2px solid var(--ink); }
+.moment .txt { padding: 12px 14px 16px; display: grid; gap: 6px; justify-items: start; }
+.moment h3 { font-family: var(--font-display); font-weight: 800; font-size: 24px; text-transform: uppercase; line-height: 1; }
+.moment[hidden] { display: none; }
 
-/* appendix */
-.appendix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.appendix .note { max-width: none; }
+/* ---------- reviews / social / footer ---------- */
+.reviews { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.review { border: 2px solid var(--ink); border-radius: 12px; padding: 12px 14px; background: var(--paper); display: grid; gap: 6px; font-size: 14px; }
+.review .who { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.ig { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+.ig .ph { aspect-ratio: 9/16; border-radius: 12px; }
+footer.site-foot { background: var(--ink); color: var(--paper); padding: 56px 0 30px; }
+.foot-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 28px; }
+.foot-top h4 { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; margin: 0 0 10px; font-weight: 500; }
+.foot-top ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.foot-top .bye { font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 4.4vw, 56px); text-transform: uppercase; line-height: .95; }
+.foot-top .sun .disc, .foot-top .sun .rays path { fill: var(--ink); stroke: var(--paper); }
+.foot-top .sun .ln { stroke: var(--paper); }
+.foot-top .sun .solid { fill: var(--paper); }
+.shop-pill { position: fixed; right: 20px; bottom: 20px; z-index: 55; box-shadow: 4px 4px 0 var(--ink); background: var(--paper); color: var(--ink); transition: opacity .3s ease; }
+.in-track .shop-pill { opacity: 0; pointer-events: none; }
 
-@media (max-width: 860px) {
+
+/* ---------- banner slots ---------- */
+.slot { position: relative; outline: 2px dashed var(--ink); outline-offset: -2px; }
+.slot-tag { position: absolute; top: 8px; left: 8px; z-index: 5; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; background: #FFE66B; color: var(--ink); border: 1.5px solid var(--ink); border-radius: 4px; padding: 2px 8px; }
+.slot-chip { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; background: #FFE66B; border: 1.5px dashed var(--ink); border-radius: 999px; padding: 1px 8px; }
+.ann { background: var(--ink); color: var(--paper); text-align: center; padding: 9px 20px 9px; font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: .06em; text-transform: uppercase; }
+.ann.slot .slot-tag { top: 50%; transform: translateY(-50%); }
+.launch { display: grid; grid-template-columns: 1fr 1fr; min-height: 62vh; border-bottom: 1px solid var(--rule); }
+.launch .ph { border: 0; border-right: 2px solid var(--ink); min-height: 320px; }
+.launch-copy { padding: 48px 44px; display: grid; align-content: center; gap: 14px; background: linear-gradient(180deg, #ECECE8 0%, #F7F7F4 100%); }
+.launch-copy h2 { font-size: clamp(46px, 6.4vw, 92px); }
+.launch-copy .line { font-family: var(--font-display); font-weight: 800; font-size: clamp(22px, 2.6vw, 34px); text-transform: uppercase; }
+.slots-legend { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin-top: 12px; }
+.slots-legend div { border: 1.5px dashed var(--ink); border-radius: 8px; padding: 10px 12px; background: #FFF8C9; font-family: var(--font-mono); font-size: 12px; line-height: 1.5; color: var(--ink); }
+.slots-legend b { display: block; font-weight: 500; letter-spacing: .06em; }
+.promo-strip { padding: 26px 0; }
+.promo-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border: 2px solid var(--ink); border-radius: 14px; padding: 22px 26px; background: var(--fill); }
+.promo-inner h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 3.4vw, 44px); text-transform: uppercase; line-height: .95; }
+
+/* ---------- pick your mood + sun ---------- */
+.pick-top { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; margin-bottom: 28px; }
+.pick-top .sun-stage { max-width: 340px; justify-self: end; width: 100%; }
+.pick-top .mood-say { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--note); margin-top: 14px; min-height: 1.5em; }
+
+/* ---------- sun game ---------- */
+.game-wrap { display: grid; grid-template-columns: 1fr 300px; gap: 22px; align-items: stretch; }
+.game { position: relative; border: 2px solid var(--ink); border-radius: 16px; overflow: hidden; background: var(--paper); height: 440px; touch-action: manipulation; user-select: none; -webkit-user-select: none; cursor: pointer; outline: none; }
+.game:focus-visible { box-shadow: 0 0 0 3px var(--ink); }
+.game canvas { display: block; width: 100%; height: 100%; }
+.game-hud { position: absolute; top: 12px; left: 14px; right: 14px; display: flex; justify-content: space-between; align-items: center; pointer-events: none; font-family: var(--font-display); font-weight: 800; font-size: 26px; text-transform: uppercase; }
+.game-hud .slow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; background: var(--ink); color: var(--paper); border-radius: 999px; padding: 3px 10px; visibility: hidden; }
+.game-over { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(244,244,241,.88); z-index: 3; text-align: center; padding: 20px; }
+.game-over[hidden] { display: none; }
+.game-over .card { display: grid; gap: 10px; justify-items: center; }
+.game-over h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(36px, 5vw, 60px); text-transform: uppercase; line-height: .9; }
+.game-over .row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+.game-side { border: 2px solid var(--ink); border-radius: 16px; padding: 18px; display: grid; gap: 12px; align-content: start; background: var(--fill); }
+.game-side h4 { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin: 0; font-weight: 500; }
+.game-side ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; }
+.mood-tog { display: flex; gap: 6px; }
+.mood-tog button { flex: 1; border: 2px solid var(--ink); background: var(--paper); border-radius: 999px; padding: 6px 10px; font-family: var(--font-display); font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; }
+.mood-tog button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.best { font-family: var(--font-display); font-weight: 800; font-size: 22px; text-transform: uppercase; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
   .wf-bar nav { display: none; }
-  .mood-open, .product, .pack, .appendix { grid-template-columns: 1fr; }
-  .labels, .reviews { grid-template-columns: 1fr; }
-  .ingredients { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .ig { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .switch-foot { grid-template-columns: 1fr; }
-  .toggles { justify-content: center; }
-  .matchbox { width: 100px; }
-  .matchbox span { font-size: 15px; }
-  .wf-bar .long { display: none; }
-  .switch-sticky { grid-template-rows: auto auto auto; align-content: center; }
-  .scene-box { aspect-ratio: 1000 / 500; }
-  .state-copy .note { display: none !important; }
-  .hero-copy { margin-top: -40px; }
-  .site-foot { grid-template-columns: 1fr; }
-  .foot-cols { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 420px) {
-  .ingredients { grid-template-columns: 1fr; }
-  .act span { font-size: 28px; }
+  .story { grid-template-columns: 1fr; }
+  .launch { grid-template-columns: 1fr; min-height: 0; }
+  .launch .ph { border-right: 0; border-bottom: 2px solid var(--ink); min-height: 280px; }
+  .launch-copy { padding: 26px 20px 30px; }
+  .slots-legend { grid-template-columns: 1fr 1fr; }
+  .pick-top { grid-template-columns: 1fr; gap: 16px; }
+  .pick-top .sun-stage { justify-self: center; max-width: 220px; }
+  .game-wrap { grid-template-columns: 1fr; }
+  .game { height: 380px; }
+  .ann { font-size: 14px; padding: 9px 12px 9px 12px; }
+  .ann.slot .slot-tag { display: none; }
+  .moods { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .mood-card { padding: 12px; }
+  .mood-card h3 { font-size: 30px; }
+  .slide { padding: 16px 18px 70px; grid-template-rows: auto 1fr; }
+  .slide-body { grid-template-columns: 1fr; gap: 12px; align-content: start; }
+  .prod-stage { max-height: 30vh; }
+  .prod-stage .ph { min-height: 150px; }
+  .prod-info { padding: 14px 16px; gap: 8px; }
+  .prod-info .desc { font-size: 14px; }
+  .mood-card .chip { position: static; justify-self: start; }
+  .mood-card .sun { width: 52%; }
+  .slide .float-sun { width: 110px; top: 10px; right: 10px; }
+  .slide .note { display: none; }
+  .rail button span.lbl { display: none; }
+  .moments { grid-template-columns: repeat(2, 1fr); }
+  .reviews { grid-template-columns: repeat(2, 1fr); }
+  .ig { grid-template-columns: repeat(2, 1fr); }
+  .foot-top { grid-template-columns: 1fr 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .marquee-track, .wind path, .rain-sheet { animation: none; }
-  .scene * { transition: none; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .h-sticky { position: static; height: auto; }
+  .h-track { flex-direction: column; width: 100%; transform: none !important; }
+  .slide { width: 100%; height: auto; min-height: 90vh; border-right: 0; border-bottom: 2px solid var(--ink); }
 }
 </style>
 </head>
 <body>
 
-<!-- Sun face symbols. Faces: peek, relax, reset, rejuv, wink -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="rays" viewBox="0 0 100 100"><path d="M84 50L97 50M79.4 67L90.7 73.5M67 79.4L73.5 90.7M50 84L50 97M33 79.4L26.5 90.7M20.6 67L9.3 73.5M16 50L3 50M20.6 33L9.3 26.5M33 20.6L26.5 9.3M50 16L50 3M67 20.6L73.5 9.3M79.4 33L90.7 26.5" fill="none" stroke="var(--sun-ink)" stroke-width="3" stroke-linecap="round"/></symbol>
-    <symbol id="sun-peek" viewBox="0 0 100 100"><use href="#rays"/><circle cx="50" cy="50" r="30" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="3"/><path d="M33 50 Q40 42 47 50 Q40 55 33 50Z M53 50 Q60 42 67 50 Q60 55 53 50Z" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="2.4"/><circle cx="40" cy="48.5" r="2.6" fill="var(--sun-ink)"/><circle cx="60" cy="48.5" r="2.6" fill="var(--sun-ink)"/><path d="M33 44 Q40 39 47 44 M53 44 Q60 39 67 44" fill="none" stroke="var(--sun-ink)" stroke-width="2.4" stroke-linecap="round"/></symbol>
-    <symbol id="sun-relax" viewBox="0 0 100 100"><use href="#rays"/><circle cx="50" cy="50" r="30" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="3"/><path d="M34 47 Q40 53 46 47 M54 47 Q60 53 66 47 M43 61 Q50 65 57 61" fill="none" stroke="var(--sun-ink)" stroke-width="2.6" stroke-linecap="round"/></symbol>
-    <symbol id="sun-reset" viewBox="0 0 100 100"><use href="#rays"/><circle cx="50" cy="50" r="30" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="3"/><circle cx="40" cy="47" r="7" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="2.4"/><circle cx="60" cy="47" r="7" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="2.4"/><circle cx="40" cy="47" r="3" fill="var(--sun-ink)"/><circle cx="60" cy="47" r="3" fill="var(--sun-ink)"/><path d="M45 61 L55 61" stroke="var(--sun-ink)" stroke-width="2.6" stroke-linecap="round"/></symbol>
-    <symbol id="sun-rejuv" viewBox="0 0 100 100"><g fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="2.4"><ellipse cx="50" cy="10" rx="6" ry="10"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(30 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(60 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(90 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(120 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(150 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(180 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(210 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(240 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(270 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(300 50 50)"/><ellipse cx="50" cy="10" rx="6" ry="10" transform="rotate(330 50 50)"/></g><circle cx="50" cy="50" r="30" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="3"/><circle cx="40" cy="47" r="4" fill="var(--sun-ink)"/><circle cx="60" cy="47" r="4" fill="var(--sun-ink)"/><path d="M42 58 Q50 66 58 58" fill="none" stroke="var(--sun-ink)" stroke-width="2.6" stroke-linecap="round"/></symbol>
-    <symbol id="sun-wink" viewBox="0 0 100 100"><use href="#rays"/><circle cx="50" cy="50" r="30" fill="var(--sun-fill)" stroke="var(--sun-ink)" stroke-width="3"/><path d="M34 48 Q40 44 46 48" fill="none" stroke="var(--sun-ink)" stroke-width="2.6" stroke-linecap="round"/><circle cx="60" cy="47" r="4" fill="var(--sun-ink)"/><path d="M42 58 Q50 65 58 58" fill="none" stroke="var(--sun-ink)" stroke-width="2.6" stroke-linecap="round"/></symbol>
-    <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#F4F4F1"/><path d="M0 0V10" stroke="#151515" stroke-width="1.4"/></pattern>
-    <pattern id="rain" width="44" height="40" patternUnits="userSpaceOnUse"><path d="M14 2 l-5 13 M36 22 l-5 13" stroke="#151515" stroke-width="1.8" stroke-linecap="round"/></pattern>
-  </defs>
-</svg>
-
-<div class="wf-bar" role="banner">
-  <strong>yadom.life<span class="long"> / Homepage wireframe v1</span></strong>
-  <nav aria-label="Jump to act">
+<div class="wf-bar">
+  <strong>yadom.life / Homepage wireframe v3</strong>
+  <nav aria-label="Wireframe sections">
     <a href="#act-1">Act I: Arrival</a>
-    <a href="#act-2">Act II: The three moods</a>
-    <a href="#act-3">Act III: Proof and belonging</a>
-    <a href="#appendix">Build notes</a>
+    <a href="#act-2">Act II: The four moods</a>
+    <a href="#act-3">Act III: Proof</a>
+    <a href="#act-4">Act IV: Play</a>
   </nav>
   <button class="wf-toggle" id="notes-toggle" aria-pressed="true" type="button">Notes: on</button>
 </div>
 
-<main>
+<a class="btn shop-pill" href="#act-2">Shop</a>
 
-<!-- ================= ACT I ================= -->
-<div class="note act" id="act-1"><span>Act I: Arrival</span> Welcome them into the world, give them the premise, then let them flip the switch themselves.</div>
+<!-- ======================= ACT I ======================= -->
+<div class="act" id="act-1"><span>Act I: Arrival</span> The world, the new launch, then the choice.</div>
 
-<div class="wrap">
-  <header class="site-nav">
-    <a class="logo" href="#hero" aria-label="Yadom home"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-peek"/></svg>YADOM</a>
-    <ul>
-      <li><a href="#relax">Relax</a></li>
-      <li><a href="#reset">Reset</a></li>
-      <li><a href="#rejuv">Rejuvenate</a></li>
-      <li><a href="#story">Our story</a></li>
-    </ul>
-    <div class="cart"><a class="btn ghost" href="#family">Shop</a><a class="btn" href="#reset">Cart (0)</a></div>
-  </header>
-
-  <section class="hero" id="hero">
-    <div class="note sec-label">01 / Hero: the world</div>
-    <div class="ph hero-art">
-      <svg class="peek" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-peek"/></svg>
-      <span class="ph-label" style="margin-top:22%">Current hero illustration stays: the Sun peeking over the mountains, dinosaurs with the cows, the village well</span>
+<div class="wrap" style="padding-top:16px;padding-bottom:16px">
+  <div class="note" style="max-width:none"><b>BANNER SLOTS</b> Fixed places for offers and announcements, so promos never break the story. Each slot is switched on/off in the Shopify theme editor, can take start and end dates, and collapses completely when off. Marked in yellow on this page.
+    <div class="slots-legend">
+      <div><b>SLOT 1 · Announcement bar</b>Very top, above the nav. Ticker lines: sales, free shipping.</div>
+      <div><b>SLOT 2 · Spotlight banner</b>After the hero. Shows the newest launch by default; a sale banner replaces it while a sale runs.</div>
+      <div><b>SLOT 3 · Offer tags</b>On product cards in the mood sections: "Sale ₹399", "New", "Coming Jan".</div>
+      <div><b>SLOT 4 · Promo strip</b>After the reviews. Second offers, countdowns, newsletter.</div>
     </div>
-    <div class="hero-copy">
-      <h1 class="display">You look like you need a minute.</h1>
-      <p class="sub">Pull up a mountain.</p>
-      <p class="scroll-cue">&darr; Scroll down &darr;</p>
-    </div>
-    <div class="note" style="margin-top:24px"><b>ANIMATION</b> On load, the Sun's half-closed eyes open and look straight at you. The headline is the Sun's first line, and the footer is its last: "Come back when you need a minute." On scroll the mountains, animals and village move at different speeds. The Sun leans in a little closer. It never rises or sets anywhere on this page.</div>
-  </section>
-</div>
-
-<div class="marquee" aria-label="Same sun. Different mood. Herbal and loud. Made in India.">
-  <div class="marquee-track" aria-hidden="true">
-    <span>Same sun &#10022; Different mood &#10022; Herbal &amp; loud &#10022; Made in India &#10022; Not plain. Not clinical. Not boring. &#10022;</span>
-    <span>Same sun &#10022; Different mood &#10022; Herbal &amp; loud &#10022; Made in India &#10022; Not plain. Not clinical. Not boring. &#10022;</span>
+    <span style="display:block;margin-top:10px">No banners between "Pick your mood" and the mood sections, or inside the sliding mood track.</span>
   </div>
 </div>
 
-<div class="wrap">
-  <section class="sec premise" id="story">
-    <div class="note sec-label">02 / The premise</div>
-    <p class="eyebrow">Our story</p>
-    <h2 class="display">India doesn't come with a volume knob. <span class="second">So we made a switch.</span></h2>
-    <p class="body">Every Indian home has that one cupboard. Camphor, mint, tulsi, and whatever your grandmother swore by. We took those rituals out of the cupboard and made them small enough to carry, loud enough to notice, and simple enough to use without a lecture.</p>
-    <p class="stamp">Not plain. Not clinical. Not boring.</p>
-    <div class="note"><b>ANIMATION</b> Each line stamps in like a rubber stamp hitting paper. No product on this screen; the 3D jar waits for its own section. This is where the current "classic Indian ritual" story moves up from the inhaler to the whole brand.</div>
-  </section>
-</div>
+<div class="ann slot"><span class="slot-tag">Slot 1</span>New: Magnesium Body Lotion ✦ Free shipping on every order</div>
 
-<section class="switch" id="switch" data-state="relax" aria-label="Pick your mood">
-  <div class="switch-track">
-    <div class="switch-sticky wrap">
-      <div class="switch-head">
-        <div>
-          <div class="note sec-label" style="margin-bottom:8px">03 / The switch (pinned for three screens)</div>
-          <h2 class="display">Pick your mood.</h2>
-        </div>
-        <p class="eyebrow" style="margin:0">Same world. Same sun. Three states.</p>
-      </div>
+<header class="site-nav">
+  <a class="logo" href="#act-1"><svg class="sun" data-face="peek" width="34" height="34" viewBox="0 0 200 200" aria-hidden="true"></svg>YADOM</a>
+  <ul>
+    <li><a href="#" data-jump="0">Relax</a></li>
+    <li><a href="#" data-jump="1">Reset</a></li>
+    <li><a href="#" title="Separate page">Our story ↗</a></li>
+  </ul>
+  <div class="cart"><a class="btn ghost" href="#act-2">Shop</a><a class="btn" href="#">Cart (0)</a></div>
+</header>
 
-      <div class="scene-box">
-        <svg class="scene" viewBox="0 0 1000 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Yadom's world changing state: Relax, Reset or Rejuvenate">
-          <g class="world">
-            <!-- sun: rays or petals -->
-            <g class="not-rejuv">
-              <path class="s" style="stroke-width:3" d="M590 250L625 250M577.9 295L608.3 312.5M422.1 295L391.7 312.5M410 250L375 250M422.1 205L391.7 187.5M455 172.1L437.5 141.7M500 160L500 125M545 172.1L562.5 141.7M577.9 205L608.3 187.5"/>
-            </g>
-            <g class="only-rejuv">
-              <g class="f"><ellipse cx="500" cy="142" rx="11" ry="21"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(30 500 250)"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(60 500 250)"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(90 500 250)"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(-30 500 250)"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(-60 500 250)"/><ellipse cx="500" cy="142" rx="11" ry="21" transform="rotate(-90 500 250)"/></g>
-            </g>
-            <circle class="f" style="stroke-width:3" cx="500" cy="250" r="78"/>
-            <!-- eyes per state -->
-            <g class="only-relax"><path class="s" style="stroke-width:3.2" d="M452 236 Q470 252 488 236 M512 236 Q530 252 548 236"/></g>
-            <g class="only-reset"><circle class="f" cx="470" cy="236" r="16"/><circle class="f" cx="530" cy="236" r="16"/><circle cx="470" cy="236" r="7" fill="#151515"/><circle cx="530" cy="236" r="7" fill="#151515"/><path class="s" d="M450 210 L486 216 M550 210 L514 216"/></g>
-            <g class="only-rejuv"><circle cx="470" cy="236" r="8" fill="#151515"/><circle cx="530" cy="236" r="8" fill="#151515"/><circle cx="473" cy="233" r="2.4" fill="#F4F4F1"/><circle cx="533" cy="233" r="2.4" fill="#F4F4F1"/></g>
-
-            <!-- birds -->
-            <g class="birds"><path class="s" d="M160 110 l12 9 l12 -9 M210 140 l10 7 l10 -7 M780 96 l12 9 l12 -9 M840 128 l10 7 l10 -7"/></g>
-
-            <!-- mountains (hide the lower sun) -->
-            <path fill="#F4F4F1" d="M-700 300 L-520 220 L-380 290 L-200 180 L-60 300 L0 330 L110 200 L200 265 L300 140 L410 262 L470 282 L530 282 L590 262 L700 140 L800 265 L890 200 L1000 330 L1080 290 L1220 190 L1380 280 L1520 210 L1700 300 L1700 600 L-700 600 Z"/>
-            <path class="s mtn" d="M-700 300 L-520 220 L-380 290 L-200 180 L-60 300 L0 330 L110 200 L200 265 L300 140 L410 262 L470 282 L530 282 L590 262 L700 140 L800 265 L890 200 L1000 330 L1080 290 L1220 190 L1380 280 L1520 210 L1700 300"/>
-            <path class="s" d="M300 140 L282 170 L300 162 L318 172 Z M700 140 L682 170 L700 162 L718 172 Z" style="stroke-width:1.6"/>
-
-            <!-- ground -->
-            <rect class="ground" x="-700" y="345" width="2400" height="260"/>
-            <path class="s" d="M-700 345 L1700 345"/>
-
-            <!-- river -->
-            <path class="s only-relax" d="M560 345 C 610 380, 560 405, 630 440"/>
-            <path class="s not-relax" d="M560 345 q 18 8 6 18 t 10 22 t -4 22 t 22 18 t 12 16"/>
-
-            <!-- village house -->
-            <path class="f" d="M70 368 h70 v44 h-70 Z M60 368 L105 336 L150 368 Z M96 390 h16 v22 h-16 Z"/>
-            <!-- well -->
-            <path class="f" d="M880 384 h44 v30 h-44 Z"/><path class="s" d="M876 360 h52 M884 360 v24 M920 360 v24"/>
-
-            <!-- dino -->
-            <g class="dino-body">
-              <g class="not-relax"><path class="s" d="M272 404 v24 M290 408 v22 M316 408 v22 M332 404 v24"/></g>
-              <ellipse class="f" cx="302" cy="396" rx="48" ry="20"/>
-              <path class="s" d="M256 394 Q 220 402 196 420"/>
-              <g class="not-relax"><path class="s" style="stroke-width:7" d="M340 388 Q 372 342 374 300"/><ellipse class="f" cx="384" cy="296" rx="13" ry="8"/></g>
-              <g class="only-relax"><path class="s" style="stroke-width:7" d="M342 392 Q 372 402 394 404"/><ellipse class="f" cx="404" cy="404" rx="13" ry="8"/><path class="s" style="stroke-width:1.5" d="M420 386 h8 l-8 8 h8 M432 372 h6 l-6 6 h6"/></g>
-            </g>
-
-            <!-- cows -->
-            <g class="cow">
-              <g class="not-relax"><path class="s" d="M708 408 v16 M736 408 v16 M778 412 v16 M806 412 v16"/></g>
-              <rect class="f" x="700" y="388" width="44" height="22" rx="5"/><rect class="f" x="740" y="380" width="15" height="13" rx="3"/>
-              <rect class="f" x="770" y="392" width="44" height="22" rx="5"/><rect class="f" x="810" y="384" width="15" height="13" rx="3"/>
-            </g>
-
-            <!-- flowers (rejuvenate) -->
-            <g class="only-rejuv f" style="stroke-width:2">
-              <circle cx="180" cy="424" r="6"/><circle cx="232" cy="432" r="5"/><circle cx="440" cy="420" r="6"/><circle cx="486" cy="432" r="5"/><circle cx="676" cy="430" r="6"/><circle cx="862" cy="430" r="5"/><circle cx="950" cy="420" r="6"/>
-            </g>
-          </g>
-
-          <!-- relax haze -->
-          <g class="only-relax">
-            <rect x="-700" y="176" width="2400" height="26" fill="#F4F4F1" opacity=".75"/>
-            <rect x="-700" y="292" width="2400" height="18" fill="#F4F4F1" opacity=".7"/>
-          </g>
-          <!-- reset wind -->
-          <g class="only-reset wind"><path class="s" d="M70 170 h150 M640 118 h190 M290 206 h120 M690 226 h160 M110 300 h110 M820 300 h120"/></g>
-          <!-- rejuv rain -->
-          <g class="only-rejuv"><g class="rain-sheet"><rect x="-700" y="-300" width="2400" height="900" fill="url(#rain)"/></g></g>
-
-          <!-- labels (notes) -->
-          <g class="note-svg">
-            <text class="lbl" x="500" y="104" text-anchor="middle">SUN: stays put, only the face changes</text>
-            <text class="lbl" x="105" y="328" text-anchor="middle">VILLAGE</text>
-            <text class="lbl" x="240" y="372" text-anchor="middle">DINO</text>
-            <text class="lbl" x="762" y="372" text-anchor="middle">COWS</text>
-            <text class="lbl" x="902" y="352" text-anchor="middle">WELL</text>
-          </g>
-        </svg>
-      </div>
-
-      <div class="switch-foot">
-        <div>
-          <div class="state-copy" data-for="relax">
-            <p class="eyebrow" style="margin:0">Mood 01</p>
-            <h3 class="display">Relax</h3>
-            <p class="line">Wired to calm.</p>
-            <p class="sub">For when the city won't log off.</p>
-            <p class="note"><b>STATE</b> The river goes still, birds hang in mid-air, cows lie down, the dinosaur naps. A soft haze settles. Eyes close, content.</p>
-          </div>
-          <div class="state-copy" data-for="reset">
-            <p class="eyebrow" style="margin:0">Mood 02</p>
-            <h3 class="display">Reset</h3>
-            <p class="line">Foggy to sharp.</p>
-            <p class="sub">For when your brain starts buffering.</p>
-            <p class="note"><b>STATE</b> A cool gust blows through. The haze clears, outlines sharpen, birds get blown off course. Eyes snap wide open.</p>
-          </div>
-          <div class="state-copy" data-for="rejuv">
-            <p class="eyebrow" style="margin:0">Mood 03</p>
-            <h3 class="display">Rejuvenate</h3>
-            <p class="line">Drained to alive.</p>
-            <p class="sub">Like the first rain, minus the traffic.</p>
-            <p class="note"><b>STATE</b> The first rain. Fields turn green, flowers open, the Sun's rays turn into petals.</p>
-          </div>
-        </div>
-        <div>
-          <div class="toggles" role="group" aria-label="Choose a mood">
-            <button class="matchbox" type="button" data-go="0" aria-pressed="true"><span class="inner"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-relax"/></svg><span>Relax</span></span></button>
-            <button class="matchbox" type="button" data-go="1" aria-pressed="false"><span class="inner"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-reset"/></svg><span>Reset</span></span></button>
-            <button class="matchbox" type="button" data-go="2" aria-pressed="false"><span class="inner"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-rejuv"/></svg><span>Rejuvenate</span></span></button>
-          </div>
-          <div class="progress" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
-        </div>
-      </div>
-    </div>
+<section aria-label="Hero">
+  <div class="ph hero-video">
+    <span class="ph-label">01 / Hero: the current Sun video, full screen (hero-desktop.mp4 / hero-mobile.mp4). Unchanged.</span>
+    <div class="hero-overlay"><span class="scroll-cue">↓ Scroll down ↓</span></div>
   </div>
-  <div class="wrap"><div class="note" style="margin:0 0 40px"><b>HOW IT WORKS</b> The section stays pinned for three screens of scrolling, and the same landscape changes state at each third. The matchbox toggles let people flip back and forth themselves, so the idea is something they do, not just read. States change through weather and texture only, never light, so nothing reads as morning or night. Try it: scroll through, or tap a matchbox.</div></div>
 </section>
 
-<div class="wrap">
-  <section class="sec" id="family">
-    <div class="note sec-label">04 / The family portrait</div>
-    <div class="family-head">
-      <p class="eyebrow">The Yadom family</p>
-      <h2 class="display">Same sun. Different mood.</h2>
-      <p>Navarasa has nine. We kept the three you need daily.</p>
-    </div>
-    <div class="labels">
-      <article class="label-card"><div class="inner">
-        <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-relax"/></svg>
-        <span class="chip">Coming soon</span>
-        <h3>Relax</h3>
-        <p class="line">Wired to calm.</p>
-        <p class="prod">Body lotion and more</p>
-        <a class="btn ghost" href="#relax">Step into Relax</a>
-      </div></article>
-      <article class="label-card"><div class="inner">
-        <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-reset"/></svg>
-        <span class="chip solid">Live now</span>
-        <h3>Reset</h3>
-        <p class="line">Foggy to sharp.</p>
-        <p class="prod">Herbal inhaler</p>
-        <a class="btn" href="#reset">Step into Reset</a>
-      </div></article>
-      <article class="label-card"><div class="inner">
-        <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-rejuv"/></svg>
-        <span class="chip">Coming soon</span>
-        <h3>Rejuvenate</h3>
-        <p class="line">Drained to alive.</p>
-        <p class="prod">Body wash and more</p>
-        <a class="btn ghost" href="#rejuv">Step into Rejuvenate</a>
-      </div></article>
-    </div>
-    <div class="note" style="margin-top:24px"><b>ANIMATION</b> A matchbox tray slides open and the three labels fan out of it. Each label jumps to its section below. This is where the group name gets said out loud (Rasas, Moods or Suns: still to decide). Product lines and live status are placeholders until the client confirms.</div>
-  </section>
-</div>
+<section class="launch slot" id="spotlight" aria-label="New launch">
+  <span class="slot-tag">Slot 2 · Spotlight banner</span>
+  <div class="ph"><span class="ph-label">Magnesium Body Lotion packshot / short loop (desktop + mobile crops)</span></div>
+  <div class="launch-copy">
+    <div class="sec-label" style="justify-self:start;margin-bottom:0">02 / New launch</div>
+    <span class="chip solid" style="justify-self:start">New · Relax mood</span>
+    <h2 class="display">Magnesium Body Lotion</h2>
+    <p class="line">Rub it in. Slow it down.</p>
+    <p style="max-width:44ch">For the days that don't switch off on their own. Smooth it on, take a breath, let the noise settle.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px"><a class="btn" href="#">Shop now →</a><a class="btn ghost" href="#" data-jump="0">See the Relax mood</a></div>
+    <div class="note" style="margin-top:8px"><b>SLOT 2</b> Default content: the newest launch (lotion from 4 Dec). During a sale, the sale banner (desktop 1920×640 / mobile 1080×1350 + button) takes this spot instead, so two banners never stack. The Yadom story moves to its own "Our story" page.</div>
+  </div>
+</section>
 
-<!-- ================= ACT II ================= -->
-<div class="note act" id="act-2"><span>Act II: The three moods</span> One template, used three times. Each mood is its own small world with its own sun face and its own weather.</div>
+<div class="marquee" aria-hidden="true"><div class="marquee-track">
+  <span>One sun ✦ Four moods ✦ Herbal &amp; loud ✦ Made in India ✦ Not plain. Not clinical. Not boring. ✦</span>
+  <span>One sun ✦ Four moods ✦ Herbal &amp; loud ✦ Made in India ✦ Not plain. Not clinical. Not boring. ✦</span>
+</div></div>
 
-<!-- RELAX -->
-<div class="wrap">
-  <section class="sec mood" id="relax">
-    <div class="note sec-label">05 / Relax (coming-soon version of the template)</div>
-    <div class="mood-open">
-      <div class="ph mood-vignette"><span class="ph-label">Relax vignette: the slowed-down, hazy version of the world</span></div>
-      <div class="mood-title">
-        <svg viewBox="0 0 100 100" width="72" height="72" aria-hidden="true"><use href="#sun-relax"/></svg>
-        <h2 class="display">Relax</h2>
-        <p class="switchline">Wired to calm.</p>
-        <p class="lede">Carry the calm.</p>
+<section class="sec" id="pick">
+  <div class="wrap">
+    <div class="sec-label">03 / Pick your mood</div>
+    <div class="pick-top">
+      <div>
+        <p class="eyebrow">One sun. Four moods.</p>
+        <h2 class="display" style="font-size:clamp(44px,7vw,96px)">Pick yours.</h2>
+        <p style="max-width:40ch;margin-top:14px">Tap a mood and the whole site switches with it.</p>
+        <p class="mood-say" id="mood-say">Hover a mood. The Sun shows it.</p>
+      </div>
+      <div class="sun-stage" id="sun-stage" aria-label="Yadom Sun. Drag to rotate.">
+        <div class="sun-3d" id="sun-3d"><svg class="sun" id="pick-sun" data-face="hero" viewBox="0 0 200 200" aria-hidden="true"></svg></div>
+        <span class="drag-hint">Drag to turn the Sun</span>
       </div>
     </div>
-  </section>
-</div>
-<div class="marquee light" aria-hidden="true"><div class="marquee-track"><span>Relax &#10022; Wired to calm &#10022; Carry the calm &#10022; Relax &#10022; Wired to calm &#10022; Carry the calm &#10022;</span><span>Relax &#10022; Wired to calm &#10022; Carry the calm &#10022; Relax &#10022; Wired to calm &#10022; Carry the calm &#10022;</span></div></div>
-<div class="wrap">
-  <section class="sec mood" style="padding-top:48px">
-    <div class="product">
-      <div class="ph product-3d"><span class="ph-label">3D product. Its open moment: the pump presses down</span></div>
-      <div class="product-info">
-        <span class="chip" style="justify-self:start">Coming soon</span>
-        <h3><span class="placeholder-name">Magnesium Body Lotion</span></h3>
-        <p class="desc">Rub it in. Slow it down.</p>
-        <form class="waitlist" data-waitlist>
-          <label for="wl-relax">Email address</label>
-          <input id="wl-relax" type="email" placeholder="you@email.com" required>
-          <button class="btn" type="submit">Tell me first</button>
-        </form>
-        <p class="waitlist-done" hidden>You're on the list. We'll tell you the minute it's out.</p>
-        <p class="note"><b>NOTE</b> Product name is a placeholder until the client confirms what sits in Relax. Copy stays on how it feels, never what it treats: no sleep claims.</p>
+    <div class="moods" id="moods"></div>
+    <div class="note" style="margin-top:20px"><b>3D SUN</b> Moved here from the old story section. It floats and blinks; drag to rotate. Hover or tap a mood card and the Sun takes that mood's face (wireframe shows a flat drawing; final is the 3D Sun file).<br><b>BEHAVIOUR</b> Tap a mood: the page theme switches to that mood and slides straight to its section in Act II. Hover (desktop): the card's Sun does its mood (closes eyes, snaps open, exhales, blooms).<br><b>4 DEC BUILD</b> Only Relax and Reset are built. Relief and Rejuvenate are shown here for the storytelling only and are left out of the live site until they launch.</div>
+  </div>
+</section>
+
+<!-- ======================= ACT II ======================= -->
+<div class="act" id="act-2"><span>Act II: The four moods</span> Scroll down and the moods slide in from the right, one after another. Each has its own Sun and its own world.</div>
+
+<section class="h-sec" id="track-sec">
+  <div class="h-sticky">
+    <div class="h-track" id="track"></div>
+    <nav class="rail" id="rail" aria-label="Moods"></nav>
+  </div>
+</section>
+
+<section class="sec" id="moments">
+  <div class="wrap">
+    <div class="sec-label">05 / Moments of Yadom</div>
+    <div class="mom-head">
+      <div>
+        <p class="eyebrow">Real people. Every mood.</p>
+        <h2 class="display">Moments of Yadom.</h2>
       </div>
+      <div class="filters" id="filters"></div>
     </div>
-    <h3 class="subhead">Moments for Relax</h3>
-    <div class="moments" tabindex="0" aria-label="Relax moments">
-      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>Plans got cancelled</h4><p>Best news all week. Lie down about it.</p></div></article>
-      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>After the fourth meeting</h4><p>Your calendar won. Your shoulders don't have to.</p></div></article>
-      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>Long-haul flight</h4><p>Seat 34B, but make it a spa.</p></div></article>
-      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>The scroll that won't stop</h4><p>Put the phone down. Pick this up.</p></div></article>
-    </div>
-    <div class="mood-cta"><a class="btn ghost" href="#relax">Join the Relax waitlist</a></div>
-  </section>
-</div>
+    <div class="moments" id="moment-grid"></div>
+    <div class="note" style="margin-top:20px"><b>CONTENT</b> Back to normal up-and-down scrolling from here. One section for every product, after all the moods: real people using Yadom, each card tagged with its mood. Photos or short looping clips. Filter chips show only live moods.</div>
+  </div>
+</section>
 
-<!-- RESET -->
-<div class="wrap">
-  <section class="sec mood" id="reset">
-    <div class="note sec-label">06 / Reset (live version of the template)</div>
-    <div class="mood-open">
-      <div class="ph mood-vignette"><span class="ph-label">Reset vignette: the windswept, sharp version of the world</span></div>
-      <div class="mood-title">
-        <svg viewBox="0 0 100 100" width="72" height="72" aria-hidden="true"><use href="#sun-reset"/></svg>
-        <h2 class="display">Reset</h2>
-        <p class="switchline">Foggy to sharp.</p>
-        <p class="lede">Open. Inhale. Reset.</p>
-      </div>
-    </div>
-  </section>
-</div>
-<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Reset &#10022; Open. Inhale. Reset. &#10022; Pocket reset &#10022; Gen-Z approved &#10022; Live now &#10022;</span><span>Reset &#10022; Open. Inhale. Reset. &#10022; Pocket reset &#10022; Gen-Z approved &#10022; Live now &#10022;</span></div></div>
-<div class="wrap">
-  <section class="sec mood" style="padding-top:48px">
-    <div class="product">
-      <div class="ph product-3d"><span class="ph-label">Current 3D jar, current scroll path. Its open moment: the cap pops off</span></div>
-      <div class="product-info">
-        <span class="chip solid" style="justify-self:start">Live now</span>
-        <h3>Yadom Herbal Inhaler</h3>
-        <p class="desc">A pocket-sized herbal aroma ritual for quick, cooling resets and tiny moments of calm in motion.</p>
-        <p class="price">&#8377;378 <s>&#8377;498</s></p>
-        <div class="packs" role="group" aria-label="Pack size">
-          <button type="button" aria-pressed="true">Pack of 2</button>
-          <button type="button" aria-pressed="false">Pack of 4</button>
-          <button type="button" aria-pressed="false">Pack of 8</button>
-        </div>
-        <a class="btn" href="#reset" style="justify-self:start">Add to cart</a>
-      </div>
-    </div>
-    <h3 class="subhead">What's inside</h3>
-    <div class="ingredients">
-      <div class="ing"><span class="no">01</span><h4>Camphor</h4><p>A classic cooling aromatic.</p></div>
-      <div class="ing"><span class="no">02</span><h4>Ginger</h4><p>A warm, grounding note.</p></div>
-      <div class="ing"><span class="no">03</span><h4>Eucalyptus</h4><p>Sharp and leafy.</p></div>
-      <div class="ing"><span class="no">04</span><h4>Peppermint leaf</h4><p>A crisp herbal lift.</p></div>
-      <div class="ing"><span class="no">05</span><h4>Holy basil</h4><p>A traditional Indian botanical.</p></div>
-      <div class="ing"><span class="no">06</span><h4>Lemongrass</h4><p>Bright and citrusy.</p></div>
-    </div>
-    <p class="more">+9 more botanicals</p>
-    <div class="note" style="margin-top:16px"><b>ANIMATION</b> Keep what's on the site now: the cap lifts off and the ingredient cards fly out around the jar. Every product gets one "open moment" like this, so the three moods feel like one family.</div>
-    <h3 class="subhead">Find your moments</h3>
-    <div class="moments" tabindex="0" aria-label="Reset moments">
-      <article class="moment"><div class="ph"><span class="ph-label">Existing photo: knight at laptop</span></div><div class="txt"><h4>Work mode</h4><p>Long tabs, calls, and mental reboots.</p></div></article>
-      <article class="moment"><div class="ph"><span class="ph-label">Existing photo</span></div><div class="txt"><h4>Study mode</h4><p>A breath-focus break beside your notes.</p></div></article>
-      <article class="moment"><div class="ph"><span class="ph-label">Existing photo</span></div><div class="txt"><h4>Commute mode</h4><p>A pocket ritual for crowded rides.</p></div></article>
-      <article class="moment"><div class="ph"><span class="ph-label">Existing photo</span></div><div class="txt"><h4>Gym mode</h4><p>A quick inhale between sets.</p></div></article>
-      <article class="moment"><div class="ph"><span class="ph-label">Existing photo</span></div><div class="txt"><h4>Travel mode</h4><p>Airports, road trips, and train platforms.</p></div></article>
-      <article class="moment"><div class="ph"><span class="ph-label">Existing photo</span></div><div class="txt"><h4>Social mode</h4><p>Stays in your bag before, during, and after plans.</p></div></article>
-    </div>
-    <div class="note" style="margin-top:16px"><b>NOTE</b> The seven current modes move here, because they all describe the inhaler. Moments can be any time of day; only the moods stay timeless.</div>
-    <div class="mood-cta"><a class="btn" href="#reset">Shop Reset</a></div>
-  </section>
-</div>
+<!-- ======================= ACT III ======================= -->
+<div class="act" id="act-3"><span>Act III: Proof</span> Same as the current site, now covering every mood.</div>
 
-<!-- REJUVENATE -->
-<div class="wrap">
-  <section class="sec mood" id="rejuv">
-    <div class="note sec-label">07 / Rejuvenate (coming-soon version of the template)</div>
-    <div class="mood-open">
-      <div class="ph mood-vignette"><span class="ph-label">Rejuvenate vignette: the first-rain, blooming version of the world</span></div>
-      <div class="mood-title">
-        <svg viewBox="0 0 100 100" width="72" height="72" aria-hidden="true"><use href="#sun-rejuv"/></svg>
-        <h2 class="display">Rejuvenate</h2>
-        <p class="switchline">Drained to alive.</p>
-        <p class="lede">Like the first rain, minus the traffic.</p>
-      </div>
-    </div>
-  </section>
-</div>
-<div class="marquee light" aria-hidden="true"><div class="marquee-track"><span>Rejuvenate &#10022; Drained to alive &#10022; First rain energy &#10022; Rejuvenate &#10022; Drained to alive &#10022; First rain energy &#10022;</span><span>Rejuvenate &#10022; Drained to alive &#10022; First rain energy &#10022; Rejuvenate &#10022; Drained to alive &#10022; First rain energy &#10022;</span></div></div>
-<div class="wrap">
-  <section class="sec mood" style="padding-top:48px">
-    <div class="product">
-      <div class="ph product-3d"><span class="ph-label">3D product. Its open moment: the flip cap clicks open</span></div>
-      <div class="product-info">
-        <span class="chip" style="justify-self:start">Coming soon</span>
-        <h3><span class="placeholder-name">Herbal Body Wash</span></h3>
-        <p class="desc">Rinse the heavy off.</p>
-        <form class="waitlist" data-waitlist>
-          <label for="wl-rejuv">Email address</label>
-          <input id="wl-rejuv" type="email" placeholder="you@email.com" required>
-          <button class="btn" type="submit">Tell me first</button>
-        </form>
-        <p class="waitlist-done" hidden>You're on the list. We'll tell you the minute it's out.</p>
-        <p class="note"><b>NOTE</b> Placeholder product. Avoid anti-ageing or skin-repair claims; "alive" describes a feeling.</p>
-      </div>
-    </div>
-    <h3 class="subhead">Moments for Rejuvenate</h3>
-    <div class="moments" tabindex="0" aria-label="Rejuvenate moments">
-      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>Off a nine-hour train</h4><p>You smell like the journey. Fix that.</p></div></article>
-      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>After the gym</h4><p>Leg day happened. Act like it didn't.</p></div></article>
-      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>Before you head out</h4><p>Five minutes to go from done to dressed.</p></div></article>
-      <article class="moment"><div class="ph"><span class="ph-label">Surreal photo</span></div><div class="txt"><h4>Back from the long weekend</h4><p>Reboot the human before the laptop.</p></div></article>
-    </div>
-    <div class="mood-cta"><a class="btn ghost" href="#rejuv">Join the Rejuvenate waitlist</a></div>
-  </section>
-</div>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">06 / Loved by the loud</div>
+    <p class="eyebrow">The reviews</p>
+    <h2 class="display" style="font-size:clamp(44px,7vw,96px);margin-bottom:22px">Loved by the loud.</h2>
+    <div class="reviews" id="reviews"></div>
+    <div class="note" style="margin-top:18px"><b>CONTENT</b> Existing reviews, each tagged with its mood. All are Reset for now; Relax reviews join after the lotion launches.</div>
+  </div>
+</section>
 
-<!-- ================= ACT III ================= -->
-<div class="note act" id="act-3"><span>Act III: Proof and belonging</span> Show that real people use it, give them a reason to buy more than one, and send them off with a wink.</div>
-
-<div class="wrap">
-  <section class="sec" id="pack">
-    <div class="note sec-label">08 / The family pack (optional)</div>
-    <div class="pack">
-      <div class="ph pack-art"><span class="ph-label">Box that looks like a stack of three matchboxes</span></div>
-      <div class="stack">
-        <p class="eyebrow">One of each</p>
-        <h2 class="display">For people with more than one mood. So, everyone.</h2>
-        <p style="font-size:18px">Relax, Reset and Rejuvenate in one box. Gift it, split it, or keep all three and switch as you like.</p>
-        <a class="btn" href="#pack" style="justify-self:start">Notify me</a>
-        <p class="note"><b>NOTE</b> Only once all three moods have a live product. Until then the button collects interest. Raises order value.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="reviews">
-    <div class="note sec-label">09 / Loved by the loud</div>
-    <h2 class="display" style="font-size:clamp(44px,6vw,80px);margin-bottom:20px">Loved by the loud</h2>
-    <div class="filters" role="group" aria-label="Filter reviews by mood">
-      <button type="button" aria-pressed="true" data-filter="all">All</button>
-      <button type="button" aria-pressed="false" data-filter="relax">Relax</button>
-      <button type="button" aria-pressed="false" data-filter="reset">Reset</button>
-      <button type="button" aria-pressed="false" data-filter="rejuv">Rejuvenate</button>
-    </div>
-    <div class="reviews">
-      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>Three seconds and my head's clear. Genuinely obsessed.</q><div class="who">Aanya <span class="chip">Reset</span></div></article>
-      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>My 3pm slump's worst enemy. One twist and I'm back.</q><div class="who">Meera <span class="chip">Reset</span></div></article>
-      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>Smells like my grandma's cupboard but make it fashion.</q><div class="who">Dev <span class="chip">Reset</span></div></article>
-      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>Desk, bag, pocket. I own three now. No regrets.</q><div class="who">Karan <span class="chip">Reset</span></div></article>
-      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>Gifted one to my mom, she stole my whole stash.</q><div class="who">Tara <span class="chip">Reset</span></div></article>
-      <article class="review" data-mood="reset"><span class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>The minty hit is unmatched. Truly a pocket reset.</q><div class="who">Ishaan <span class="chip">Reset</span></div></article>
-    </div>
-    <p class="note" style="margin-top:20px"><b>NOTE</b> Current reviews, now tagged by mood. All are Reset today because only the inhaler is live. The filter chips earn their place once Relax and Rejuvenate have reviews.</p>
-    <p class="waitlist-done" id="no-reviews" hidden style="margin-top:12px">No reviews for this mood yet. It isn't out yet.</p>
-  </section>
-
-  <section class="sec" id="community">
-    <div class="note sec-label">10 / Join the ritual</div>
-    <div style="display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:20px">
-      <h2 class="display" style="font-size:clamp(40px,5.4vw,72px)">Join the ritual</h2>
-      <a class="btn ghost" href="https://www.instagram.com/yadom.life/">@yadom.life</a>
-    </div>
-    <div class="ig">
-      <div class="ph"><span class="ph-label">IG</span></div><div class="ph"><span class="ph-label">IG</span></div><div class="ph"><span class="ph-label">IG</span></div>
-      <div class="ph"><span class="ph-label">IG</span></div><div class="ph"><span class="ph-label">IG</span></div><div class="ph"><span class="ph-label">IG</span></div>
-    </div>
-  </section>
-
-  <footer class="site-foot">
-    <div class="note sec-label" style="grid-column:1/-1;justify-self:start;margin:0">11 / Footer</div>
-    <svg class="wink" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun-wink"/></svg>
-    <div class="stack">
-      <h2 class="display">Come back when you need a minute.</h2>
-      <p class="note"><b>ANIMATION</b> The bookend: the Sun opened its eyes when you arrived, and it winks when you reach the bottom.</p>
-    </div>
-    <div class="foot-cols">
-      <div><h4>Moods</h4><ul><li>Relax</li><li>Reset</li><li>Rejuvenate</li><li>Family pack</li></ul></div>
-      <div><h4>Quick links</h4><ul><li>Blogs</li><li>Contact us</li><li>Shipping policy</li><li>Returns, refunds and cancellation</li><li>Privacy policy</li><li>Terms and conditions</li></ul></div>
-      <div><h4>Reach us</h4><ul><li>Yadom Life</li><li>Vamayra Global Private Limited</li><li>care@yadom.life</li><li>&copy; 2026 Yadom Life. Made in India.</li></ul></div>
-    </div>
-  </footer>
-</div>
-
-<!-- ================= APPENDIX ================= -->
-<div class="note act" id="appendix"><span>Build notes</span> For the team. Not part of the page.</div>
-<div class="wrap note-block" style="padding:32px 20px 120px">
-  <div class="appendix">
-    <div class="note"><b>WHAT THE ILLUSTRATOR MAKES</b>
-      <ul>
-        <li>One base landscape: the current hero, extended so it can hold the switch</li>
-        <li>Three state layers on that same composition: Relax (haze, stillness), Reset (wind, crisp lines), Rejuvenate (rain, bloom)</li>
-        <li>Five Sun faces: peek, Relax, Reset, Rejuvenate, wink</li>
-        <li>Three matchbox labels and one matchbox tray</li>
-        <li>Three mood vignettes for the Act II openers (crops of the state layers work)</li>
-      </ul>
-    </div>
-    <div class="note"><b>WHAT THE 3D TEAM MAKES</b>
-      <ul>
-        <li>Inhaler jar: exists, keep its scroll path and cap-pop</li>
-        <li>Lotion and body wash (or whatever the client confirms), each with one open moment: pump press, flip cap</li>
-        <li>On low-end phones, swap the full 3D for a lighter turntable spin</li>
-      </ul>
-    </div>
-    <div class="note"><b>HOW IT'S BUILT</b>
-      <ul>
-        <li>Same Next.js front and Shopify back as today</li>
-        <li>The switch: one pinned section, the three state layers crossfade on scroll, Sun faces swap as layers. Same scroll engine the current jar uses</li>
-        <li>The floating Shop pill stays. It steps aside while the switch is pinned, and its colour follows the mood section you're in</li>
-        <li>Mobile: the switch pins the same way; the matchboxes sit as a bottom bar</li>
-      </ul>
-    </div>
-    <div class="note"><b>RULES THAT HOLD THE IDEA TOGETHER</b>
-      <ul>
-        <li>No sunrise, sunset or night light anywhere in Act I. Moods change weather, never time</li>
-        <li>Moods are feelings; moments can be any time of day</li>
-        <li>No medical claims. "How it feels", never "what it treats"</li>
-      </ul>
-    </div>
-    <div class="note" style="grid-column:1/-1"><b>OPEN DECISIONS</b>
-      <ul>
-        <li>Which products sit in which mood, and which are live at launch</li>
-        <li>The name for the three: Rasas, Moods or Suns</li>
-        <li>Act II order: keep Relax, Reset, Rejuvenate, or put Reset first while it's the only mood that sells today</li>
-        <li>Family pack: yes or no</li>
-        <li>Brand line above the three: "Same sun. Different mood."</li>
-      </ul>
+<section class="promo-strip">
+  <div class="wrap">
+    <div class="promo-inner slot">
+      <span class="slot-tag">Slot 4 · Promo strip</span>
+      <div style="padding-top:14px"><div class="sec-label" style="margin-bottom:8px">07 / Promo strip (optional)</div><h3>Get 10% off your first ritual</h3><p>Second offers, launch countdowns or newsletter sign-up. Hidden when off.</p></div>
+      <a class="btn" href="#">Claim it →</a>
     </div>
   </div>
-</div>
+</section>
 
-</main>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">08 / Join the ritual</div>
+    <p class="eyebrow">@yadom.life</p>
+    <h2 class="display" style="font-size:clamp(44px,7vw,96px)">Join the ritual.</h2>
+    <div class="ig">
+      <div class="ph"><span class="ph-label">IG reel</span></div>
+      <div class="ph"><span class="ph-label">IG reel</span></div>
+      <div class="ph"><span class="ph-label">IG reel</span></div>
+      <div class="ph"><span class="ph-label">IG reel</span></div>
+    </div>
+  </div>
+</section>
 
-<a class="btn shop-pill" href="#family">Shop</a>
+
+<!-- ======================= ACT IV ======================= -->
+<div class="act" id="act-4"><span>Act IV: Play</span> One last thing before you go.</div>
+
+<section class="sec" id="sun-game">
+  <div class="wrap">
+    <div class="sec-label">09 / Sun game</div>
+    <div class="pick-head" style="margin-bottom:18px">
+      <div>
+        <p class="eyebrow">Mini game</p>
+        <h2 class="display" style="font-size:clamp(44px,7vw,96px)">Keep the Sun up.</h2>
+      </div>
+      <p style="max-width:38ch">Dodge the city noise. Grab the herbs. Tap, click or press space to fly.</p>
+    </div>
+    <div class="game-wrap">
+      <div class="game" id="game" tabindex="0" role="application" aria-label="Keep the Sun up game. Press space or tap to fly.">
+        <canvas id="game-canvas"></canvas>
+        <div class="game-hud"><span id="g-score">0</span><span class="slow" id="g-slow">Inhale: slow-mo</span></div>
+        <div class="game-over" id="g-over">
+          <div class="card">
+            <svg class="sun" data-face="hero" width="84" height="84" viewBox="0 0 200 200" aria-hidden="true"></svg>
+            <h3 id="g-title">Keep the Sun up</h3>
+            <p id="g-sub">Tap or press space to start</p>
+            <div class="row" id="g-actions"><button class="btn" type="button" id="g-play">Play</button></div>
+          </div>
+        </div>
+      </div>
+      <aside class="game-side">
+        <div><h4>Mood</h4><div class="mood-tog" id="g-mood"><button type="button" data-m="relax" aria-pressed="false">Relax</button><button type="button" data-m="reset" aria-pressed="true">Reset</button></div></div>
+        <div><h4>How it works</h4><ul>
+          <li>Tap / click / space: the Sun flies up</li>
+          <li>Columns of city noise: don't touch</li>
+          <li>Herb leaf: +2</li>
+          <li>Inhaler jar: slow-mo for 4 s</li>
+        </ul></div>
+        <div><h4>Best this visit</h4><span class="best" id="g-best">0</span></div>
+      </aside>
+    </div>
+    <div class="note" style="margin-top:20px"><b>BUILD</b> Our own game in our own style (working name "Keep the Sun up"). Same one-tap feel as the classic flappy-bird games, but no names or art from them. Relax: floatier and slower. Reset: snappier and faster. Hi-fi: mood colours, the real Sun, illustrated noise (traffic, pings, deadlines) and herbs.<br><b>GAME OVER</b> Shows the score with "Need a reset?" and a Shop Now button. A high-score discount code is possible later (needs a real Shopify code and client OK). Loads only when scrolled into view, pauses off-screen.</div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <svg class="sun" data-face="wink" width="90" height="90" viewBox="0 0 200 200" aria-hidden="true"></svg>
+        <p class="bye" style="margin-top:12px">Come back when you need a minute.</p>
+      </div>
+      <div><h4>Moods</h4><ul><li>Relax</li><li>Reset</li></ul></div>
+      <div><h4>Quick links</h4><ul><li>Blogs</li><li>Contact us</li><li>Shipping policy</li><li>Returns, refunds &amp; cancellation</li><li>Privacy policy</li><li>Terms &amp; conditions</li></ul></div>
+      <div><h4>Reach us</h4><ul><li>Yadom Life</li><li>Vamayra Global Private Limited</li><li>care@yadom.life</li><li>© 2026 Yadom Life. Made in India.</li></ul></div>
+    </div>
+    <p class="note" style="margin-top:28px;background:transparent;color:#bbb;border-color:#777"><b style="color:#fff">FOOTER</b> The Sun winks goodbye. Moods column lists only live moods.</p>
+  </div>
+</footer>
 
 <script>
+/* ---------- data ---------- */
+var SHOP = "https://yadom-life.myshopify.com/products/";
+var MOODS = [
+  { key: "relax", name: "Relax", face: "relax", tex: "t-relax", live: true,
+    sw: "Wired to calm.", tag: "For when the city won't log off.",
+    sun: "Eyes closed, content. Soft haze settles, everything drifts slowly. Dinos nod off (tap to tuck them in).",
+    products: [
+      { n: "Magnesium Body Lotion", s: "Live 4 Dec", l: "Rub it in. Slow it down.", d: "A magnesium body lotion for the days that don't switch off on their own. Smooth it on, take a breath, let the noise settle." },
+      { n: "Epsom Body & Bath Salt", s: "January", l: "Run a bath. Let the noise sink.", d: "Epsom salt for your bath or your bucket. Tip some in, sit back, and let the day dissolve with it." },
+      { n: "Epsom Foot Soak", s: "January", l: "Your feet did the whole day.", d: "Give them ten minutes. A warm-water soak for feet that carried you through everything." },
+      { n: "Epsom Body Wash", s: "January", l: "Rinse off the rush.", d: "A slow-down shower in a bottle. Lather, rinse, and leave the rush on the bathroom floor." }
+    ] },
+  { key: "reset", name: "Reset", face: "reset", tex: "t-reset", live: true,
+    sw: "Foggy to sharp.", tag: "For when your brain starts buffering.",
+    sun: "Eyes snap wide open. A cool gust blows through, lines go crisp, everything moves quick and snappy.",
+    products: [
+      { n: "Herbal Inhaler", s: "Live now", l: "Open. Inhale. Reset.", d: "A pocket-sized herbal aroma ritual for quick, cooling resets and tiny moments of calm on the move. Camphor, mint, tulsi and friends." },
+      { n: "Ice Mint Inhaler", s: "Late January", l: "Same pocket. Colder snap.", d: "The inhaler you know, turned a few degrees cooler. For when regular minty just isn't loud enough." },
+      { n: "Coffee Body Wash", s: "Late January", l: "Your first coffee, but in the shower.", d: "A coffee-scented body wash that smells like the start of something. Lather up, wake up the room." }
+    ] },
+  { key: "relief", name: "Relief", face: "relief", tex: "t-relief", live: false, when: "2027",
+    sw: "Tense to easy.", tag: "For when your shoulders moved up to your ears.",
+    sun: "A long exhale. Cheeks puff, shoulders drop. Knotted shapes in the world slowly come undone.",
+    products: [
+      { n: "Relief Patch", s: "2027", l: "Stick it on. Carry on.", d: "Placeholder. Product details and copy to be confirmed. Copy stays on how it feels, never what it treats." },
+      { n: "Relief Spray", s: "2027", l: "Spritz. Breathe out.", d: "Placeholder. Product details and copy to be confirmed." }
+    ] },
+  { key: "rejuv", name: "Rejuvenate", face: "rejuv", tex: "t-rejuv", live: false, when: "End 2027",
+    sw: "Drained to alive.", tag: "Like the first rain, minus the traffic.",
+    sun: "Bright eyes, big smile, rays bloom into petals. First rain falls, a rainbow arcs across, colour floods back in.",
+    products: [
+      { n: "Something's growing here", s: "End 2027", l: "Personal care range, to be revealed.", d: "Placeholder until the Rejuvenate range is confirmed." }
+    ] }
+];
+var MOMENTS = [
+  { m: "relax", t: "Plans got cancelled", d: "Best news all week. Lie down about it." },
+  { m: "relax", t: "After the fourth meeting", d: "Your calendar won. Your shoulders don't have to." },
+  { m: "relax", t: "Long-haul flight", d: "Seat 34B, but make it a spa." },
+  { m: "relax", t: "The scroll that won't stop", d: "Put the phone down. Pick this up." },
+  { m: "reset", t: "Work mode", d: "Long tabs, longer calls. One twist, back in." },
+  { m: "reset", t: "Commute mode", d: "Crowded ride. One pocket ritual that travels better than your playlist." },
+  { m: "reset", t: "Gym mode", d: "A quick inhale before the next set." },
+  { m: "reset", t: "Study mode", d: "Keep it next to your notes. Back to it." }
+];
+var REVIEWS = [
+  ["Three seconds and my head's clear. Genuinely obsessed.", "Aanya"],
+  ["Lives in my tote next to my lip balm. The jar is too cute.", "Riya"],
+  ["My 3pm slump's worst enemy. One twist and I'm back.", "Meera"],
+  ["Smells like my grandma's cupboard but make it fashion.", "Dev"],
+  ["Desk, bag, pocket. I own three now. No regrets.", "Karan"]
+];
+
+/* ---------- sun drawing ---------- */
+function rays(petal) {
+  var out = "";
+  for (var i = 0; i < 16; i++) {
+    var a = i * 22.5, long = i % 2 === 0;
+    var r1 = 60, r2 = long ? 96 : 82, w = long ? 9 : 7;
+    var d = petal
+      ? "M100 " + (100 - r1) + " C " + (100 - w * 1.8) + " " + (100 - (r1 + r2) / 2) + ", " + (100 - w) + " " + (100 - r2 + 4) + ", 100 " + (100 - r2) + " C " + (100 + w) + " " + (100 - r2 + 4) + ", " + (100 + w * 1.8) + " " + (100 - (r1 + r2) / 2) + ", 100 " + (100 - r1) + " Z"
+      : "M" + (100 - w) + " " + (100 - r1 + 2) + " L100 " + (100 - r2) + " L" + (100 + w) + " " + (100 - r1 + 2) + " Z";
+    out += '<path d="' + d + '" transform="rotate(' + a + ' 100 100)"/>';
+  }
+  return '<g class="rays">' + out + "</g>";
+}
+function face(kind) {
+  var open = '<ellipse class="solid" cx="82" cy="94" rx="5" ry="6"/><ellipse class="solid" cx="118" cy="94" rx="5" ry="6"/>' +
+             '<path class="ln" d="M72 90 Q82 84 92 90 M108 90 Q118 84 128 90"/>';
+  var blink = '<g class="lid"><path class="disc" style="stroke:none" d="M70 86 h24 v14 h-24z M106 86 h24 v14 h-24z"/><path class="ln" d="M72 94 Q82 99 92 94 M108 94 Q118 99 128 94"/></g>';
+  var closed = '<path class="ln" d="M72 94 Q82 101 92 94 M108 94 Q118 101 128 94"/>';
+  var brows = '<path class="ln" d="M70 80 Q82 74 94 80 M106 80 Q118 74 130 80"/>';
+  var nose = '<path class="ln" d="M100 96 Q96 108 102 110"/>';
+  switch (kind) {
+    case "relax": return closed + nose + '<path class="ln" d="M88 122 Q100 128 112 122"/>';
+    case "reset": return '<circle class="disc" cx="82" cy="93" r="10"/><circle class="disc" cx="118" cy="93" r="10"/><circle class="solid" cx="82" cy="93" r="4"/><circle class="solid" cx="118" cy="93" r="4"/>' +
+                         '<path class="ln" d="M68 76 Q82 66 96 76 M104 76 Q118 66 132 76"/>' + nose + '<ellipse class="ln" cx="100" cy="124" rx="6" ry="5"/>';
+    case "relief": return closed + brows.replace(/74/g, "78") + nose + '<path class="ln" d="M94 122 Q100 118 106 122 Q100 128 94 122 Z"/><path class="ln" d="M112 120 q8 -2 12 2 M114 126 q8 0 12 4"/>';
+    case "rejuv": return open + nose + '<path class="ln" d="M84 118 Q100 134 116 118"/><circle class="ln" cx="70" cy="112" r="5"/><circle class="ln" cx="130" cy="112" r="5"/>';
+    case "wink": return '<ellipse class="solid" cx="82" cy="94" rx="5" ry="6"/><path class="ln" d="M108 94 Q118 100 128 94"/>' + nose + '<path class="ln" d="M86 120 Q100 130 114 120"/>';
+    case "peek": return '<ellipse class="solid" cx="82" cy="94" rx="6" ry="7"/><ellipse class="solid" cx="118" cy="94" rx="6" ry="7"/>';
+    default: return open + blink + nose + '<path class="ln" d="M90 122 Q100 126 110 122"/>';
+  }
+}
+function drawSun(el, kind) {
+  el.innerHTML = rays(kind === "rejuv") + '<circle class="disc" cx="100" cy="100" r="58"/>' + face(kind);
+}
+function sunSVG(kind, cls) {
+  return '<svg class="sun ' + (cls || "") + '" viewBox="0 0 200 200" aria-hidden="true">' + rays(kind === "rejuv") + '<circle class="disc" cx="100" cy="100" r="58"/>' + face(kind) + "</svg>";
+}
+document.querySelectorAll("svg.sun[data-face]").forEach(function (el) { drawSun(el, el.getAttribute("data-face")); });
+
+/* ---------- pick your mood ---------- */
+var movesEl = document.getElementById("moods");
+MOODS.forEach(function (m, i) {
+  var b = document.createElement("button");
+  b.type = "button";
+  b.className = "mood-card " + m.tex + (m.live ? "" : " later");
+  b.innerHTML = (m.live ? "" : '<span class="chip dash">Not in 4 Dec build</span>') + sunSVG(m.face, m.live ? "" : "asleep") +
+    "<h3>" + m.name + '</h3><span class="switch">' + m.sw + '</span><span class="go">Take me there →</span>';
+  b.addEventListener("click", function () { jumpTo(i); });
+  function showMood() { drawSun(document.getElementById("pick-sun"), m.face); document.getElementById("mood-say").textContent = m.name + ": " + m.sw; }
+  b.addEventListener("mouseenter", showMood); b.addEventListener("focus", showMood);
+  b.addEventListener("mouseleave", function () { drawSun(document.getElementById("pick-sun"), "hero"); document.getElementById("mood-say").textContent = "Hover a mood. The Sun shows it."; });
+  movesEl.appendChild(b);
+});
+
+/* ---------- mood track ---------- */
+var track = document.getElementById("track"), sec = document.getElementById("track-sec"), rail = document.getElementById("rail");
+track.style.setProperty("--n", MOODS.length);
+sec.style.height = (MOODS.length * 100 + 0) + "vh";
+MOODS.forEach(function (m, i) {
+  var s = document.createElement("article");
+  s.className = "slide mood-" + m.key + " " + m.tex + (m.live ? "" : " later");
+  s.id = "mood-" + m.key;
+  s.innerHTML =
+    '<div class="slide-top"><div>' +
+      '<span class="sec-label" style="margin-bottom:6px">04.' + (i + 1) + " / " + m.name + "</span>" +
+      '<h2 class="display name">' + m.name + "</h2>" +
+      '<p class="switchline">' + m.sw + '</p><p class="tag">' + m.tag + "</p>" +
+      (m.live ? "" : '<span class="later-flag">Storytelling only. Launches ' + m.when + ". Not in the 4 Dec build.</span>") +
+    "</div>" +
+    '<p class="note"><b>' + m.name.toUpperCase() + " WORLD</b> " + m.sun + " The whole slide takes this mood's colours and texture. Product: image for now, 3D file later; ← → switches product with a turn-and-slide.</p>" +
+    "</div>" +
+    sunSVG(m.face, "float-sun") +
+    '<div class="slide-body">' +
+      '<div class="prod-stage">' +
+        '<button class="arrow prev" type="button" aria-label="Previous product">←</button>' +
+        '<div class="ph"><span class="ph-label prod-img"></span></div>' +
+        '<button class="arrow next" type="button" aria-label="Next product">→</button>' +
+      "</div>" +
+      '<div class="prod-info">' +
+        '<div class="row"><span class="chip solid prod-status"></span><span class="slot-chip">Slot 3 · Offer tag</span><div class="dots"></div></div>' +
+        '<h3 class="prod-name"></h3><p class="line prod-line"></p><p class="desc prod-desc"></p>' +
+        '<div class="row">' + (m.live ? '<a class="btn shop" href="#" target="_blank" rel="noopener">Shop now →</a>' : '<span class="btn ghost" aria-disabled="true">Coming ' + m.when + '</span>') + '<span class="chip prod-count"></span></div>' +
+      "</div>" +
+    "</div>";
+  track.appendChild(s);
+
+  var idx = 0, dots = s.querySelector(".dots");
+  m.products.forEach(function () { dots.appendChild(document.createElement("i")); });
+  function show(k) {
+    idx = k;
+    var p = m.products[k];
+    s.querySelector(".prod-img").textContent = "Product image / 3D: " + p.n;
+    s.querySelector(".prod-name").textContent = p.n;
+    s.querySelector(".prod-line").textContent = p.l;
+    s.querySelector(".prod-desc").textContent = p.d;
+    s.querySelector(".prod-status").textContent = p.s;
+    s.querySelector(".prod-count").textContent = (k + 1) + " of " + m.products.length;
+    if (m.live) s.querySelector(".shop").href = SHOP + p.n.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
+    s.querySelector(".prev").disabled = k === 0;
+    s.querySelector(".next").disabled = k === m.products.length - 1;
+    Array.prototype.forEach.call(dots.children, function (d, j) { d.className = j === k ? "on" : ""; });
+  }
+  s.querySelector(".prev").addEventListener("click", function () { if (idx > 0) show(idx - 1); });
+  s.querySelector(".next").addEventListener("click", function () { if (idx < m.products.length - 1) show(idx + 1); });
+  show(0);
+
+  var rb = document.createElement("button");
+  rb.type = "button";
+  rb.innerHTML = sunSVG(m.face) + '<span class="lbl">' + m.name + "</span>";
+  rb.setAttribute("aria-label", m.name);
+  rb.addEventListener("click", function () { jumpTo(i); });
+  rail.appendChild(rb);
+});
+
+var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function trackRange() { return sec.offsetHeight - (window.innerHeight - 52); }
+function jumpTo(i) {
+  if (reduce) { document.getElementById("mood-" + MOODS[i].key).scrollIntoView(); return; }
+  var y = sec.getBoundingClientRect().top + window.scrollY - 52 + trackRange() * (i / (MOODS.length - 1));
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
+document.querySelectorAll("[data-jump]").forEach(function (a) {
+  a.addEventListener("click", function (e) { e.preventDefault(); jumpTo(+a.getAttribute("data-jump")); });
+});
+function onScroll() {
+  if (reduce) return;
+  var r = sec.getBoundingClientRect();
+  var p = Math.min(1, Math.max(0, (52 - r.top) / trackRange()));
+  track.style.transform = "translateX(" + (-p * (MOODS.length - 1) * window.innerWidth) + "px)";
+  var active = Math.round(p * (MOODS.length - 1));
+  Array.prototype.forEach.call(rail.children, function (b, j) { b.setAttribute("aria-current", String(j === active)); });
+  document.body.classList.toggle("in-track", r.top < 60 && r.bottom > window.innerHeight * .5);
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", onScroll);
+onScroll();
+
+/* ---------- draggable sun ---------- */
 (function () {
-  var body = document.body;
-  var toggle = document.getElementById('notes-toggle');
-  toggle.addEventListener('click', function () {
-    var off = body.classList.toggle('notes-off');
-    toggle.setAttribute('aria-pressed', String(!off));
-    toggle.textContent = off ? 'Notes: off' : 'Notes: on';
-    document.querySelectorAll('.note-svg').forEach(function (g) { g.style.display = off ? 'none' : ''; });
-  });
-
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sw = document.getElementById('switch');
-  var track = sw.querySelector('.switch-track');
-  var states = ['relax', 'reset', 'rejuv'];
-  var boxes = sw.querySelectorAll('.matchbox');
-  var ticks = sw.querySelectorAll('.progress i');
-  var current = -1;
-
-  function set(i) {
-    if (i === current) return;
-    current = i;
-    sw.setAttribute('data-state', states[i]);
-    boxes.forEach(function (b, n) { b.setAttribute('aria-pressed', String(n === i)); });
-    ticks.forEach(function (t, n) { t.classList.toggle('on', n === i); });
+  var stage = document.getElementById("sun-stage"), sun = document.getElementById("sun-3d");
+  var rx = 0, ry = 0, dragging = false, sx = 0, sy = 0, bx = 0, by = 0, t0 = performance.now();
+  stage.addEventListener("pointerdown", function (e) { dragging = true; sx = e.clientX; sy = e.clientY; bx = ry; by = rx; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener("pointermove", function (e) { if (!dragging) return; ry = bx + (e.clientX - sx) * .6; rx = Math.max(-40, Math.min(40, by - (e.clientY - sy) * .4)); });
+  function end() { dragging = false; }
+  stage.addEventListener("pointerup", end); stage.addEventListener("pointercancel", end);
+  function tick(t) {
+    if (!dragging) { ry *= .94; rx *= .94; }
+    var bob = reduce ? 0 : Math.sin((t - t0) / 900) * 8;
+    sun.style.transform = "translateY(" + bob + "px) rotateX(" + rx + "deg) rotateY(" + ry + "deg)";
+    requestAnimationFrame(tick);
   }
-  function update() {
-    var r = track.getBoundingClientRect();
-    var total = r.height - window.innerHeight;
-    if (total <= 0) return;
-    var bar = document.querySelector('.wf-bar').offsetHeight;
-    document.body.classList.toggle('in-switch', r.top <= bar + 1 && r.bottom >= window.innerHeight - 1);
-    var p = Math.min(1, Math.max(0, -r.top / total));
-    set(p < 1 / 3 ? 0 : p < 2 / 3 ? 1 : 2);
-  }
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  boxes.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var i = Number(b.getAttribute('data-go'));
-      var r = track.getBoundingClientRect();
-      var top = window.scrollY + r.top;
-      var total = r.height - window.innerHeight;
-      set(i);
-      window.scrollTo({ top: top + total * (i / 3 + 1 / 6), behavior: reduce ? 'auto' : 'smooth' });
-    });
-  });
-  update();
-
-  document.querySelectorAll('.packs').forEach(function (g) {
-    g.addEventListener('click', function (e) {
-      var btn = e.target.closest('button'); if (!btn) return;
-      g.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
-    });
-  });
-
-  document.querySelectorAll('[data-waitlist]').forEach(function (f) {
-    f.addEventListener('submit', function (e) {
-      e.preventDefault();
-      f.hidden = true;
-      f.nextElementSibling.hidden = false;
-    });
-  });
-
-  var filterBtns = document.querySelectorAll('.filters button');
-  var reviews = document.querySelectorAll('.review');
-  var empty = document.getElementById('no-reviews');
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var f = btn.getAttribute('data-filter');
-      filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
-      var shown = 0;
-      reviews.forEach(function (r) { var ok = f === 'all' || r.getAttribute('data-mood') === f; r.hidden = !ok; if (ok) shown++; });
-      empty.hidden = shown > 0;
-    });
-  });
+  requestAnimationFrame(tick);
 })();
+
+/* ---------- moments + filters ---------- */
+var grid = document.getElementById("moment-grid"), filt = document.getElementById("filters");
+MOMENTS.forEach(function (x) {
+  var c = document.createElement("div");
+  c.className = "moment"; c.dataset.mood = x.m;
+  c.innerHTML = '<div class="ph"><span class="ph-label">Photo / short clip</span></div><div class="txt"><span class="chip">' + (x.m === "relax" ? "Relax" : "Reset") + "</span><h3>" + x.t + "</h3><p>" + x.d + "</p></div>";
+  grid.appendChild(c);
+});
+["All", "Relax", "Reset"].forEach(function (f, i) {
+  var b = document.createElement("button");
+  b.type = "button"; b.textContent = f; b.setAttribute("aria-pressed", String(i === 0));
+  b.addEventListener("click", function () {
+    Array.prototype.forEach.call(filt.children, function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+    Array.prototype.forEach.call(grid.children, function (c) { c.hidden = f !== "All" && c.dataset.mood !== f.toLowerCase(); });
+  });
+  filt.appendChild(b);
+});
+
+/* ---------- reviews ---------- */
+var rv = document.getElementById("reviews");
+REVIEWS.forEach(function (r) {
+  var d = document.createElement("div"); d.className = "review";
+  d.innerHTML = "<span>★★★★★</span><p>“" + r[0] + "”</p><span class='who'>" + r[1] + " · Reset</span>";
+  rv.appendChild(d);
+});
+
+
+/* ---------- sun game ---------- */
+(function () {
+  var box = document.getElementById("game"), cv = document.getElementById("game-canvas"), ctx = cv.getContext("2d");
+  var over = document.getElementById("g-over"), title = document.getElementById("g-title"), sub = document.getElementById("g-sub");
+  var actions = document.getElementById("g-actions"), scoreEl = document.getElementById("g-score"), slowEl = document.getElementById("g-slow"), bestEl = document.getElementById("g-best");
+  var W = 0, H = 0, dpr = 1;
+  var MODES = { relax: { g: 1500, flap: -430, speed: 150, gap: 175, every: 2.0, tint: "#ECECE8" }, reset: { g: 1900, flap: -500, speed: 205, gap: 160, every: 1.55, tint: "#FFFFFF" } };
+  var mode = "reset", M = MODES[mode];
+  var NOISE = ["PING", "DEADLINE", "HONK", "47 TABS", "EMAIL", "TRAFFIC", "MEETING", "NOTIFS"];
+  var state = "ready", sun, pipes, items, t, spawnT, score, best = 0, slowT, visible = true, last = 0, raf = 0;
+
+  function size() {
+    var r = box.getBoundingClientRect(); dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (state !== "play") draw();
+  }
+  function reset() {
+    sun = { x: Math.max(80, W * 0.22), y: H * 0.45, vy: 0, r: 20 };
+    pipes = []; items = []; t = 0; spawnT = 0.6; score = 0; slowT = 0; scoreEl.textContent = "0"; slowEl.style.visibility = "hidden";
+  }
+  function start() { reset(); state = "play"; over.hidden = true; box.focus({ preventScroll: true }); flap(); last = performance.now(); loop(last); }
+  function flap() { if (state === "play") sun.vy = M.flap; }
+  function end() {
+    state = "over"; cancelAnimationFrame(raf);
+    if (score > best) { best = score; bestEl.textContent = best; }
+    title.textContent = "Score: " + score;
+    sub.textContent = score >= 10 ? "Calm under pressure. Need a reset anyway?" : "The city got loud. Need a reset?";
+    actions.innerHTML = '<a class="btn" href="#act-2">Shop now →</a><button class="btn ghost" type="button" id="g-again">Play again</button>';
+    document.getElementById("g-again").addEventListener("click", function (e) { e.stopPropagation(); start(); });
+    over.hidden = false;
+  }
+  function spawn() {
+    var margin = 50, gap = M.gap, gy = margin + Math.random() * (H - gap - margin * 2);
+    var w = 64, x = W + 20;
+    pipes.push({ x: x, w: w, top: gy, bot: gy + gap, label: NOISE[(Math.random() * NOISE.length) | 0], passed: false });
+    var roll = Math.random();
+    if (roll < 0.45) items.push({ kind: "herb", x: x + w / 2, y: gy + gap / 2, r: 11, got: false });
+    else if (roll < 0.55) items.push({ kind: "jar", x: x + w / 2, y: gy + gap / 2, r: 13, got: false });
+  }
+  function hit(p) {
+    var cx = Math.max(p.x, Math.min(sun.x, p.x + p.w));
+    if (Math.abs(cx - sun.x) > sun.r - 3) return false;
+    return sun.y - sun.r + 4 < p.top || sun.y + sun.r - 4 > p.bot;
+  }
+  function step(dt) {
+    var slow = slowT > 0 ? 0.55 : 1; if (slowT > 0) { slowT -= dt; if (slowT <= 0) slowEl.style.visibility = "hidden"; }
+    var sp = (M.speed + Math.min(90, score * 3)) * slow;
+    t += dt; spawnT -= dt * slow; if (spawnT <= 0) { spawn(); spawnT = M.every; }
+    sun.vy += M.g * dt * slow; sun.y += sun.vy * dt * slow;
+    pipes.forEach(function (p) { p.x -= sp * dt; if (!p.passed && p.x + p.w < sun.x - sun.r) { p.passed = true; score += 1; scoreEl.textContent = score; } });
+    items.forEach(function (it) {
+      it.x -= sp * dt;
+      if (!it.got && Math.hypot(it.x - sun.x, it.y - sun.y) < it.r + sun.r) {
+        it.got = true;
+        if (it.kind === "herb") { score += 2; scoreEl.textContent = score; } else { slowT = 4; slowEl.style.visibility = "visible"; }
+      }
+    });
+    pipes = pipes.filter(function (p) { return p.x + p.w > -10; }); items = items.filter(function (i) { return i.x > -20 && !i.got; });
+    if (sun.y + sun.r > H - 6 || sun.y - sun.r < -40) return end();
+    for (var i = 0; i < pipes.length; i++) if (hit(pipes[i])) return end();
+  }
+  function drawSunAt(x, y, r, tilt, blink) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(tilt);
+    ctx.lineWidth = 2; ctx.strokeStyle = "#151515"; ctx.fillStyle = "#F4F4F1";
+    for (var i = 0; i < 12; i++) { ctx.save(); ctx.rotate(i * Math.PI / 6 + t * (mode === "relax" ? 0.6 : 1.4)); ctx.beginPath(); ctx.moveTo(-r * 0.22, -r * 0.95); ctx.lineTo(0, -r * (i % 2 ? 1.4 : 1.6)); ctx.lineTo(r * 0.22, -r * 0.95); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore(); }
+    ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = "#151515";
+    if (blink) { ctx.beginPath(); ctx.moveTo(-r * .45, -r * .1); ctx.quadraticCurveTo(-r * .28, r * .05, -r * .1, -r * .1); ctx.moveTo(r * .1, -r * .1); ctx.quadraticCurveTo(r * .28, r * .05, r * .45, -r * .1); ctx.stroke(); }
+    else { ctx.beginPath(); ctx.ellipse(-r * .28, -r * .12, r * .1, r * .13, 0, 0, Math.PI * 2); ctx.ellipse(r * .28, -r * .12, r * .1, r * .13, 0, 0, Math.PI * 2); ctx.fill(); }
+    ctx.beginPath(); ctx.arc(0, r * .3, r * .22, 0.15 * Math.PI, 0.85 * Math.PI); ctx.stroke();
+    ctx.restore();
+  }
+  function draw() {
+    ctx.fillStyle = M.tint; ctx.fillRect(0, 0, W, H);
+    // ground hatch
+    ctx.strokeStyle = "#C4C3BD"; ctx.lineWidth = 1;
+    for (var gx = -((t * 60) % 24); gx < W; gx += 24) { ctx.beginPath(); ctx.moveTo(gx, H); ctx.lineTo(gx + 12, H - 8); ctx.stroke(); }
+    // pipes = columns of city noise
+    (pipes || []).forEach(function (p) {
+      ctx.fillStyle = "#E4E3DE"; ctx.strokeStyle = "#151515"; ctx.lineWidth = 2;
+      ctx.fillRect(p.x, -2, p.w, p.top + 2); ctx.strokeRect(p.x, -2, p.w, p.top + 2);
+      ctx.fillRect(p.x, p.bot, p.w, H - p.bot + 2); ctx.strokeRect(p.x, p.bot, p.w, H - p.bot + 2);
+      ctx.save(); ctx.fillStyle = "#151515"; ctx.font = "800 14px 'Big Shoulders Display', Impact, sans-serif"; ctx.textAlign = "center";
+      ctx.translate(p.x + p.w / 2, p.top - 14); ctx.fillText(p.label, 0, 0); ctx.restore();
+      ctx.save(); ctx.fillStyle = "#151515"; ctx.font = "800 14px 'Big Shoulders Display', Impact, sans-serif"; ctx.textAlign = "center";
+      ctx.fillText(p.label, p.x + p.w / 2, p.bot + 22); ctx.restore();
+    });
+    (items || []).forEach(function (it) {
+      ctx.save(); ctx.translate(it.x, it.y); ctx.strokeStyle = "#151515"; ctx.lineWidth = 2;
+      if (it.kind === "herb") { ctx.rotate(Math.sin(t * 4) * .3); ctx.fillStyle = "#F4F4F1"; ctx.beginPath(); ctx.ellipse(0, 0, it.r * .55, it.r, 0.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); ctx.beginPath(); ctx.moveTo(-it.r * .4, it.r * .6); ctx.lineTo(it.r * .4, -it.r * .6); ctx.stroke(); }
+      else { ctx.fillStyle = "#151515"; ctx.fillRect(-it.r * .8, -it.r, it.r * 1.6, it.r * .5); ctx.fillStyle = "#F4F4F1"; ctx.fillRect(-it.r * .8, -it.r * .5, it.r * 1.6, it.r * 1.5); ctx.strokeRect(-it.r * .8, -it.r, it.r * 1.6, it.r * 2); }
+      ctx.restore();
+    });
+    if (sun) drawSunAt(sun.x, sun.y, sun.r, Math.max(-0.5, Math.min(0.7, sun.vy / 900)), state === "play" && (t % 3.2) > 3.05);
+    else drawSunAt(W * 0.22, H * 0.45, 20, 0, false);
+  }
+  function loop(now) {
+    if (state !== "play") return;
+    var dt = Math.min(0.033, (now - last) / 1000); last = now;
+    if (visible) { step(dt); draw(); }
+    if (state === "play") raf = requestAnimationFrame(loop);
+  }
+  function press(e) {
+    if (e && e.target && e.target.closest && e.target.closest("a,button")) return;
+    if (state === "play") flap(); else start();
+  }
+  box.addEventListener("pointerdown", function (e) { e.preventDefault(); press(e); });
+  box.addEventListener("keydown", function (e) { if (e.code === "Space" || e.code === "ArrowUp" || e.key === " ") { e.preventDefault(); press(); } });
+  document.getElementById("g-play").addEventListener("click", function (e) { e.stopPropagation(); start(); });
+  document.getElementById("g-mood").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    mode = b.dataset.m; M = MODES[mode];
+    Array.prototype.forEach.call(this.children, function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+    if (state !== "play") draw();
+  });
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible && state === "play") last = performance.now(); }).observe(box);
+  window.addEventListener("resize", size);
+  reset(); size();
+})();
+
+/* ---------- notes toggle ---------- */
+document.getElementById("notes-toggle").addEventListener("click", function () {
+  var off = document.body.classList.toggle("notes-off");
+  this.setAttribute("aria-pressed", String(!off));
+  this.textContent = off ? "Notes: off" : "Notes: on";
+});
 </script>
 </body>
 </html>
