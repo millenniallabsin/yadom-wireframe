@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Yadom Life · Homepage (hi-fi preview)</title>
+<meta name="description" content="One sun. Pick your mood. Herbal pocket rituals, made in India.">
+<link rel="preload" href="assets/fonts/BackyardBlack.ttf" as="font" type="font/ttf" crossorigin>
+<style>
+@font-face { font-family: "Backyard"; src: url("assets/fonts/BackyardBlack.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Shobhika"; src: url("assets/fonts/Shobhika-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Shobhika"; src: url("assets/fonts/Shobhika-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Shoulders"; src: url("assets/fonts/big-shoulders-display-latin-800-normal.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Shoulders"; src: url("assets/fonts/big-shoulders-display-latin-900-normal.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+
+:root {
+  --yellow: #F5B81A; --orange: #F08A1D; --red: #C8392E; --green: #1E7A3C; --olive: #A89A2E;
+  --lime: #8BD13B; --ink: #0E0D0B; --white: #F1EFE8; --cream: #F4E9CE;
+  --display: "Backyard", "Times New Roman", serif;
+  --util: "Shoulders", "Arial Narrow", Impact, sans-serif;
+  --body: "Shobhika", Georgia, serif;
+  --ann: 38px; --nav: 72px;
+  /* active mood (Reset = default brand look) */
+  --m-bg: var(--yellow); --m-fg: var(--ink); --m-acc: var(--red); --m-soft: #FFD25A;
+}
+body[data-mood="relax"] { --m-bg: var(--green); --m-fg: var(--cream); --m-acc: var(--yellow); --m-soft: #2D8F4D; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.5; overflow-x: hidden; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-weight: 400; text-wrap: balance; }
+a { color: inherit; }
+img, video { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.wrap { width: min(1240px, 100% - 48px); margin: 0 auto; }
+.util { font-family: var(--util); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+.eyebrow { font-family: var(--util); font-weight: 800; font-size: 15px; letter-spacing: .16em; text-transform: uppercase; }
+
+/* buttons */
+.btn { --b-bg: var(--red); --b-fg: var(--cream); display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--util); font-weight: 900; font-size: 19px; letter-spacing: .05em; text-transform: uppercase; text-decoration: none; color: var(--b-fg); background: var(--b-bg); border: 3px solid var(--ink); border-radius: 999px; padding: 12px 28px; box-shadow: 5px 5px 0 var(--ink); cursor: pointer; transition: transform .18s ease, box-shadow .18s ease; white-space: nowrap; }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
+.btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+.btn.yellow { --b-bg: var(--yellow); --b-fg: var(--ink); }
+.btn.cream { --b-bg: var(--cream); --b-fg: var(--ink); }
+.btn.ghost { --b-bg: transparent; --b-fg: inherit; box-shadow: none; }
+.btn.ghost:hover { box-shadow: none; transform: none; text-decoration: underline; }
+.btn[aria-disabled="true"] { --b-bg: transparent; --b-fg: inherit; box-shadow: none; border-style: dashed; cursor: default; opacity: .85; }
+.btn[aria-disabled="true"]:hover { transform: none; }
+
+/* ============ SLOT 1 · announcement bar ============ */
+.ann { position: relative; z-index: 70; height: var(--ann); background: var(--ink); color: var(--yellow); overflow: hidden; display: flex; align-items: center; }
+.ann-track { display: flex; width: max-content; animation: run 34s linear infinite; }
+.ann-track span { font-family: var(--util); font-weight: 800; font-size: 15px; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; padding-right: 22px; }
+.ann-track b { color: var(--cream); font-weight: 800; padding: 0 22px 0 0; }
+@keyframes run { to { transform: translateX(-50%); } }
+
+/* ============ nav ============ */
+.nav { position: sticky; top: 0; z-index: 65; height: var(--nav); display: flex; align-items: center; gap: 28px; padding: 0 28px; background: transparent; transition: background .3s ease, box-shadow .3s ease; margin-bottom: calc(var(--nav) * -1); }
+.nav.solid { background: var(--m-bg); box-shadow: 0 3px 0 var(--ink); color: var(--m-fg); }
+.nav .logo img { height: 38px; width: auto; }
+.nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+.nav ul a { font-family: var(--util); font-weight: 800; font-size: 19px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; }
+.nav ul a:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 3px; }
+.nav .right { margin-left: auto; display: flex; gap: 12px; align-items: center; }
+.nav .btn { padding: 8px 20px; font-size: 17px; box-shadow: 3px 3px 0 var(--ink); }
+.cart { position: relative; width: 46px; height: 46px; border-radius: 50%; border: 3px solid var(--ink); background: var(--cream); display: grid; place-items: center; text-decoration: none; color: var(--ink); }
+.cart i { position: absolute; top: -6px; right: -6px; min-width: 22px; height: 22px; border-radius: 11px; background: var(--red); color: var(--cream); font-style: normal; font-family: var(--util); font-weight: 900; font-size: 13px; display: grid; place-items: center; border: 2px solid var(--ink); }
+.menu-btn { display: none; }
+.nav:not(.solid) ul a { color: var(--ink); }
+
+/* ============ hero ============ */
+.hero { position: relative; height: 100svh; min-height: 560px; overflow: hidden; background: var(--yellow); }
+.hero video, .hero .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.scroll-cue { position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%); z-index: 2; display: flex; align-items: center; gap: 14px; font-family: var(--display); font-size: clamp(30px, 4.6vw, 52px); color: var(--cream); text-shadow: 0 3px 12px rgba(0,0,0,.65); text-decoration: none; white-space: nowrap; }
+.scroll-cue span { display: inline-block; animation: bob 1.6s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(8px); } }
+
+/* ============ SLOT 2 · spotlight ============ */
+.spot { position: relative; background: var(--green); color: var(--cream); border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); overflow: hidden; }
+.spot::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(244,233,206,.10) 1.4px, transparent 1.5px); background-size: 22px 22px; pointer-events: none; }
+.spot-grid { position: relative; display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 56px; padding: 88px 0 92px; }
+.spot-visual { position: relative; aspect-ratio: 4 / 4.2; border: 4px solid var(--ink); border-radius: 26px; background: radial-gradient(circle at 50% 42%, #F7E6B5 0, #E9C873 46%, #C99A33 100%); box-shadow: 10px 10px 0 var(--ink); display: grid; place-items: center; overflow: hidden; }
+.spot-visual .sunbg { position: absolute; width: 112%; opacity: .2; animation: spin 90s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.spot-visual .cloud { position: absolute; width: 46%; opacity: .95; filter: drop-shadow(0 4px 0 rgba(14,13,11,.15)); }
+.spot-visual .cloud.c1 { left: -6%; top: 14%; animation: drift 14s ease-in-out infinite; }
+.spot-visual .cloud.c2 { right: -8%; bottom: 18%; animation: drift 17s ease-in-out infinite reverse; }
+@keyframes drift { 50% { transform: translateX(26px); } }
+.ph-pack { position: relative; z-index: 2; width: 46%; aspect-ratio: 1 / 2; border: 3px dashed var(--ink); border-radius: 40px 40px 26px 26px; background: rgba(244,233,206,.55); display: grid; place-items: center; text-align: center; padding: 16px; font-family: var(--util); font-weight: 800; font-size: 15px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+.ph-pack small { display: block; font-family: var(--body); font-size: 14px; letter-spacing: 0; text-transform: none; font-weight: 400; margin-top: 6px; }
+.corner { position: absolute; width: 22%; z-index: 3; pointer-events: none; }
+.corner.tl { top: 0; left: 0; } .corner.tr { top: 0; right: 0; transform: scaleX(-1); }
+.corner.bl { bottom: 0; left: 0; transform: scaleY(-1); } .corner.br { bottom: 0; right: 0; transform: scale(-1, -1); }
+.tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--util); font-weight: 900; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; background: var(--yellow); color: var(--ink); border: 3px solid var(--ink); border-radius: 999px; padding: 4px 14px; }
+.tag.red { background: var(--red); color: var(--cream); }
+.spot h2 { font-family: var(--display); font-size: clamp(54px, 7.2vw, 110px); line-height: .92; margin: 22px 0 18px; color: var(--cream); }
+.spot h2 em { font-style: normal; color: var(--yellow); display: block; }
+.spot .line { font-family: var(--util); font-weight: 900; font-size: clamp(26px, 2.8vw, 38px); text-transform: uppercase; letter-spacing: .02em; color: var(--yellow); }
+.spot .copy { font-size: 20px; max-width: 42ch; margin-top: 14px; color: rgba(244,233,206,.92); }
+.spot .ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 30px; align-items: center; }
+.spot .ctas .btn.ghost { color: var(--cream); border-color: var(--cream); }
+.spot .date { margin-top: 22px; font-family: var(--util); font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: 14px; color: rgba(244,233,206,.75); }
+
+/* marquee */
+.strip { background: var(--red); color: var(--yellow); border-bottom: 4px solid var(--ink); overflow: hidden; padding: 14px 0; }
+.strip .ann-track { animation-duration: 40s; }
+.strip .ann-track span { font-family: var(--util); font-weight: 900; font-size: clamp(26px, 3.2vw, 40px); letter-spacing: .03em; padding-right: 34px; }
+.strip .ann-track b { color: var(--cream); padding-right: 34px; }
+
+/* ============ pick your mood ============ */
+.pick { position: relative; background: var(--m-bg); color: var(--m-fg); padding: 104px 0 110px; transition: background .5s ease, color .5s ease; overflow: hidden; }
+.pick::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(color-mix(in srgb, var(--m-fg) 12%, transparent) 1.4px, transparent 1.5px); background-size: 24px 24px; pointer-events: none; }
+.pick-top { position: relative; display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; }
+.pick h2 { font-family: var(--display); font-size: clamp(70px, 10.5vw, 160px); line-height: .86; color: var(--m-acc); margin-top: 16px; text-shadow: 4px 4px 0 var(--ink); transition: color .5s ease; }
+body[data-mood="relax"] .pick h2 { text-shadow: 4px 4px 0 var(--ink); }
+.pick .lead { font-size: 21px; max-width: 36ch; margin-top: 38px; }
+.mood-say { margin-top: 20px; font-family: var(--util); font-weight: 900; font-size: 22px; letter-spacing: .06em; text-transform: uppercase; min-height: 1.4em; }
+.sun-stage { position: relative; width: min(100%, 460px); aspect-ratio: 1; justify-self: end; perspective: 1000px; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.sun-stage:active { cursor: grabbing; }
+.sun-glow { position: absolute; inset: 12%; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--m-soft) 85%, white) 0, transparent 70%); filter: blur(6px); }
+.sun-3d { position: absolute; inset: 0; transform-style: preserve-3d; }
+.sun-3d img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(6px 8px 0 rgba(14,13,11,.22)); transition: filter .4s ease; }
+.sun-3d.m-relax img { animation: spin 40s linear infinite; filter: drop-shadow(6px 8px 0 rgba(14,13,11,.2)) sepia(.25) saturate(.8); }
+.sun-3d.m-reset img { animation: zap .5s steps(2) infinite; }
+@keyframes zap { 50% { transform: rotate(4deg) scale(1.03); } }
+.drag-hint { position: absolute; left: 50%; bottom: -4px; transform: translateX(-50%); font-family: var(--util); font-weight: 800; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; background: var(--ink); color: var(--cream); border-radius: 999px; padding: 5px 14px; white-space: nowrap; }
+.moods { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; margin-top: 56px; }
+.mood-card { --c-bg: var(--yellow); --c-fg: var(--ink); --c-acc: var(--red); position: relative; display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 24px; text-align: left; background: var(--c-bg); color: var(--c-fg); border: 4px solid var(--ink); border-radius: 26px; padding: 24px 26px; box-shadow: 8px 8px 0 var(--ink); cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; overflow: hidden; }
+.mood-card:hover { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--ink); }
+.mood-card[data-k="relax"] { --c-bg: var(--green); --c-fg: var(--cream); --c-acc: var(--yellow); }
+.mood-card .disc { width: 150px; aspect-ratio: 1; border-radius: 50%; border: 4px solid var(--ink); background: var(--cream); display: grid; place-items: center; overflow: hidden; }
+.mood-card .disc img { width: 120%; max-width: none; transition: transform .6s ease; }
+.mood-card[data-k="relax"]:hover .disc img { transform: rotate(-30deg) scale(1.04); }
+.mood-card[data-k="reset"]:hover .disc img { animation: zap .35s steps(2) infinite; }
+.mood-card h3 { font-family: var(--display); font-size: clamp(54px, 5.6vw, 80px); line-height: .9; color: var(--c-acc); text-shadow: 3px 3px 0 var(--ink); }
+.mood-card .sw { font-family: var(--util); font-weight: 900; font-size: 26px; text-transform: uppercase; letter-spacing: .02em; margin-top: 6px; }
+.mood-card .go { display: inline-block; margin-top: 12px; font-family: var(--util); font-weight: 800; font-size: 16px; letter-spacing: .12em; text-transform: uppercase; border-bottom: 3px solid currentColor; }
+.mood-card .tag { position: absolute; top: 16px; right: 16px; }
+
+/* ============ mood track ============ */
+.track-sec { position: relative; background: var(--ink); }
+.track-sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.track { display: flex; height: 100%; width: calc(var(--n) * 100vw); will-change: transform; }
+.slide { --s-bg: var(--yellow); --s-fg: var(--ink); --s-acc: var(--red); --s-card: var(--cream); position: relative; flex: 0 0 100vw; width: 100vw; height: 100%; background: var(--s-bg); color: var(--s-fg); overflow: hidden; display: grid; grid-template-rows: auto 1fr; padding: calc(var(--nav) + 18px) 56px 92px; border-right: 4px solid var(--ink); }
+.slide.relax { --s-bg: var(--green); --s-fg: var(--cream); --s-acc: var(--yellow); --s-card: #F4E9CE; }
+.slide::before { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.slide.reset::before { background: repeating-linear-gradient(-32deg, transparent 0 34px, rgba(14,13,11,.06) 34px 37px); }
+.slide.relax::before { background: radial-gradient(ellipse at 20% 120%, rgba(244,233,206,.18), transparent 55%), radial-gradient(rgba(244,233,206,.08) 1.4px, transparent 1.5px); background-size: auto, 26px 26px; }
+.slide .bg-cloud { position: absolute; opacity: .9; width: 360px; animation: drift 18s ease-in-out infinite; pointer-events: none; }
+.slide .bg-herb { position: absolute; width: 120px; opacity: .95; pointer-events: none; animation: floaty 7s ease-in-out infinite; }
+@keyframes floaty { 50% { transform: translateY(-14px) rotate(6deg); } }
+.slide-head { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.slide-head .name { font-family: var(--display); font-size: clamp(84px, 12vw, 190px); line-height: .82; color: var(--s-acc); text-shadow: 5px 5px 0 var(--ink); }
+.slide-head .sw { font-family: var(--util); font-weight: 900; font-size: clamp(26px, 2.8vw, 40px); text-transform: uppercase; margin-top: 12px; }
+.slide-head .tagline { font-size: 20px; margin-top: 4px; opacity: .9; }
+.float-sun { position: absolute; right: 4%; top: calc(var(--nav) + 6px); width: clamp(160px, 19vw, 280px); z-index: 1; pointer-events: none; }
+.slide.relax .float-sun { animation: spin 50s linear infinite; }
+.slide.reset .float-sun { animation: jitter 2.4s steps(2) infinite; }
+@keyframes jitter { 50% { transform: translate(3px, -5px) rotate(-3deg); } }
+.slide-body { position: relative; z-index: 2; display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; min-height: 0; }
+.stage { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; height: 100%; max-height: 56vh; min-height: 0; }
+.stage .shot { position: relative; height: 100%; min-height: 0; display: grid; place-items: center; }
+.stage .shot::before { content: ""; position: absolute; width: 74%; aspect-ratio: 1; border-radius: 50%; background: color-mix(in srgb, var(--s-card) 30%, transparent); border: 4px solid var(--ink); }
+.stage .shot img { position: relative; height: 100%; max-height: 52vh; width: auto; object-fit: contain; filter: drop-shadow(10px 14px 0 rgba(14,13,11,.28)); transition: transform .5s cubic-bezier(.2,.9,.3,1.2), opacity .3s ease; }
+.stage .shot .ph-pack { width: auto; height: 78%; max-height: 46vh; }
+.stage .shot.out img, .stage .shot.out .ph-pack { transform: translateX(-40px) rotate(-10deg); opacity: 0; }
+.arrow { width: 58px; height: 58px; border-radius: 50%; border: 4px solid var(--ink); background: var(--s-card); color: var(--ink); font-family: var(--util); font-weight: 900; font-size: 28px; cursor: pointer; display: grid; place-items: center; box-shadow: 4px 4px 0 var(--ink); }
+.arrow:disabled { opacity: .35; cursor: default; box-shadow: none; }
+.info { background: var(--s-card); color: var(--ink); border: 4px solid var(--ink); border-radius: 26px; padding: 28px 30px; box-shadow: 10px 10px 0 var(--ink); display: grid; gap: 12px; }
+.info .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.info h3 { font-family: var(--display); font-size: clamp(38px, 3.6vw, 56px); line-height: .95; }
+.info .line { font-family: var(--util); font-weight: 900; font-size: 23px; text-transform: uppercase; color: var(--red); }
+.slide.relax .info .line { color: var(--green); }
+.info .desc { font-size: 18px; }
+.info .price { font-family: var(--util); font-weight: 900; font-size: 30px; }
+.info .price s { font-weight: 800; font-size: 20px; opacity: .55; margin-left: 6px; }
+.dots { display: flex; gap: 7px; margin-left: auto; }
+.dots i { width: 11px; height: 11px; border-radius: 50%; border: 2.5px solid var(--ink); }
+.dots i.on { background: var(--ink); }
+.status { font-family: var(--util); font-weight: 900; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; background: var(--ink); color: var(--cream); border-radius: 999px; padding: 4px 12px; }
+.offer { font-family: var(--util); font-weight: 900; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; background: var(--red); color: var(--cream); border: 2px solid var(--ink); border-radius: 999px; padding: 3px 11px; }
+.offer.new { background: var(--yellow); color: var(--ink); }
+.rail { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 6; display: flex; gap: 6px; background: var(--cream); border: 4px solid var(--ink); border-radius: 999px; padding: 6px; box-shadow: 5px 5px 0 var(--ink); }
+.rail button { border: 0; background: transparent; border-radius: 999px; padding: 6px 16px 6px 8px; font-family: var(--util); font-weight: 900; font-size: 18px; letter-spacing: .05em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+.rail button img { width: 30px; height: 30px; }
+.rail button[aria-current="true"] { background: var(--ink); color: var(--cream); }
+.rail button[aria-current="true"] img { filter: invert(1); }
+
+/* ============ moments ============ */
+.moments-sec { padding: 110px 0 100px; background: var(--cream); }
+.sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
+.sec-head h2 { font-family: var(--display); font-size: clamp(60px, 8.4vw, 128px); line-height: .88; color: var(--red); text-shadow: 4px 4px 0 var(--ink); margin-top: 10px; }
+.filters { display: flex; gap: 10px; flex-wrap: wrap; }
+.filters button { border: 3px solid var(--ink); background: var(--cream); border-radius: 999px; padding: 7px 20px; font-family: var(--util); font-weight: 900; font-size: 18px; letter-spacing: .05em; text-transform: uppercase; cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--cream); }
+.mgrid { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(270px, 1fr); gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 10px 24px 6px; scrollbar-width: thin; }
+.moment { scroll-snap-align: start; position: relative; border: 4px solid var(--ink); border-radius: 24px; overflow: hidden; background: var(--ink); color: var(--cream); aspect-ratio: 9 / 14; box-shadow: 7px 7px 0 var(--ink); }
+.moment img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.moment:hover img { transform: scale(1.05); }
+.moment .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 70px 18px 18px; background: linear-gradient(transparent, rgba(14,13,11,.92)); }
+.moment .cap .tag { font-size: 12px; padding: 2px 10px; border-width: 2px; }
+.moment h3 { font-family: var(--util); font-weight: 900; font-size: 30px; text-transform: uppercase; line-height: 1; margin-top: 10px; }
+.moment p { font-size: 16px; line-height: 1.35; margin-top: 6px; opacity: .92; }
+.moment.soon { background: var(--green); display: grid; place-items: center; text-align: center; padding: 24px; }
+.moment.soon img { position: absolute; width: 70%; height: auto; opacity: .18; animation: spin 60s linear infinite; }
+.moment.soon div { position: relative; }
+.moment.soon h3 { color: var(--yellow); }
+.moment[hidden] { display: none; }
+
+/* ============ reviews ============ */
+.reviews-sec { padding: 104px 0; background: var(--yellow); border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); position: relative; overflow: hidden; }
+.reviews-sec::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(14,13,11,.1) 1.4px, transparent 1.5px); background-size: 24px 24px; }
+.rating { display: flex; align-items: center; gap: 16px; font-family: var(--util); font-weight: 900; text-transform: uppercase; }
+.rating .big { font-size: 64px; line-height: 1; }
+.rating .stars { color: var(--red); font-size: 30px; letter-spacing: 2px; -webkit-text-stroke: 1.5px var(--ink); }
+.rating small { display: block; font-size: 17px; letter-spacing: .08em; }
+.rgrid { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.review { background: var(--cream); border: 4px solid var(--ink); border-radius: 22px; padding: 24px; box-shadow: 7px 7px 0 var(--ink); display: grid; gap: 12px; align-content: start; }
+.review:nth-child(3n+2) { transform: rotate(-1deg); } .review:nth-child(3n) { transform: rotate(.8deg); }
+.review .stars { color: var(--red); font-size: 22px; letter-spacing: 2px; -webkit-text-stroke: 1px var(--ink); }
+.review p { font-size: 19px; line-height: 1.45; }
+.review .who { font-family: var(--util); font-weight: 900; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.review .who .tag { font-size: 11px; padding: 1px 9px; border-width: 2px; }
+.verified { font-size: 12px; letter-spacing: .1em; opacity: .7; }
+
+/* ============ SLOT 4 · promo strip ============ */
+.promo { padding: 64px 0; background: var(--cream); }
+.promo-card { position: relative; display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; background: var(--ink); color: var(--cream); border-radius: 30px; padding: 44px 48px; overflow: hidden; }
+.promo-card img.sun { position: absolute; right: -90px; top: -90px; width: 300px; filter: invert(1); opacity: .12; animation: spin 70s linear infinite; }
+.promo-card h3 { font-family: var(--display); font-size: clamp(40px, 4.6vw, 66px); line-height: .92; color: var(--yellow); }
+.promo-card p { margin-top: 10px; font-size: 19px; opacity: .9; }
+.promo-card > * { min-width: 0; }
+.promo-form { position: relative; display: flex; gap: 10px; min-width: 0; }
+.promo-form input { flex: 1; min-width: 0; font: inherit; font-size: 18px; padding: 13px 20px; border-radius: 999px; border: 3px solid var(--cream); background: transparent; color: var(--cream); }
+.promo-form input::placeholder { color: rgba(244,233,206,.6); }
+
+/* ============ instagram ============ */
+.ig-sec { padding: 104px 0 110px; background: var(--cream); }
+.ig-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.ig-tile { position: relative; border: 4px solid var(--ink); border-radius: 22px; overflow: hidden; aspect-ratio: 9 / 16; background: var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+.ig-tile video, .ig-tile img { width: 100%; height: 100%; object-fit: cover; }
+.ig-tile .badge { position: absolute; top: 12px; left: 12px; font-family: var(--util); font-weight: 900; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; background: var(--cream); border: 2px solid var(--ink); border-radius: 999px; padding: 2px 10px; }
+
+/* ============ game ============ */
+.game-sec { position: relative; padding: 104px 0 120px; background: var(--m-bg); color: var(--m-fg); border-top: 4px solid var(--ink); transition: background .5s ease, color .5s ease; overflow: hidden; }
+.game-sec .sec-head h2 { color: var(--m-acc); }
+.game-grid { display: grid; grid-template-columns: 1fr 320px; gap: 28px; align-items: stretch; }
+.game { position: relative; height: 500px; border: 4px solid var(--ink); border-radius: 28px; overflow: hidden; box-shadow: 10px 10px 0 var(--ink); cursor: pointer; outline: none; touch-action: manipulation; user-select: none; -webkit-user-select: none; background: var(--cream); }
+.game:focus-visible { box-shadow: 10px 10px 0 var(--ink), 0 0 0 4px var(--m-fg); }
+.game canvas { display: block; width: 100%; height: 100%; }
+.hud { position: absolute; top: 16px; left: 20px; right: 20px; display: flex; justify-content: space-between; align-items: center; pointer-events: none; }
+.hud .score { font-family: var(--util); font-weight: 900; font-size: 58px; line-height: 1; color: var(--cream); -webkit-text-stroke: 2.5px var(--ink); paint-order: stroke fill; }
+.hud .slow { font-family: var(--util); font-weight: 900; font-size: 15px; letter-spacing: .1em; text-transform: uppercase; background: var(--ink); color: var(--yellow); border-radius: 999px; padding: 5px 14px; visibility: hidden; }
+.g-over { position: absolute; inset: 0; z-index: 3; display: grid; place-items: center; text-align: center; padding: 24px; background: color-mix(in srgb, var(--cream) 84%, transparent); color: var(--ink); backdrop-filter: blur(2px); }
+.g-over[hidden] { display: none; }
+.g-over .card { display: grid; justify-items: center; gap: 12px; }
+.g-over img { width: 120px; animation: floaty 3s ease-in-out infinite; }
+.g-over h3 { font-family: var(--display); font-size: clamp(46px, 5.6vw, 78px); line-height: .9; color: var(--red); text-shadow: 3px 3px 0 var(--ink); }
+.g-over p { font-size: 20px; }
+.num { font-family: var(--util); font-weight: 900; }
+.g-over .row { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+.g-side { background: var(--cream); color: var(--ink); border: 4px solid var(--ink); border-radius: 28px; padding: 24px; box-shadow: 10px 10px 0 var(--ink); display: grid; gap: 20px; align-content: start; }
+.g-side h4 { margin: 0 0 8px; font-family: var(--util); font-weight: 900; font-size: 16px; letter-spacing: .12em; text-transform: uppercase; }
+.g-side ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 17px; }
+.g-side li { display: flex; gap: 12px; align-items: center; }
+.g-side li img { width: 44px; height: 34px; object-fit: contain; }
+.mtog { display: flex; gap: 8px; }
+.mtog button { flex: 1; border: 3px solid var(--ink); background: var(--cream); border-radius: 999px; padding: 8px 10px; font-family: var(--util); font-weight: 900; font-size: 18px; text-transform: uppercase; cursor: pointer; }
+.mtog button[aria-pressed="true"] { background: var(--ink); color: var(--cream); }
+.best { font-family: var(--util); font-weight: 900; font-size: 52px; line-height: 1; color: var(--red); }
+
+/* ============ footer ============ */
+.foot { background: var(--ink); color: var(--cream); padding: 96px 0 36px; position: relative; overflow: hidden; }
+.foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1.2fr 1.3fr; gap: 40px; }
+.foot .logo img { height: 46px; width: auto; }
+.foot .bye { font-family: var(--display); font-size: clamp(40px, 4.4vw, 64px); line-height: .92; color: var(--yellow); margin-top: 22px; }
+.foot h4 { margin: 0 0 16px; font-family: var(--util); font-weight: 900; font-size: 18px; letter-spacing: .08em; text-transform: uppercase; color: var(--yellow); }
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 17px; }
+.foot ul a { text-decoration: none; opacity: .85; } .foot ul a:hover { opacity: 1; text-decoration: underline; }
+.foot address { font-style: normal; font-size: 16px; line-height: 1.6; opacity: .85; }
+.foot .wink { position: absolute; right: -120px; bottom: -150px; width: 440px; filter: invert(1); opacity: .08; }
+.foot-bottom { margin-top: 64px; padding-top: 24px; border-top: 2px solid rgba(244,233,206,.2); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-family: var(--util); font-weight: 800; font-size: 15px; letter-spacing: .1em; text-transform: uppercase; opacity: .75; }
+
+/* ============ responsive ============ */
+@media (max-width: 960px) {
+  :root { --nav: 62px; }
+  body { font-size: 17px; }
+  .wrap { width: calc(100% - 36px); }
+  .nav { padding: 0 16px; gap: 12px; }
+  .nav ul { display: none; }
+  .nav .logo img { height: 30px; }
+  .nav .shop-btn { display: none; }
+  .menu-btn { color: var(--ink); display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; border: 3px solid var(--ink); background: var(--cream); cursor: pointer; padding: 0; }
+  .nav.open ul { display: grid; position: absolute; top: var(--nav); left: 0; right: 0; background: var(--m-bg); color: var(--m-fg); padding: 18px 20px 24px; gap: 14px; border-bottom: 4px solid var(--ink); }
+  .nav.open ul a { color: var(--m-fg); font-size: 28px; }
+  .spot-grid { grid-template-columns: 1fr; gap: 34px; padding: 56px 0 64px; }
+  .spot-visual { aspect-ratio: 1 / .9; box-shadow: 7px 7px 0 var(--ink); }
+  .pick { padding: 72px 0 80px; }
+  .pick-top { grid-template-columns: 1fr; gap: 18px; }
+  .sun-stage { justify-self: center; width: min(78vw, 340px); order: -1; }
+  .moods { grid-template-columns: 1fr; gap: 18px; margin-top: 36px; }
+  .mood-card { grid-template-columns: 96px 1fr; gap: 16px; padding: 18px; }
+  .mood-card .disc { width: 96px; }
+  .mood-card .sw { font-size: 21px; }
+  .slide { padding: calc(var(--nav) + 10px) 18px 92px; grid-template-rows: auto 1fr; }
+  .slide-head .name { font-size: 66px; }
+  .slide-head .sw { font-size: 22px; margin-top: 6px; }
+  .slide-head .tagline { font-size: 15px; }
+  .slide .bg-herb { display: none; }
+  .float-sun { width: 110px; top: calc(var(--nav) + 4px); right: 10px; }
+  .slide-body { grid-template-columns: 1fr; gap: 12px; align-content: start; }
+  .stage { max-height: 27svh; height: 27svh; gap: 8px; }
+  .stage .shot img { max-height: 25svh; }
+  .stage .shot .ph-pack { height: 90%; max-height: 27svh; font-size: 12px; border-radius: 26px 26px 18px 18px; }
+  .arrow { width: 46px; height: 46px; font-size: 22px; }
+  .info { padding: 16px 18px; gap: 7px; box-shadow: 6px 6px 0 var(--ink); border-radius: 20px; }
+  .info .desc { font-size: 15px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .info .line { font-size: 18px; }
+  .info .price { font-size: 24px; }
+  .info .btn { padding: 9px 20px; font-size: 17px; }
+  .rail { bottom: 14px; }
+  .rail button { font-size: 16px; padding: 5px 12px 5px 6px; }
+  .moments-sec, .ig-sec, .reviews-sec, .game-sec { padding: 72px 0; }
+  .mgrid { grid-auto-columns: 74%; }
+  .rgrid { grid-template-columns: 1fr; }
+  .review:nth-child(n) { transform: none; }
+  .promo-card { grid-template-columns: 1fr; padding: 30px 24px; }
+  .promo-form { flex-direction: column; }
+  .promo-form input { width: 100%; }
+  .ig-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .game-grid { grid-template-columns: 1fr; }
+  .game { height: 420px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 34px; }
+  .foot-grid > :first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 960px) and (max-height: 700px) {
+  .slide-head .name { font-size: 70px; } .slide-head .sw { font-size: 22px; margin-top: 6px; } .slide-head .tagline { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+  .track-sticky { position: static; height: auto; }
+  .track { flex-direction: column; width: 100%; transform: none !important; }
+  .slide { width: 100%; height: auto; min-height: 100svh; border-right: 0; border-bottom: 4px solid var(--ink); }
+}
+</style>
+</head>
+<body data-mood="reset">
+
+<!-- SLOT 1 · Announcement bar (theme editor: on/off, text, dates) -->
+<div class="ann" role="region" aria-label="Announcements">
+  <div class="ann-track" aria-hidden="true"></div>
+  <span class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">New: Magnesium Body Lotion. Free shipping on every order.</span>
+</div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Yadom Life home"><img src="assets/logo.png" alt="Yadom Life" width="720" height="180"></a>
+  <ul id="nav-links">
+    <li><a href="#mood-relax" data-jump="0">Relax</a></li>
+    <li><a href="#mood-reset" data-jump="1">Reset</a></li>
+    <li><a href="#" title="Separate page">Our story</a></li>
+  </ul>
+  <div class="right">
+    <a class="btn yellow shop-btn" href="#moods-track">Shop</a>
+    <a class="cart" href="https://yadomlife.shop/cart" aria-label="Cart, 0 items">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14l-1.4 11.2a2 2 0 0 1-2 1.8H8.4a2 2 0 0 1-2-1.8L5 7Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+      <i>0</i>
+    </a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 01 · Hero (unchanged Sun video) -->
+<section class="hero" aria-label="Yadom Life">
+  <img class="poster" src="assets/hero-desktop.jpg" alt="" id="hero-poster">
+  <video id="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <a class="scroll-cue" href="#spotlight"><span>↓</span> Scroll down <span>↓</span></a>
+</section>
+
+<!-- 02 · SLOT 2 · Spotlight banner (default: newest launch; a sale banner replaces it while a sale runs) -->
+<section class="spot" id="spotlight" aria-labelledby="spot-title">
+  <div class="wrap spot-grid">
+    <div class="spot-visual">
+      <img class="sunbg" src="assets/sun.png" alt="">
+      <img class="cloud c1" src="assets/cloud1.png" alt="">
+      <img class="cloud c2" src="assets/cloud3.png" alt="">
+      <div class="ph-pack">Lotion packshot<small>goes here (transparent PNG)</small></div>
+      <img class="corner tl" src="assets/corner.png" alt=""><img class="corner tr" src="assets/corner.png" alt="">
+      <img class="corner bl" src="assets/corner.png" alt=""><img class="corner br" src="assets/corner.png" alt="">
+    </div>
+    <div>
+      <span class="tag">New · Relax mood</span>
+      <h2 id="spot-title">Magnesium <em>Body Lotion</em></h2>
+      <p class="line">Rub it in. Slow it down.</p>
+      <p class="copy">For the days that don't switch off on their own. Smooth it on, take a breath, let the noise settle.</p>
+      <div class="ctas">
+        <a class="btn yellow" href="#" title="Shopify product link to be added">Shop now →</a>
+        <a class="btn ghost" href="#mood-relax" data-jump="0">Meet the Relax mood</a>
+      </div>
+      <p class="date">Out now · 4 December</p>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true"><div class="ann-track" id="strip-track"></div></div>
+
+<!-- 03 · Pick your mood -->
+<section class="pick" id="pick" aria-labelledby="pick-title">
+  <div class="wrap">
+    <div class="pick-top">
+      <div>
+        <p class="eyebrow">One sun. Your mood.</p>
+        <h2 id="pick-title">Pick yours.</h2>
+        <p class="lead">Tap a mood and the whole site switches with it.</p>
+        <p class="mood-say" id="mood-say" aria-live="polite">Hover a mood. The Sun shows it.</p>
+      </div>
+      <div class="sun-stage" id="sun-stage" aria-label="The Yadom Sun. Drag to turn it.">
+        <div class="sun-glow"></div>
+        <div class="sun-3d" id="sun-3d"><img src="assets/sun.png" alt="" width="1100" height="1100"></div>
+        <span class="drag-hint">Drag to turn the Sun</span>
+      </div>
+    </div>
+    <div class="moods" id="moods"></div>
+  </div>
+</section>
+
+<!-- 04 · Mood sections (slide in sideways) -->
+<section class="track-sec" id="moods-track" aria-label="Moods and products">
+  <div class="track-sticky">
+    <div class="track" id="track"></div>
+    <nav class="rail" id="rail" aria-label="Moods"></nav>
+  </div>
+</section>
+
+<!-- 05 · Moments of Yadom -->
+<section class="moments-sec" aria-labelledby="mom-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow">Real people. Every mood.</p><h2 id="mom-title">Moments of Yadom.</h2></div>
+      <div class="filters" id="filters" role="group" aria-label="Filter moments by mood"></div>
+    </div>
+    <div class="mgrid" id="mgrid"></div>
+  </div>
+</section>
+
+<!-- 06 · Reviews (Shopify build: live Judge.me widget) -->
+<section class="reviews-sec" aria-labelledby="rev-title">
+  <div class="wrap" style="position:relative">
+    <div class="sec-head">
+      <div><p class="eyebrow">The reviews</p><h2 id="rev-title">Loved by the loud.</h2></div>
+      <div class="rating"><span class="big">4.6</span><div><span class="stars" aria-hidden="true">★★★★★</span><small>27 reviews · Judge.me</small></div></div>
+    </div>
+    <div class="rgrid" id="rgrid"></div>
+  </div>
+</section>
+
+<!-- 07 · SLOT 4 · Promo strip (optional) -->
+<section class="promo" aria-label="Updates">
+  <div class="wrap">
+    <div class="promo-card">
+      <img class="sun" src="assets/sun.png" alt="">
+      <div><h3>New moods drop here first.</h3><p>Ice Mint, Coffee and the Epsom range land in January. Get a heads-up.</p></div>
+      <form class="promo-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='You\'re in ✦'">
+        <label for="promo-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email</label>
+        <input id="promo-email" type="email" placeholder="your@email.com" autocomplete="email">
+        <button class="btn yellow" type="submit">Notify me</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · Instagram -->
+<section class="ig-sec" aria-labelledby="ig-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow">@yadom_life</p><h2 id="ig-title">Join the ritual.</h2></div>
+      <a class="btn" href="https://www.instagram.com/yadom_life" target="_blank" rel="noopener">Follow us →</a>
+    </div>
+    <div class="ig-grid">
+      <a class="ig-tile" href="https://www.instagram.com/yadom_life" target="_blank" rel="noopener" aria-label="Instagram reel"><video data-src="assets/it-rises.mp4" poster="assets/reel1.jpg" muted loop playsinline preload="none"></video><span class="badge">Reel</span></a>
+      <a class="ig-tile" href="https://www.instagram.com/yadom_life" target="_blank" rel="noopener" aria-label="Instagram post"><img src="assets/shot-1.jpg" alt="" loading="lazy"></a>
+      <a class="ig-tile" href="https://www.instagram.com/yadom_life" target="_blank" rel="noopener" aria-label="Instagram reel"><video data-src="assets/something-herbal.mp4" poster="assets/reel2.jpg" muted loop playsinline preload="none"></video><span class="badge">Reel</span></a>
+      <a class="ig-tile" href="https://www.instagram.com/yadom_life" target="_blank" rel="noopener" aria-label="Instagram post"><img src="assets/shot-3.jpg" alt="" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · Sun game -->
+<section class="game-sec" id="sun-game" aria-labelledby="game-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow">One last thing</p><h2 id="game-title">Keep the Sun up.</h2></div>
+      <p style="max-width:34ch;font-size:20px">Dodge the city noise. Grab the herbs. Tap, click or hit space to fly.</p>
+    </div>
+    <div class="game-grid">
+      <div class="game" id="game" tabindex="0" role="application" aria-label="Keep the Sun up. Press space or tap to fly.">
+        <canvas id="game-canvas"></canvas>
+        <div class="hud"><span class="score" id="g-score">0</span><span class="slow" id="g-slow">Inhale · slow-mo</span></div>
+        <div class="g-over" id="g-over">
+          <div class="card">
+            <img src="assets/sun.png" alt="">
+            <h3 id="g-title">Keep the Sun up</h3>
+            <p id="g-sub">Tap or press space to start</p>
+            <div class="row" id="g-actions"><button class="btn" type="button" id="g-play">Play</button></div>
+          </div>
+        </div>
+      </div>
+      <aside class="g-side">
+        <div><h4>Play it in</h4><div class="mtog" id="g-mood"><button type="button" data-m="relax" aria-pressed="false">Relax</button><button type="button" data-m="reset" aria-pressed="true">Reset</button></div></div>
+        <div><h4>How it works</h4><ul>
+          <li><img src="assets/sun.png" alt="">Tap: the Sun flies up</li>
+          <li><img src="assets/herb-holy.png" alt="">Herbs: +2 each</li>
+          <li><img src="assets/jar-front.png" alt="">Jar: slow-mo for 4 s</li>
+          <li><span style="width:44px;text-align:center;font-family:var(--util);font-weight:900;color:var(--red)">✕</span>Don't touch the noise</li>
+        </ul></div>
+        <div><h4>Best this visit</h4><span class="best" id="g-best">0</span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <img class="wink" src="assets/sun.png" alt="">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="logo" href="#top"><img src="assets/logo.png" alt="Yadom Life" width="720" height="180"></a>
+      <p class="bye">Come back when you need a minute.</p>
+    </div>
+    <div><h4>Moods</h4><ul><li><a href="#mood-relax" data-jump="0">Relax</a></li><li><a href="#mood-reset" data-jump="1">Reset</a></li><li><a href="#">Our story</a></li></ul></div>
+    <div><h4>Quick links</h4><ul>
+      <li><a href="https://yadomlife.shop/blogs/news">Blogs</a></li><li><a href="#">Contact us</a></li><li><a href="#">Privacy policy</a></li>
+      <li><a href="#">Shipping policy</a></li><li><a href="#">Returns, refunds &amp; cancellation</a></li><li><a href="#">Terms &amp; conditions</a></li>
+    </ul></div>
+    <div><h4>Reach us</h4>
+      <address>Yadom Life<br>Vamayra Global Private Limited<br>A-39, Chander Nagar, Surya Nagar,<br>Ghaziabad, Uttar Pradesh 201011, India<br><br><a href="mailto:care@yadom.life">care@yadom.life</a></address>
+    </div>
+  </div>
+  <div class="wrap foot-bottom"><span>© 2026 Yadom Life</span><span>Made in India ✦ Herbal &amp; loud</span></div>
+</footer>
+
+<script>
+var SHOP = "https://yadomlife.shop/products/";
+var MOODS = [
+  { key: "relax", name: "Relax", sw: "Wired to calm.", tag: "For when the city won't log off.",
+    herbs: ["holy", "lm"],
+    products: [
+      { n: "Magnesium Body Lotion", s: "Out now", offer: "New", l: "Rub it in. Slow it down.", d: "A magnesium body lotion for the days that don't switch off on their own. Smooth it on, take a breath, let the noise settle.", live: true },
+      { n: "Epsom Body & Bath Salt", s: "Coming January", l: "Run a bath. Let the noise sink.", d: "Epsom salt for your bath or your bucket. Tip some in, sit back, and let the day dissolve with it." },
+      { n: "Epsom Foot Soak", s: "Coming January", l: "Your feet did the whole day.", d: "Give them ten minutes. A warm-water soak for feet that carried you through everything." },
+      { n: "Epsom Body Wash", s: "Coming January", l: "Rinse off the rush.", d: "A slow-down shower in a bottle. Lather, rinse, and leave the rush on the bathroom floor." }
+    ] },
+  { key: "reset", name: "Reset", sw: "Foggy to sharp.", tag: "For when your brain starts buffering.",
+    herbs: ["peppermint", "camphor"],
+    products: [
+      { n: "Herbal Inhaler", s: "In stock", offer: "Bestseller", l: "Open. Inhale. Reset.", d: "A pocket-sized herbal aroma ritual for quick, cooling resets on the move. Camphor, mint, tulsi and friends.", img: "assets/jar-front.png", price: "₹419", mrp: "₹496", per: "Pack of 2", url: SHOP + "herbal-inhaler", live: true },
+      { n: "Ice Mint Inhaler", s: "Late January", l: "Same pocket. Colder snap.", d: "The inhaler you know, turned a few degrees cooler. For when regular minty just isn't loud enough." },
+      { n: "Coffee Body Wash", s: "Late January", l: "Your first coffee, but in the shower.", d: "A coffee-scented body wash that smells like the start of something. Lather up, wake up the room." }
+    ] }
+];
+var MOMENTS = [
+  { m: "reset", img: "m-work", t: "Work mode", d: "Long tabs, longer calls. One twist, back in." },
+  { m: "reset", img: "m-commute", t: "Commute mode", d: "Crowded ride. A pocket ritual that travels better than your playlist." },
+  { m: "reset", img: "m-gym", t: "Gym mode", d: "A quick inhale before the next set." },
+  { m: "reset", img: "m-study", t: "Study mode", d: "Keep it next to your notes. Back to it." },
+  { m: "reset", img: "m-travel", t: "Travel mode", d: "Window seat, open jar, fresh head." },
+  { m: "reset", img: "m-latenight", t: "Late-night mode", d: "One more episode. One more inhale." },
+  { m: "relax", soon: true, t: "Relax moments", d: "Land with the lotion. Tag @yadom_life to be in them." }
+];
+// Real Judge.me reviews from the live product page (verbatim, names shortened)
+var REVIEWS = [
+  ["Really convenient to carry around, especially during long workdays. The cooling herbal aroma is quite refreshing, and I like that it’s small enough to keep in my pocket.", "Silambarasan A."],
+  ["Been using this for a while and really like it. The scent is strong but pleasant, and just a quick inhale gives a nice refreshing feeling.", "Rashika S."],
+  ["One of those rare Amazon purchases where you don't start planning the return before throwing away the box. Does exactly what it promises, feels well-made, and honestly turned out better than expected.", "Rohit C."],
+  ["Got myself a pack of 4, which is pretty useful if you travel around a lot. I keep one in my backpack and another in the car. Stickers were honestly my favourite part.", "Zainul K."],
+  ["I tried this Herbal Inhaler at my friends place and really liked the fresh, cooling herbal aroma. It felt soo refreshing that I ended up ordering one for myself.", "Josh"],
+  ["Very fresh and herbal. Everyone should keep it in pocket.", "Rahul J."]
+];
+
+var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var isMobile = function () { return window.matchMedia("(max-width: 960px)").matches; };
+
+/* ---------- tickers ---------- */
+function fillTrack(el, items) {
+  var html = items.map(function (t) { return "<span>" + t + "</span><b>✦</b>"; }).join("");
+  el.innerHTML = html + html;
+}
+fillTrack(document.querySelector(".ann .ann-track"), ["New: Magnesium Body Lotion", "Free shipping on every order", "Made in India", "Herbal & loud"]);
+fillTrack(document.getElementById("strip-track"), ["One sun", "Your mood", "Herbal & loud", "Made in India", "Not plain. Not clinical. Not boring."]);
+
+/* ---------- nav ---------- */
+var nav = document.getElementById("nav"), heroEl = document.querySelector(".hero");
+function navState() { nav.classList.toggle("solid", window.scrollY > heroEl.offsetHeight - 120); }
+var menuBtn = document.getElementById("menu-btn");
+menuBtn.addEventListener("click", function () { var o = nav.classList.toggle("open"); menuBtn.setAttribute("aria-expanded", String(o)); if (o) nav.classList.add("solid"); });
+document.querySelectorAll("#nav-links a").forEach(function (a) { a.addEventListener("click", function () { nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); }); });
+
+/* ---------- hero video: desktop/mobile cut ---------- */
+(function () {
+  var v = document.getElementById("hero-video"), p = document.getElementById("hero-poster");
+  var m = isMobile();
+  p.src = m ? "assets/hero-mobile.jpg" : "assets/hero-desktop.jpg";
+  v.poster = p.src;
+  v.src = m ? "assets/hero-mobile.mp4" : "assets/hero-desktop.mp4";
+  if (reduce) { v.removeAttribute("autoplay"); v.pause(); }
+})();
+
+/* ---------- mood theme ---------- */
+function setMood(k) {
+  document.body.setAttribute("data-mood", k);
+  Array.prototype.forEach.call(document.querySelectorAll("#g-mood button"), function (b) { b.setAttribute("aria-pressed", String(b.dataset.m === k)); });
+  if (window.__game) window.__game.mode(k);
+}
+
+/* ---------- pick your mood ---------- */
+var sun3d = document.getElementById("sun-3d"), say = document.getElementById("mood-say");
+var DEFAULT_SAY = "Hover a mood. The Sun shows it.";
+var moodsEl = document.getElementById("moods");
+MOODS.forEach(function (m, i) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "mood-card"; b.dataset.k = m.key;
+  b.innerHTML = '<span class="disc"><img src="assets/sun.png" alt=""></span><span><h3>' + m.name + '</h3><span class="sw" style="display:block">' + m.sw + '</span><span class="go">Take me there →</span></span>';
+  function show() { sun3d.className = "sun-3d m-" + m.key; say.textContent = m.name + ": " + m.sw; }
+  function hide() { sun3d.className = "sun-3d"; say.textContent = DEFAULT_SAY; }
+  b.addEventListener("mouseenter", show); b.addEventListener("focus", show);
+  b.addEventListener("mouseleave", hide); b.addEventListener("blur", hide);
+  b.addEventListener("click", function () { setMood(m.key); jumpTo(i); });
+  moodsEl.appendChild(b);
+});
+
+/* draggable / tilting sun */
+(function () {
+  var stage = document.getElementById("sun-stage");
+  var rx = 0, ry = 0, drag = false, sx = 0, sy = 0, bx = 0, by = 0, t0 = performance.now(), live = true;
+  stage.addEventListener("pointerdown", function (e) { drag = true; sx = e.clientX; sy = e.clientY; bx = ry; by = rx; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener("pointermove", function (e) { if (!drag) return; ry = bx + (e.clientX - sx) * .6; rx = Math.max(-40, Math.min(40, by - (e.clientY - sy) * .4)); });
+  function end() { drag = false; }
+  stage.addEventListener("pointerup", end); stage.addEventListener("pointercancel", end);
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { live = es[0].isIntersecting; if (live) requestAnimationFrame(tick); }).observe(stage);
+  function tick(t) {
+    if (!drag) { ry *= .93; rx *= .93; }
+    var bob = reduce ? 0 : Math.sin((t - t0) / 900) * 10;
+    sun3d.style.transform = "translateY(" + bob + "px) rotateX(" + rx + "deg) rotateY(" + ry + "deg)";
+    if (live) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
+/* ---------- mood track ---------- */
+var track = document.getElementById("track"), sec = document.getElementById("moods-track"), rail = document.getElementById("rail");
+track.style.setProperty("--n", MOODS.length);
+sec.style.height = (MOODS.length * 100) + "svh";
+MOODS.forEach(function (m, i) {
+  var s = document.createElement("article");
+  s.className = "slide " + m.key; s.id = "mood-" + m.key;
+  s.setAttribute("aria-label", m.name + " mood");
+  var deco = m.key === "relax"
+    ? '<img class="bg-cloud" src="assets/cloud1.png" alt="" style="left:-80px;bottom:16%"><img class="bg-cloud" src="assets/cloud3.png" alt="" style="right:22%;top:46%;width:280px;animation-delay:-6s">'
+    : '<img class="bg-herb" src="assets/herb-' + m.herbs[0] + '.png" alt="" style="left:44%;top:22%"><img class="bg-herb" src="assets/herb-' + m.herbs[1] + '.png" alt="" style="left:6%;bottom:14%;animation-delay:-3s">';
+  s.innerHTML = deco +
+    '<img class="float-sun" src="assets/sun.png" alt="">' +
+    '<div class="slide-head"><div><h2 class="name">' + m.name + '</h2><p class="sw">' + m.sw + '</p><p class="tagline">' + m.tag + '</p></div></div>' +
+    '<div class="slide-body">' +
+      '<div class="stage"><button class="arrow prev" type="button" aria-label="Previous product">←</button><div class="shot"></div><button class="arrow next" type="button" aria-label="Next product">→</button></div>' +
+      '<div class="info">' +
+        '<div class="row"><span class="status"></span><span class="offer"></span><span class="dots"></span></div>' +
+        '<h3 class="p-name"></h3><p class="line p-line"></p><p class="desc p-desc"></p>' +
+        '<div class="row p-buy"></div>' +
+      '</div>' +
+    '</div>';
+  track.appendChild(s);
+  var idx = 0, dots = s.querySelector(".dots"), shot = s.querySelector(".shot");
+  m.products.forEach(function () { dots.appendChild(document.createElement("i")); });
+  function paint(k) {
+    var p = m.products[k];
+    shot.innerHTML = p.img ? '<img src="' + p.img + '" alt="' + p.n + '">' : '<div class="ph-pack">' + p.n + '<small>packshot goes here</small></div>';
+    s.querySelector(".status").textContent = p.s;
+    var off = s.querySelector(".offer");
+    off.hidden = !p.offer; off.textContent = p.offer || ""; off.className = "offer" + (p.offer === "New" ? " new" : "");
+    s.querySelector(".p-name").textContent = p.n;
+    s.querySelector(".p-line").textContent = p.l;
+    s.querySelector(".p-desc").textContent = p.d;
+    s.querySelector(".p-buy").innerHTML = p.live
+      ? (p.price ? '<span class="price">' + p.price + '<s>' + p.mrp + '</s></span><span style="font-size:15px;opacity:.75">' + p.per + '</span>' : '') +
+        '<a class="btn" href="' + (p.url || "#") + '"' + (p.url ? "" : ' title="Shopify product link to be added"') + ' style="margin-left:auto">Shop now →</a>'
+      : '<span class="btn" aria-disabled="true">' + p.s + '</span>';
+    s.querySelector(".prev").disabled = k === 0;
+    s.querySelector(".next").disabled = k === m.products.length - 1;
+    Array.prototype.forEach.call(dots.children, function (d, j) { d.className = j === k ? "on" : ""; });
+  }
+  function go(k) {
+    if (k < 0 || k >= m.products.length || k === idx) return;
+    idx = k;
+    if (reduce) return paint(k);
+    shot.classList.add("out");
+    setTimeout(function () { paint(k); requestAnimationFrame(function () { shot.classList.remove("out"); }); }, 220);
+  }
+  s.querySelector(".prev").addEventListener("click", function () { go(idx - 1); });
+  s.querySelector(".next").addEventListener("click", function () { go(idx + 1); });
+  paint(0);
+  var rb = document.createElement("button");
+  rb.type = "button"; rb.innerHTML = '<img src="assets/sun.png" alt="">' + m.name;
+  rb.addEventListener("click", function () { setMood(m.key); jumpTo(i); });
+  rail.appendChild(rb);
+});
+
+function trackRange() { return sec.offsetHeight - window.innerHeight; }
+function jumpTo(i) {
+  if (reduce) { document.getElementById("mood-" + MOODS[i].key).scrollIntoView(); return; }
+  var y = sec.getBoundingClientRect().top + window.scrollY + trackRange() * (MOODS.length > 1 ? i / (MOODS.length - 1) : 0);
+  window.scrollTo({ top: y + (i === 0 ? 2 : 0), behavior: "smooth" });
+}
+document.querySelectorAll("[data-jump]").forEach(function (a) {
+  a.addEventListener("click", function (e) { e.preventDefault(); var i = +a.getAttribute("data-jump"); setMood(MOODS[i].key); jumpTo(i); });
+});
+var lastActive = -1;
+function onScroll() {
+  navState();
+  if (reduce) return;
+  var r = sec.getBoundingClientRect();
+  var p = Math.min(1, Math.max(0, -r.top / trackRange()));
+  track.style.transform = "translate3d(" + (-p * (MOODS.length - 1) * window.innerWidth) + "px,0,0)";
+  var active = Math.round(p * (MOODS.length - 1));
+  if (active !== lastActive) {
+    lastActive = active;
+    Array.prototype.forEach.call(rail.children, function (b, j) { b.setAttribute("aria-current", String(j === active)); });
+  }
+  if (r.top <= 0 && r.bottom >= window.innerHeight) {
+    var k = MOODS[active].key;
+    if (document.body.getAttribute("data-mood") !== k) setMood(k);
+  }
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", onScroll);
+onScroll();
+
+/* ---------- moments ---------- */
+var grid = document.getElementById("mgrid"), filt = document.getElementById("filters");
+MOMENTS.forEach(function (x) {
+  var c = document.createElement("article");
+  c.dataset.mood = x.m;
+  if (x.soon) {
+    c.className = "moment soon";
+    c.innerHTML = '<img src="assets/sun.png" alt=""><div><span class="tag">Relax</span><h3>' + x.t + '</h3><p>' + x.d + '</p></div>';
+  } else {
+    c.className = "moment";
+    c.innerHTML = '<img src="assets/' + x.img + '.jpg" alt="" loading="lazy"><div class="cap"><span class="tag red">Reset</span><h3>' + x.t + '</h3><p>' + x.d + '</p></div>';
+  }
+  grid.appendChild(c);
+});
+["All", "Relax", "Reset"].forEach(function (f, i) {
+  var b = document.createElement("button");
+  b.type = "button"; b.textContent = f; b.setAttribute("aria-pressed", String(i === 0));
+  b.addEventListener("click", function () {
+    Array.prototype.forEach.call(filt.children, function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+    Array.prototype.forEach.call(grid.children, function (c) { c.hidden = f !== "All" && c.dataset.mood !== f.toLowerCase(); });
+    grid.scrollTo({ left: 0 });
+  });
+  filt.appendChild(b);
+});
+
+/* ---------- reviews ---------- */
+var rg = document.getElementById("rgrid");
+REVIEWS.forEach(function (r) {
+  var d = document.createElement("figure"); d.className = "review"; d.style.margin = "0";
+  d.innerHTML = '<span class="stars" aria-label="5 out of 5 stars">★★★★★</span><blockquote style="margin:0"><p>“' + r[0] + '”</p></blockquote><figcaption class="who">' + r[1] + '<span class="tag">Reset</span><span class="verified">Verified buyer</span></figcaption>';
+  rg.appendChild(d);
+});
+
+/* ---------- IG reels play in view ---------- */
+if ("IntersectionObserver" in window) {
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) { if (!v.src) v.src = v.dataset.src; if (!reduce) v.play().catch(function () {}); }
+      else v.pause();
+    });
+  }, { threshold: .4 });
+  document.querySelectorAll(".ig-tile video").forEach(function (v) { io.observe(v); });
+}
+
+/* ---------- Sun game ---------- */
+(function () {
+  var box = document.getElementById("game"), cv = document.getElementById("game-canvas"), ctx = cv.getContext("2d");
+  var over = document.getElementById("g-over"), title = document.getElementById("g-title"), sub = document.getElementById("g-sub");
+  var actions = document.getElementById("g-actions"), scoreEl = document.getElementById("g-score"), slowEl = document.getElementById("g-slow"), bestEl = document.getElementById("g-best");
+  function img(src) { var i = new Image(); i.src = src; return i; }
+  var SUN = img("assets/sun.png"), JAR = img("assets/jar-front.png");
+  var HERBS = ["holy", "peppermint", "camphor", "eleaves", "menthol", "lm"].map(function (h) { return img("assets/herb-" + h + ".png"); });
+  var THEMES = {
+    reset: { g: 1900, flap: -510, speed: 210, gap: 168, every: 1.5, sky: ["#FFD25A", "#F5B81A"], hill: "#F08A1D", ground: "#1E7A3C", col: "#C8392E", colTxt: "#F5B81A", spin: 1.6 },
+    relax: { g: 1450, flap: -430, speed: 150, gap: 185, every: 2.0, sky: ["#2D8F4D", "#1E7A3C"], hill: "#155C2C", ground: "#A89A2E", col: "#F4E9CE", colTxt: "#F5B81A", spin: .5 }
+  };
+  var NOISE = ["PING", "DEADLINE", "HONK", "47 TABS", "EMAIL", "TRAFFIC", "MEETING", "NOTIFS", "REPLY ALL", "SURGE"];
+  var mode = "reset", M = THEMES[mode];
+  var W = 0, H = 0, state = "ready", sun, cols, items, t = 0, spawnT, score = 0, best = 0, slowT = 0, visible = true, last = 0, raf = 0, ground = 34;
+
+  function size() {
+    var r = box.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = r.width; H = r.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (state !== "play") draw();
+  }
+  function reset() { sun = { x: Math.max(90, W * .22), y: H * .42, vy: 0, r: 26 }; cols = []; items = []; spawnT = .5; score = 0; slowT = 0; scoreEl.textContent = "0"; slowEl.style.visibility = "hidden"; }
+  function start() { reset(); state = "play"; over.hidden = true; box.focus({ preventScroll: true }); flap(); last = performance.now(); cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); }
+  function flap() { if (state === "play") sun.vy = M.flap; }
+  function end() {
+    state = "over";
+    if (score > best) { best = score; bestEl.textContent = best; }
+    title.innerHTML = 'Score <span class="num">' + score + "</span>";
+    sub.textContent = score >= 10 ? "Calm under pressure. Treat yourself anyway?" : "The city got loud. Need a reset?";
+    actions.innerHTML = '<a class="btn" href="' + SHOP + 'herbal-inhaler">Shop now →</a><button class="btn cream" type="button" id="g-again">Play again</button>';
+    document.getElementById("g-again").addEventListener("click", function (e) { e.stopPropagation(); start(); });
+    over.hidden = false;
+  }
+  function spawn() {
+    var top = 46, gap = M.gap, gy = top + Math.random() * (H - ground - gap - top * 2), w = 74, x = W + 30;
+    cols.push({ x: x, w: w, top: gy, bot: gy + gap, label: NOISE[(Math.random() * NOISE.length) | 0], passed: false });
+    var r = Math.random();
+    if (r < .5) items.push({ k: "herb", img: HERBS[(Math.random() * HERBS.length) | 0], x: x + w / 2, y: gy + gap / 2, r: 18 });
+    else if (r < .6) items.push({ k: "jar", x: x + w / 2, y: gy + gap / 2, r: 18 });
+  }
+  function hit(c) {
+    var cx = Math.max(c.x, Math.min(sun.x, c.x + c.w));
+    if (Math.abs(cx - sun.x) > sun.r - 6) return false;
+    return sun.y - sun.r + 7 < c.top || sun.y + sun.r - 7 > c.bot;
+  }
+  function step(dt) {
+    var slow = slowT > 0 ? .55 : 1;
+    if (slowT > 0) { slowT -= dt; if (slowT <= 0) slowEl.style.visibility = "hidden"; }
+    var sp = (M.speed + Math.min(100, score * 3)) * slow;
+    t += dt; spawnT -= dt * slow; if (spawnT <= 0) { spawn(); spawnT = M.every; }
+    sun.vy += M.g * dt * slow; sun.y += sun.vy * dt * slow;
+    cols.forEach(function (c) { c.x -= sp * dt; if (!c.passed && c.x + c.w < sun.x - sun.r) { c.passed = true; score++; scoreEl.textContent = score; } });
+    items.forEach(function (it) {
+      it.x -= sp * dt;
+      if (!it.got && Math.hypot(it.x - sun.x, it.y - sun.y) < it.r + sun.r - 4) {
+        it.got = true;
+        if (it.k === "herb") { score += 2; scoreEl.textContent = score; } else { slowT = 4; slowEl.style.visibility = "visible"; }
+      }
+    });
+    cols = cols.filter(function (c) { return c.x + c.w > -20; }); items = items.filter(function (i) { return i.x > -40 && !i.got; });
+    if (sun.y + sun.r > H - ground || sun.y - sun.r < -50) return end();
+    for (var i = 0; i < cols.length; i++) if (hit(cols[i])) return end();
+  }
+  function roundRect(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+  function drawCol(c) {
+    ctx.lineWidth = 4; ctx.strokeStyle = "#0E0D0B"; ctx.fillStyle = M.col;
+    roundRect(c.x, -10, c.w, c.top + 10, 12); ctx.fill(); ctx.stroke();
+    roundRect(c.x, c.bot, c.w, H - c.bot - ground + 12, 12); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = "#0E0D0B"; ctx.fillRect(c.x - 6, c.top - 20, c.w + 12, 20); ctx.fillRect(c.x - 6, c.bot, c.w + 12, 20);
+    ctx.save(); ctx.fillStyle = M.colTxt; ctx.font = "900 13px Shoulders, Impact, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillText(c.label, c.x + c.w / 2, c.top - 10); ctx.fillText(c.label, c.x + c.w / 2, c.bot + 10); ctx.restore();
+  }
+  function draw() {
+    var g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, M.sky[0]); g.addColorStop(1, M.sky[1]);
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    // dotted texture
+    ctx.fillStyle = "rgba(14,13,11,.07)";
+    for (var y = 12; y < H; y += 24) for (var x = 12 - ((t * 20) % 24); x < W; x += 24) { ctx.beginPath(); ctx.arc(x, y, 1.5, 0, 6.3); ctx.fill(); }
+    // hills
+    ctx.fillStyle = M.hill; ctx.strokeStyle = "#0E0D0B"; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(0, H);
+    for (var hx = 0; hx <= W + 40; hx += 40) ctx.lineTo(hx, H - ground - 40 - Math.sin((hx + t * 40) / 90) * 26);
+    ctx.lineTo(W, H); ctx.closePath(); ctx.fill(); ctx.stroke();
+    (cols || []).forEach(drawCol);
+    (items || []).forEach(function (it) {
+      ctx.save(); ctx.translate(it.x, it.y);
+      if (it.k === "herb") { ctx.rotate(Math.sin(t * 4 + it.x) * .25); if (it.img.complete) ctx.drawImage(it.img, -28, -18, 56, 36); }
+      else { ctx.fillStyle = "rgba(244,233,206,.6)"; ctx.beginPath(); ctx.arc(0, 0, 26 + Math.sin(t * 6) * 3, 0, 6.3); ctx.fill(); if (JAR.complete) ctx.drawImage(JAR, -15, -22, 30, 44); }
+      ctx.restore();
+    });
+    // ground
+    ctx.fillStyle = M.ground; ctx.fillRect(0, H - ground, W, ground);
+    ctx.fillStyle = "#0E0D0B"; ctx.fillRect(0, H - ground, W, 4);
+    ctx.fillStyle = "rgba(14,13,11,.25)";
+    for (var gx = -((t * (M.speed)) % 30); gx < W; gx += 30) ctx.fillRect(gx, H - ground + 12, 14, 4);
+    // sun
+    var s = sun || { x: Math.max(90, W * .22), y: H * .42, vy: 0, r: 26 };
+    ctx.save(); ctx.translate(s.x, s.y); ctx.rotate(Math.max(-.5, Math.min(.8, s.vy / 900)) + t * M.spin * .3);
+    if (SUN.complete) ctx.drawImage(SUN, -s.r * 1.8, -s.r * 1.8, s.r * 3.6, s.r * 3.6);
+    ctx.restore();
+  }
+  function loop(now) {
+    if (state !== "play") return;
+    var dt = Math.min(.033, (now - last) / 1000); last = now;
+    if (visible) { step(dt); draw(); }
+    if (state === "play") raf = requestAnimationFrame(loop);
+  }
+  function press(e) { if (e && e.target && e.target.closest && e.target.closest("a,button")) return; if (state === "play") flap(); else start(); }
+  box.addEventListener("pointerdown", function (e) { if (e.target.closest("a,button")) return; e.preventDefault(); press(e); });
+  box.addEventListener("keydown", function (e) { if (e.code === "Space" || e.code === "ArrowUp" || e.key === " ") { e.preventDefault(); press(); } });
+  document.getElementById("g-play").addEventListener("click", function (e) { e.stopPropagation(); start(); });
+  document.getElementById("g-mood").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) setMood(b.dataset.m); });
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) last = performance.now(); }).observe(box);
+  window.addEventListener("resize", size);
+  SUN.onload = JAR.onload = function () { if (state !== "play") draw(); };
+  window.__game = { mode: function (k) { mode = k; M = THEMES[k]; if (state !== "play") draw(); } };
+  reset(); size();
+})();
+</script>
+</body>
+</html>
